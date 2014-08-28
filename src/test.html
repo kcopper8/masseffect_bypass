@@ -78,7 +78,82 @@ require.config({
   }
 });
 
-require(['jquery'], function() {
+define('CardContainer', function() {
+  var CardContainer = function() {
+    var arr = [];
+
+    this.addRow = function(aCards) {
+      if (aCards.length != 3) {
+        console.log(aCards);
+        throw "row needs 3 cards, but has " + aCards.length;
+      }
+
+      var newArr = [aCards[0], aCards[1], aCards[2]];
+      arr.push(newArr);
+    };
+  };
+
+  return CardContainer;
+
+});
+
+define('Card', ['jquery'], function($) {
+  var Card = function(type) {
+    this.$el = $('<DIV class="bp_card">');
+    this.$el.addClass("bp_card"+type);
+  };
+
+  Card.makeRandomCard = function() {
+    return new Card(Math.ceil(Math.random() * 3));
+  };
+
+  return Card;
+});
+
+define('Area', ['jquery', 'Card'], function($) {
+  var Area = function(target, cardContainer) {
+    var $el = $(target);
+
+    this.addRow = function(aCards) {
+      var $li = $("<LI>");
+
+      $.each(aCards, function(index, oCard) {
+        $li.append(oCard.$el);
+      });
+
+      cardContainer.addRow(aCards);
+
+      $el.append($li); 
+    };
+  };
+
+  return Area;
+});
+
+
+define('Game', ['Area', 'Card', 'CardContainer'], function(Area, Card, CardContainer) {
+  var Game = function() {
+    var cardContainer = new CardContainer();
+    var area = new Area("#bp_area", cardContainer);
+
+    function makeRow() {
+      return [Card.makeRandomCard(), Card.makeRandomCard(), Card.makeRandomCard()];
+    }
+
+    this.prepare = function() {
+      area.addRow(makeRow());
+      area.addRow(makeRow());
+      area.addRow(makeRow());
+      area.addRow(makeRow());
+    };
+  };
+  return Game;
+});
+
+require(['Game'], function(Game) {
+  var game = window.game = new Game();
+  game.prepare();
+
 });
 
 </script>
