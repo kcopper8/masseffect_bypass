@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>slide demo</title>
+  <style>
+  #bp_area {
+    background: #ccc;
+    z-index: -100;
+  }
+
+  #bp_area li {
+    height: 110px;
+    list-style-type: none;
+  }
+
+  #bp_container {
+    padding: 10px;
+    background-color: #444;
+  }
+
+  #bp_hole {
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .bp_none {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .bp_card {
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+  }
+  .bp_card:first-child {
+    clear: left;
+  }
+  .bp_card1 {
+    background-color: green;
+  }
+  .bp_card2 {
+    background-color: purple;
+  }
+  .bp_card3 {
+    background-color: orange;
+  }
+
+  .cnp {
+    background-color: red;
+  }
+
+  .cnp1 {
+    background-color: blue;
+  }
+
+  .cnp2 {
+    background-color: yellow;
+  }
+
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+</head>
+<body>
+<div id="bp_container">
+  <div id="bp_hole">
+    <ul id="bp_area" class="bp_none"></ul>
+  </div>
+</div>
+
+<script id="BP_ROW_TPL" type="text/template">
+      <li>
+        <div class="bp_card bp_card1"></div>
+        <div class="bp_card bp_card2"></div>
+        <div class="bp_card bp_card3"></div>
+      </li>
+</script>
+ 
+<script>
+  var options = {};
+  options.nCardHeight = $('.bp_card').outerHeight(true);
+  options.nCardSpeed = 3000;
+
+  var BPArea = function() {
+    var area = $('#bp_area');
+    var template = $('#BP_ROW_TPL').html();
+
+    var oBPArea = this;
+    this._animate = function() {
+      oBPArea.appendAfter();
+      oBPArea.removeFirstChild();
+
+      area.animate({
+        "margin-top" : (oBPArea.getMarginTop() - options.nCardHeight) + "px"
+      }
+      , options.nCardSpeed
+      , "linear"
+      , oBPArea._animate);
+    };
+
+    this.getMarginTop = function() {
+      return parseInt(area.css('margin-top'));
+    };
+
+    this.removeFirstChild = function() {
+      area.children(':first-child').remove();
+    };
+
+    this.setMarginTop = function(nValue) {
+      area.css({
+        'margin-top' : nValue + 'px'
+      });
+    };
+
+    this.addRow = function(aDivs) {
+      var $li = $("<LI>");
+      $li.append(aDivs);
+      area.append($li);
+    };
+
+    this.appendAfter = function() {
+      oBPArea.append(template);
+    };
+  };
+
+  var bp_area = new BPArea();
+
+  var d1 = '<div class="bp_card bp_card1"></div>';
+  var d2 = '<div class="bp_card bp_card2"></div>';
+  var d3 = '<div class="bp_card bp_card3"></div>';
+
+
+function test() {
+
+  bp_area.addRow([$(d1), $(d2), $(d3)]);
+}
+
+</script>
+ 
+</body>
+</html>

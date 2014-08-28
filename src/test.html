@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>slide demo</title>
+  <style>
+  #bp_area {
+    background: #ccc;
+    z-index: -100;
+  }
+
+  #bp_area li {
+    height: 110px;
+    list-style-type: none;
+  }
+
+  #bp_container {
+    padding: 10px;
+    background-color: #444;
+  }
+
+  #bp_hole {
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .bp_none {
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .bp_card {
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+    float: left;
+  }
+  .bp_card:first-child {
+    clear: left;
+  }
+  .bp_card1 {
+    background-color: green;
+  }
+  .bp_card2 {
+    background-color: purple;
+  }
+  .bp_card3 {
+    background-color: orange;
+  }
+
+  .cnp {
+    background-color: red;
+  }
+
+  .cnp1 {
+    background-color: blue;
+  }
+
+  .cnp2 {
+    background-color: yellow;
+  }
+
+  </style>
+</head>
+<body>
+<div id="bp_container">
+  <div id="bp_hole">
+    <ul id="bp_area" class="bp_none"></ul>
+  </div>
+</div>
+<script type="text/javascript" src="js/lib/require.js"></script>
+<script type="text/javascript">
+require.config({
+  baseUrl : 'js/lib',
+
+  paths : {
+    jquery : 'jquery-1.11.1'
+  }
+});
+
+require(['jquery'], function() {
+});
+
+</script>
+</body>
+</html>
