@@ -10,7 +10,7 @@
   }
 
   #bp_area li {
-    height: 110px;
+    height: 100px;
     list-style-type: none;
   }
 
@@ -32,19 +32,30 @@
   .bp_card {
     width: 200px;
     height: 100px;
-    margin: 5px;
     float: left;
   }
+
+  .bp_card .bp_inner {
+    width: 190px;
+    height: 90px;
+    margin: 5px;
+  }
+
   .bp_card:first-child {
     clear: left;
   }
-  .bp_card1 {
+
+  .bp_selected {
+    background-color: red;
+  }
+
+  .bp_card1 .bp_inner {
     background-color: green;
   }
-  .bp_card2 {
+  .bp_card2 .bp_inner {
     background-color: purple;
   }
-  .bp_card3 {
+  .bp_card3 .bp_inner {
     background-color: orange;
   }
 
@@ -78,9 +89,33 @@ require.config({
   }
 });
 
+
+define('Card', ['jquery'], function($) {
+  var Card = function(type) {
+    this.$el = $('<DIV class="bp_card"><DIV class="bp_inner"></DIV></DIV>');
+    this.$el.addClass("bp_card"+type);
+
+    this.setSelect = function() {
+      this.$el.addClass("bp_selected");
+    };
+
+    this.setUnSelect = function() {
+      this.$el.removeClass("bp_selected");
+    };
+  };
+
+  Card.makeRandomCard = function() {
+    return new Card(Math.ceil(Math.random() * 3));
+  };
+
+  return Card;
+});
+
 define('CardContainer', function() {
   var CardContainer = function() {
     var arr = [];
+
+    var pointSelected = {};
 
     this.addRow = function(aCards) {
       if (aCards.length != 3) {
@@ -91,23 +126,24 @@ define('CardContainer', function() {
       var newArr = [aCards[0], aCards[1], aCards[2]];
       arr.push(newArr);
     };
+
+    this.get = function(row, col) {
+      return arr[row][col];
+    };
+
+    this.select = function(row, col) {
+      this.get(row, col).setSelect();
+      pointSelected = {
+        'row' : row
+        , 'col' : col
+      };
+    };
+
+    //this.getSelectedPoint = function
   };
 
   return CardContainer;
 
-});
-
-define('Card', ['jquery'], function($) {
-  var Card = function(type) {
-    this.$el = $('<DIV class="bp_card">');
-    this.$el.addClass("bp_card"+type);
-  };
-
-  Card.makeRandomCard = function() {
-    return new Card(Math.ceil(Math.random() * 3));
-  };
-
-  return Card;
 });
 
 define('Area', ['jquery', 'Card'], function($) {
@@ -133,26 +169,72 @@ define('Area', ['jquery', 'Card'], function($) {
 
 define('Game', ['Area', 'Card', 'CardContainer'], function(Area, Card, CardContainer) {
   var Game = function() {
-    var cardContainer = new CardContainer();
-    var area = new Area("#bp_area", cardContainer);
+    var cardContainer = this.cardContainer = new CardContainer();
+    var area = this.area = new Area("#bp_area", cardContainer);
 
     function makeRow() {
       return [Card.makeRandomCard(), Card.makeRandomCard(), Card.makeRandomCard()];
     }
+
 
     this.prepare = function() {
       area.addRow(makeRow());
       area.addRow(makeRow());
       area.addRow(makeRow());
       area.addRow(makeRow());
+
+      cardContainer.select(3, 0);
     };
+
   };
   return Game;
 });
 
-require(['Game'], function(Game) {
+define('GameController', ['jquery'], function($) {
+
+  var GameController = function() {
+
+    this.prepare = function (callback) {
+      $(document).keydown(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if ([37, 38, 39, 40].indexOf(e.keyCode) < 0) {
+          return false;
+        }
+
+        callback(e.keyCode);
+      });
+    }
+
+  };
+
+
+  return GameController;
+
+});
+
+require(['Game', 'GameController'], function(Game, GameController) {
   var game = window.game = new Game();
   game.prepare();
+
+  var controller = new GameController();
+  controller.prepare(function(keyCode) {
+    var cont = game.cardContainer;
+
+    switch(keyCode) {
+      case 37:
+      break;
+      case 38:
+      break;
+      case 39:
+      break;
+      case 40:
+      break;
+      default:
+      break;
+    }
+  });
 
 });
 

@@ -27,15 +27,7 @@
 			"file": "src/test.html",
 			"settings":
 			{
-				"buffer_size": 2793,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/dev/workspace-me/src/test.html",
-			"settings":
-			{
-				"buffer_size": 2512,
+				"buffer_size": 4240,
 				"line_ending": "Windows"
 			}
 		}
@@ -88,10 +80,13 @@
 	},
 	"file_history":
 	[
+		"/D/clubbox/D - W/(COMIC1☆5)[あなろぐストア (ゴマタマゴ)] 金&#39658;の彼女と妹は好きですか？ (僕は友達が少ない).zip",
+		"/C/dev/workspace-me/src/test.html",
+		"/C/Users/user/Downloads/dc400b26-kr-src/crawl.rc",
+		"/C/Users/user/Downloads/dc400b26-kr-src/libwt.cc",
 		"/C/Users/user/Documents/GitHub/masseffect_bypass/src/set_scripts.html",
 		"/C/Users/user/Documents/GitHub/masseffect_bypass/src/test.html",
 		"/C/Users/user/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
-		"/C/dev/workspace-me/src/test.html",
 		"/C/Users/user/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/user/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
 		"/C/dev/workspace-me/src/endless-scroll/index.html",
@@ -172,15 +167,15 @@
 					"file": "src/test.html",
 					"settings":
 					{
-						"buffer_size": 2793,
+						"buffer_size": 4240,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2623,
-								2623
+								2387,
+								2387
 							]
 						],
 						"settings":
@@ -190,35 +185,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1513.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/dev/workspace-me/src/test.html",
-					"settings":
-					{
-						"buffer_size": 2512,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2071,
-								2071
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1258.0,
+						"translation.y": 119.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
