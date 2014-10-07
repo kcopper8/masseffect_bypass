@@ -49,17 +49,16 @@
             background-color: red;
         }
 
-        .bp_card1 .bp_inner {
-            background-color: green;
-        }
-
-        .bp_card2 .bp_inner {
-            background-color: purple;
-        }
-
-        .bp_card3 .bp_inner {
-            background-color: orange;
-        }
+        .bp_card1 .bp_inner { background-color: green; }
+        .bp_card2 .bp_inner { background-color: purple; }
+        .bp_card3 .bp_inner { background-color: orange; }
+        .bp_card4 .bp_inner { background-color: midnightblue; }
+        .bp_card5 .bp_inner { background-color: firebrick; }
+        .bp_card6 .bp_inner { background-color: aquamarine }
+        .bp_card7 .bp_inner { background-color: sienna; }
+        .bp_card8 .bp_inner { background-color: mediumslateblue; }
+        .bp_card9 .bp_inner { background-color: chocolate; }
+        .bp_card10 .bp_inner { background-color: darkmagenta; }
 
         .cnp {
             background-color: red;
@@ -92,7 +91,7 @@ require.config({
 });
 
 
-define('Card', ['jquery'], function ($) {
+define('Card', ['jquery', 'Option'], function ($, Option) {
     var Card = function (type) {
         this.$el = $('<DIV class="bp_card"><DIV class="bp_inner"></DIV></DIV>');
         this.$el.addClass("bp_card" + type);
@@ -107,7 +106,7 @@ define('Card', ['jquery'], function ($) {
     };
 
     Card.makeRandomCard = function () {
-        return new Card(Math.ceil(Math.random() * 3));
+        return new Card(Math.ceil(Math.random() * Option.nNumberOfCard));
     };
 
     return Card;
@@ -178,7 +177,8 @@ define('CardContainer', function () {
 define('Option', ['jquery'], function($) {
     return {
         nCardHeight : 100,
-        nCardSpeed : 3000
+        nCardSpeed : 3000,
+        nNumberOfCard : 10
     };
 });
 
@@ -296,6 +296,10 @@ require(['Game', 'GameController'], function (Game, GameController) {
                 break;
         }
     });
+
+    game.slideStart();
+    window.focus();
+
 
 });
 
