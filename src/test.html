@@ -1,240 +1,301 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>slide demo</title>
-  <style>
-  #bp_area {
-    background: #ccc;
-    z-index: -100;
-  }
+    <meta charset="utf-8">
+    <title>slide demo</title>
+    <style>
+        #bp_area {
+            background: #ccc;
+            z-index: -100;
+        }
 
-  #bp_area li {
-    height: 100px;
-    list-style-type: none;
-  }
+        #bp_area li {
+            height: 100px;
+            list-style-type: none;
+        }
 
-  #bp_container {
-    padding: 10px;
-    background-color: #444;
-  }
+        #bp_container {
+            padding: 10px;
+            background-color: #444;
+        }
 
-  #bp_hole {
-    height: 400px;
-    overflow: hidden;
-  }
+        #bp_hole {
+            height: 400px;
+            overflow: hidden;
+        }
 
-  .bp_none {
-    padding: 0px;
-    margin: 0px;
-  }
+        .bp_none {
+            padding: 0px;
+            margin: 0px;
+        }
 
-  .bp_card {
-    width: 200px;
-    height: 100px;
-    float: left;
-  }
+        .bp_card {
+            width: 200px;
+            height: 100px;
+            float: left;
+        }
 
-  .bp_card .bp_inner {
-    width: 190px;
-    height: 90px;
-    margin: 5px;
-  }
+        .bp_card .bp_inner {
+            width: 190px;
+            height: 90px;
+            margin: 5px;
+        }
 
-  .bp_card:first-child {
-    clear: left;
-  }
+        .bp_card:first-child {
+            clear: left;
+        }
 
-  .bp_selected {
-    background-color: red;
-  }
+        .bp_selected {
+            background-color: red;
+        }
 
-  .bp_card1 .bp_inner {
-    background-color: green;
-  }
-  .bp_card2 .bp_inner {
-    background-color: purple;
-  }
-  .bp_card3 .bp_inner {
-    background-color: orange;
-  }
+        .bp_card1 .bp_inner {
+            background-color: green;
+        }
 
-  .cnp {
-    background-color: red;
-  }
+        .bp_card2 .bp_inner {
+            background-color: purple;
+        }
 
-  .cnp1 {
-    background-color: blue;
-  }
+        .bp_card3 .bp_inner {
+            background-color: orange;
+        }
 
-  .cnp2 {
-    background-color: yellow;
-  }
+        .cnp {
+            background-color: red;
+        }
 
-  </style>
+        .cnp1 {
+            background-color: blue;
+        }
+
+        .cnp2 {
+            background-color: yellow;
+        }
+
+    </style>
 </head>
 <body>
 <div id="bp_container">
-  <div id="bp_hole">
-    <ul id="bp_area" class="bp_none"></ul>
-  </div>
+    <div id="bp_hole">
+        <ul id="bp_area" class="bp_none"></ul>
+    </div>
 </div>
 <script type="text/javascript" src="js/lib/require.js"></script>
 <script type="text/javascript">
 require.config({
-  baseUrl : 'js/lib',
+    baseUrl: 'js/lib',
 
-  paths : {
-    jquery : 'jquery-1.11.1'
-  }
-});
-
-
-define('Card', ['jquery'], function($) {
-  var Card = function(type) {
-    this.$el = $('<DIV class="bp_card"><DIV class="bp_inner"></DIV></DIV>');
-    this.$el.addClass("bp_card"+type);
-
-    this.setSelect = function() {
-      this.$el.addClass("bp_selected");
-    };
-
-    this.setUnSelect = function() {
-      this.$el.removeClass("bp_selected");
-    };
-  };
-
-  Card.makeRandomCard = function() {
-    return new Card(Math.ceil(Math.random() * 3));
-  };
-
-  return Card;
-});
-
-define('CardContainer', function() {
-  var CardContainer = function() {
-    var arr = [];
-
-    var pointSelected = {};
-
-    this.addRow = function(aCards) {
-      if (aCards.length != 3) {
-        console.log(aCards);
-        throw "row needs 3 cards, but has " + aCards.length;
-      }
-
-      var newArr = [aCards[0], aCards[1], aCards[2]];
-      arr.push(newArr);
-    };
-
-    this.get = function(row, col) {
-      return arr[row][col];
-    };
-
-    this.select = function(row, col) {
-      this.get(row, col).setSelect();
-      pointSelected = {
-        'row' : row
-        , 'col' : col
-      };
-    };
-
-    //this.getSelectedPoint = function
-  };
-
-  return CardContainer;
-
-});
-
-define('Area', ['jquery', 'Card'], function($) {
-  var Area = function(target, cardContainer) {
-    var $el = $(target);
-
-    this.addRow = function(aCards) {
-      var $li = $("<LI>");
-
-      $.each(aCards, function(index, oCard) {
-        $li.append(oCard.$el);
-      });
-
-      cardContainer.addRow(aCards);
-
-      $el.append($li); 
-    };
-  };
-
-  return Area;
-});
-
-
-define('Game', ['Area', 'Card', 'CardContainer'], function(Area, Card, CardContainer) {
-  var Game = function() {
-    var cardContainer = this.cardContainer = new CardContainer();
-    var area = this.area = new Area("#bp_area", cardContainer);
-
-    function makeRow() {
-      return [Card.makeRandomCard(), Card.makeRandomCard(), Card.makeRandomCard()];
+    paths: {
+        jquery: 'jquery-1.11.1'
     }
-
-
-    this.prepare = function() {
-      area.addRow(makeRow());
-      area.addRow(makeRow());
-      area.addRow(makeRow());
-      area.addRow(makeRow());
-
-      cardContainer.select(3, 0);
-    };
-
-  };
-  return Game;
 });
 
-define('GameController', ['jquery'], function($) {
 
-  var GameController = function() {
+define('Card', ['jquery'], function ($) {
+    var Card = function (type) {
+        this.$el = $('<DIV class="bp_card"><DIV class="bp_inner"></DIV></DIV>');
+        this.$el.addClass("bp_card" + type);
 
-    this.prepare = function (callback) {
-      $(document).keydown(function(e) {
-        e.preventDefault();
-        e.stopPropagation();
+        this.setSelect = function () {
+            this.$el.addClass("bp_selected");
+        };
 
-        if ([37, 38, 39, 40].indexOf(e.keyCode) < 0) {
-          return false;
+        this.setUnSelect = function () {
+            this.$el.removeClass("bp_selected");
+        };
+    };
+
+    Card.makeRandomCard = function () {
+        return new Card(Math.ceil(Math.random() * 3));
+    };
+
+    return Card;
+});
+
+define('CardContainer', function () {
+    var CardContainer = function () {
+        var arr = [];
+
+        var pointSelected = {};
+
+        this.addRow = function (aCards) {
+            if (aCards.length != 3) {
+                console.log(aCards);
+                throw "row needs 3 cards, but has " + aCards.length;
+            }
+
+            var newArr = [aCards[0], aCards[1], aCards[2]];
+            arr.push(newArr);
+        };
+
+        this.get = function (row, col) {
+            return arr[row][col];
+        };
+
+        this.getSelected = function () {
+            return pointSelected;
+        };
+
+        this.select = function (row, col) {
+            this.get(row, col).setSelect();
+            pointSelected.row = row;
+            pointSelected.col = col;
+        };
+
+        this.moveTo = function (row, col) {
+            arr[row][col].setSelect();
+            arr[pointSelected.row][pointSelected.col].setUnSelect();
+            pointSelected.row = row;
+            pointSelected.col = col;
+        };
+        this.moveCardLeft = function () {
+            console.log("left");
+            this.moveTo(pointSelected.row, pointSelected.col - 1);
+        };
+        this.moveCardRight = function () {
+            console.log("right");
+            this.moveTo(pointSelected.row, pointSelected.col + 1);
+        };
+
+        this.moveCardTop = function () {
+            console.log("top");
+            this.moveTo(pointSelected.row - 1, pointSelected.col);
+        };
+        this.moveCardBottom = function () {
+            console.log("bottom");
+            this.moveTo(pointSelected.row + 1, pointSelected.col);
+        };
+
+
+        //this.getSelectedPoint = function
+    };
+
+    return CardContainer;
+
+});
+
+define('Option', ['jquery'], function($) {
+    return {
+        nCardHeight : 100,
+        nCardSpeed : 3000
+    };
+});
+
+define('Area', ['jquery', 'Card', 'Option'], function ($, Card, Option) {
+    var Area = function (target, cardContainer) {
+        var $el = $(target);
+
+        this.addRow = function (aCards) {
+            var $li = $("<LI>");
+
+            $.each(aCards, function (index, oCard) {
+                $li.append(oCard.$el);
+            });
+
+            cardContainer.addRow(aCards);
+
+            $el.append($li);
+        };
+
+        this.getMarginTop = function () {
+            return parseInt($el.css('margin-top'));
+        };
+
+        this.slideUp = function slideUp(callback) {
+            var self = this;
+            $el.animate({
+                "margin-top": (this.getMarginTop() - Option.nCardHeight) + "px"
+            }, Option.nCardSpeed, 'linear', function() {
+                callback();
+                self.slideUp(callback);
+            });
+        };
+    };
+
+    return Area;
+});
+
+
+define('Game', ['Area', 'Card', 'CardContainer'], function (Area, Card, CardContainer) {
+    var Game = function () {
+        var cardContainer = this.cardContainer = new CardContainer();
+        var area = this.area = new Area("#bp_area", cardContainer);
+
+        function makeRow() {
+            return [Card.makeRandomCard(), Card.makeRandomCard(), Card.makeRandomCard()];
         }
 
-        callback(e.keyCode);
-      });
-    }
 
-  };
+        this.prepare = function () {
+            area.addRow(makeRow());
+            area.addRow(makeRow());
+            area.addRow(makeRow());
+            area.addRow(makeRow());
+            area.addRow(makeRow());
+
+            cardContainer.select(3, 0);
+        };
+
+        this.slideStart = function() {
+            area.slideUp(function() {
+                area.addRow(makeRow());
+            });
+        };
+    };
+    return Game;
+});
+
+define('GameController', ['jquery'], function ($) {
+
+    var GameController = function () {
+
+        this.prepare = function (callback) {
+            $(document).keydown(function (e) {
+
+                if ([37, 38, 39, 40].indexOf(e.keyCode) < 0) {
+                    return;
+                }
+                e.preventDefault();
+                e.stopPropagation();
 
 
-  return GameController;
+                callback(e.keyCode);
+            });
+        }
+
+    };
+
+
+    return GameController;
 
 });
 
-require(['Game', 'GameController'], function(Game, GameController) {
-  var game = window.game = new Game();
-  game.prepare();
+require(['Game', 'GameController'], function (Game, GameController) {
+    var game = window.game = new Game();
+    game.prepare();
 
-  var controller = new GameController();
-  controller.prepare(function(keyCode) {
-    var cont = game.cardContainer;
+    var controller = new GameController();
+    controller.prepare(function (keyCode) {
+        var cont = game.cardContainer;
 
-    switch(keyCode) {
-      case 37:
-      break;
-      case 38:
-      break;
-      case 39:
-      break;
-      case 40:
-      break;
-      default:
-      break;
-    }
-  });
+        switch (keyCode) {
+            case 37:
+                cont.moveCardLeft();
+                break;
+            case 38:
+                cont.moveCardTop();
+                break;
+            case 39:
+                cont.moveCardRight();
+                break;
+            case 40:
+                cont.moveCardBottom();
+                break;
+            default:
+                break;
+        }
+    });
 
 });
 
