@@ -1,0 +1,35 @@
+body {
+    background: black;
+    color: cyan;
+}
+
+
+
+.bp_header {
+    background-image: url(../img/header.png);
+    background-repeat: no-repeat;
+    height: 80px;
+}
+
+.bp_progresser {
+    position: absolute;
+    top: 11px;
+    left: 349px;
+}
+
+.bp_progress {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+.bp_progress li {
+    display: inline-block;
+    list-style-type: none;
+    border-color: #D8DD82;
+    border-style: solid;
+    border-spacing: 1px;
+    width: 3px;
+    height: 20px;
+    background-color: #68744A;
+    margin-right: 3px;
+}
