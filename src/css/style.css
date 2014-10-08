@@ -9,6 +9,7 @@ body {
     background-image: url(../img/header.png);
     background-repeat: no-repeat;
     height: 80px;
+    margin-left: 7px;
 }
 
 .bp_progresser {
@@ -32,4 +33,53 @@ body {
     height: 20px;
     background-color: #68744A;
     margin-right: 3px;
+}
+
+.bp_descripter {
+    background-image: url(../img/description_area.png);
+    background-repeat: no-repeat;
+    height: 97px;
+    margin-top: 4px;
+}
+
+.bp_target_panel {
+    float: left;
+    width: 536px;
+    margin-right: 6px;
+    padding-top: 5px;
+    padding-left: 8px;
+}
+
+.bp_target_panel h2 {
+    background-image: url(../img/target_title.png);
+    margin: 0px;
+    height: 86px;
+    width: 235px;
+    text-indent: -1400px;
+    float:left
+}
+
+.bp_segment {
+    float:left;
+    margin-left: 20px;
+}
+
+.bp_status_panel {
+    float: left;
+    margin: 0px;
+    padding-top: 3px;
+    padding-left: 62px;
+}
+
+.bp_status_panel dt,dd {
+    margin: 0px;
+    float: right;
+}
+
+.bp_status_panel dt {
+    margin-left: 78px;
+    background-image: url(../img/status_title.png);
+    width: 191px;
+    height: 90px;
+    text-indent: -1400px;
 }
