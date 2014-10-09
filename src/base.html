@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Bypass :: Hack</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bp_container">
+    <div class="bp_header">
+        <div class="bp_progresser">
+            <ul class="bp_progress">
+                <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+        <div class="bp_pointer"></div>
+    </div>
+    <div class="bp_descripter">
+        <div class="bp_target_panel">
+            <h2>Target Code Segment</h2>
+
+            <div class="bp_segment">
+                <img src="img/code_segment.png">
+            </div>
+        </div>
+
+        <dl class="bp_status_panel">
+            <dt>
+                Remaining Code
+            </dt>
+            <dd>
+                <img src="img/remained_code.png"/>
+            </dd>
+        </dl>
+    </div>
+    <div class="bp_slider">
+        <ul>
+            <li><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"></li>
+            <li><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"></li>
+            <li><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"></li>
+            <li><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"></li>
+            <li><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"><img class="bp_card" src="img/normal_card.png"></li>
+        </ul>
+    </div>
+    <div class="bp_footer"></div>
+</div>
+<script type="text/javascript" src="js/lib/require.js">
+</script>
+<script type="text/javascript">
+    require.config({
+        baseUrl : 'js',
+        paths : {
+            'jquery' : 'lib/jquery-1.11.1'
+        },
+        sim : {
+            'jquery' : {
+                exports : 'jQuery'
+            }
+        }
+    });
+    require(["app/base"]);
+</script>
+</body>
+</html>
