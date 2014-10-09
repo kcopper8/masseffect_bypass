@@ -14,8 +14,8 @@ body {
 
 .bp_progresser {
     position: absolute;
-    top: 11px;
-    left: 349px;
+    top: 10px;
+    left: 360px;
 }
 
 .bp_progress {
@@ -28,11 +28,12 @@ body {
     list-style-type: none;
     border-color: #D8DD82;
     border-style: solid;
-    border-spacing: 1px;
-    width: 3px;
-    height: 20px;
+    border-width: 2px;
+    width: 4px;
+    height: 26px;
     background-color: #68744A;
-    margin-right: 3px;
+    margin: 0px 2px;
+
 }
 
 .bp_descripter {
@@ -82,4 +83,39 @@ body {
     width: 191px;
     height: 90px;
     text-indent: -1400px;
+}
+
+.bp_slider {
+    height: 340px;
+    margin-left: 18px;
+    margin-top: 3px;
+    overflow-y: hidden;
+}
+
+.bp_slider ul {
+    margin: 0px;
+    padding: 0px;
+}
+.bp_slider ul li {
+    margin: 0px 0px -3px 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.bp_card {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #DFBA7A;
+    margin-right: 8px;
+}
+
+.bp_card:last-child {
+    margin-right: 0px;
+}
+
+.bp_footer {
+    background-image: url(../img/footer.png);
+    background-repeat: no-repeat;
+    height: 80px;
+    margin-left: 7px;
 }
