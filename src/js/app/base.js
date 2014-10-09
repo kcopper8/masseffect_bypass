@@ -17,4 +17,5 @@ define(['jquery',
             }, 50);
         }
     }
+    window.test.testUiProgress();
 });
