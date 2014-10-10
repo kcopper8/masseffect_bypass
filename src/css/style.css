@@ -175,17 +175,29 @@ body {
 }
 
 .bp_cursor {
-    border-color: #BEFA94;
-    border-style: solid;
-    border-width: 1px;
-
     position: absolute;
-    width: 340px;
+    width: 397px;
     height: 81px;
     top: 184px;
     left: 18px;
-    background-color: green;
-    opacity: 0.4;
+
+    margin-left: -29px;
+    margin-top: -5px;
+}
+
+.bp_cursor > IMG.bp_left {
+    float: left;
+}
+
+.bp_cursor > IMG.bp_arrow {
+    float: left;
+    margin-left: 290px;
+    margin-top: 10px;
+    opacity: 0.7;
+}
+
+.bp_cursor > IMG.bp_right {
+    float: right;
 }
 
 .bp_footer {
