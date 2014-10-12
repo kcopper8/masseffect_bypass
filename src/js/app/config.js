@@ -3,5 +3,8 @@
  */
 define([], {
     "CodeTypeCount" : 10,
-    "CodePathPrefix" : 'img/codes/'
+    "CodePathPrefix" : 'img/codes/',
+    "CardHeight" : 83,
+    "SlideSpeedPerCard" : 3000,
+    "SlideAmount" : 3
 });

@@ -259,6 +259,7 @@ body {
 .bp_footer {
     background-image: url(../img/footer.png);
     background-repeat: no-repeat;
-    height: 80px;
+    height: 100px;
     margin-left: 7px;
+    background-color: #000000;
 }

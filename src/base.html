@@ -114,7 +114,12 @@
 <script type="text/javascript" src="js/lib/require.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
-    require(["app/base"]);
+    if (location.search.indexOf("test") >= 0) {
+        require(["app/test"]);
+    } else {
+        require(["app/base"]);
+    }
+
 </script>
 </body>
 </html>

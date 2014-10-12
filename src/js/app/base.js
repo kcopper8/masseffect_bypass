@@ -6,15 +6,16 @@ define(['jquery',
     'ui/TargetPanel',
     'model/code',
     'ui/StatusPanel',
+    'ui/Slider'
+], function($, Progress, TargetPanel, Code, StatusPanel, Slider) {
 
-    'test/testUiProgress',
-    'test/testTargetPanel',
-    'test/testStatusPanel'
-], function($, Progress, TargetPanel, Code, StatusPanel,
-            testUiProgress, testTargetPanel, testStatusPanel) {
-    console.log("base", arguments);
+    /*
+    var slider = new Slider($(".bp_slider"));
+    slider.addRow();
+    var targetPanel = new TargetPanel();
 
-    testUiProgress();
-    testTargetPanel();
-    testStatusPanel();
+*/
+
+
+
 });
