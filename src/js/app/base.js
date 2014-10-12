@@ -3,7 +3,7 @@
  */
 define(['jquery',
     'ui/Progress',
-    'ui/targetPanel',
+    'ui/TargetPanel',
     'model/code',
     'ui/StatusPanel',
 

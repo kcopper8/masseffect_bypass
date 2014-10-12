@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-10-12.
  */
-define(['jquery', 'ui/StatusPanel', 'model/code','test/testTool'], function ($, StatusPanel, Code, TestTool) {
+define(['jquery', 'ui/StatusPanel', 'model/code','test/TestTool'], function ($, StatusPanel, Code, TestTool) {
     return function (){
         var statusPanel = window.statusPanel = new StatusPanel($(".bp_status_panel"));
 

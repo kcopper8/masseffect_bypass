@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-10-12.
  */
-define(['jquery', 'ui/targetPanel', 'model/code'], function ($, TargetPanel, Code) {
+define(['jquery', 'ui/TargetPanel', 'model/code'], function ($, TargetPanel, Code) {
     return function() {
         var targetPanel = window.targetPanel = new TargetPanel($(".bp_target_panel"), Code.createRandomCode());
         var type = 0;
