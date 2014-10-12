@@ -58,7 +58,7 @@ body {
     padding-left: 8px;
 }
 
-.bp_target_panel h2 {
+.bp_target_panel > h2.bp_target_code {
     background-image: url(../img/target_title.png);
     margin: 0px;
     height: 86px;
@@ -67,22 +67,49 @@ body {
     float:left
 }
 
-.bp_segment {
+
+
+.bp_target_panel > .bp_segment {
     float:left;
     margin-left: 5px;
 }
 
-.bp_segment > DIV {
+.bp_target_panel > .bp_segment > DIV {
     width: 280px;
     overflow: hidden;
     text-indent: -20px;
     padding-top: 4px;
 }
 
-.bp_segment > DIV > IMG {
+.bp_target_panel > .bp_segment > DIV > IMG {
     width: 328px;
     height: 78px;
 }
+
+.bp_target_panel > h2.bp_firewall_removed {
+    display: none;
+}
+
+
+.bp_target_panel.bp_completed > h2.bp_target_code{
+    display: none;
+}
+
+.bp_target_panel.bp_completed > .bp_segment {
+    display: none;
+}
+
+.bp_target_panel.bp_completed > h2.bp_firewall_removed {
+    display: block;
+    background-image: url(../img/firewall_removed_title.png);
+    margin-left: 48px;
+    margin-top: 0px;
+    height: 67px;
+    width: 426px;
+    text-indent: -1400px;
+    float:left
+}
+
 
 .bp_status_panel {
     float: left;
@@ -90,6 +117,10 @@ body {
     padding-top: 3px;
     padding-left: 62px;
     width: 383px;
+}
+
+.bp_status_panel.bp_completed {
+    width: 407px;
 }
 
 .bp_status_panel dt,dd {
@@ -105,6 +136,7 @@ body {
     text-indent: -1400px;
 }
 
+
 .bp_status_panel > dd {
     width: 114px;
     height: 90px;
@@ -119,9 +151,33 @@ body {
     border-color: #9D5D39;
 }
 
-.bp_status_panel > dd > DIV > IMG{
+.bp_status_panel > dd > DIV .bp_cover {
+    display: none;
+}
+
+.bp_status_panel > dd > DIV IMG{
     height: 28px;
 }
+
+.bp_status_panel.bp_completed dt {
+    margin-left: 78px;
+    background-image: url(../img/code_hack_completed.png);
+    width: 215px;
+    height: 90px;
+    text-indent: -1400px;
+}
+.bp_status_panel.bp_completed > dd > DIV .bp_cover {
+    position: absolute;
+    width: 110px;
+    height: 26px;
+    background-color: green;
+    border-color: green;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.6;
+    display: block;
+}
+
 
 .bp_slider {
     height: 340px;

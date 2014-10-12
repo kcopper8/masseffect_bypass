@@ -3,19 +3,18 @@
  */
 define(['jquery',
     'ui/progress',
-    'ui/targetPanel'
-], function($, Progress) {
+    'ui/targetPanel',
+    'model/code',
+    'ui/StatusPanel',
+
+    'test/testUiProgress',
+    'test/testTargetPanel',
+    'test/testStatusPanel'
+], function($, Progress, TargetPanel, Code, StatusPanel,
+            testUiProgress, testTargetPanel, testStatusPanel) {
     console.log("base", arguments);
 
-    window.test = {
-        testUiProgress : function () {
-            var progress = new Progress($(".bp_progress"));
-            var aaa = 100;
-            setInterval(function() {
-                console.log("aaa", aaa);
-                progress.set(aaa--);
-            }, 50);
-        }
-    }
-    window.test.testUiProgress();
+    //testUiProgress();
+    //testTargetPanel();
+    //testStatusPanel();
 });
