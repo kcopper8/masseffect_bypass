@@ -2,7 +2,7 @@
  * Created by user on 2014-10-09.
  */
 define(['jquery',
-    'ui/progress',
+    'ui/Progress',
     'ui/targetPanel',
     'model/code',
     'ui/StatusPanel',
@@ -14,7 +14,7 @@ define(['jquery',
             testUiProgress, testTargetPanel, testStatusPanel) {
     console.log("base", arguments);
 
-    //testUiProgress();
-    //testTargetPanel();
-    //testStatusPanel();
+    testUiProgress();
+    testTargetPanel();
+    testStatusPanel();
 });
