@@ -21,6 +21,17 @@ define(['jquery', 'model/code'], function($){
                 $foundCodeViews[nIndex]. innerHTML = '';
             }
         };
+
+        this.clearFocusCode = function () {
+            this.setFoundCode(0);
+            this.setFoundCode(1);
+            this.setFoundCode(2);
+        };
+
+        (function initialize() {
+            this.setUncompleted();
+            this.clearFocusCode();
+        }).call(this);
     };
 
     return StatusPanel;

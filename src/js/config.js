@@ -4,7 +4,8 @@
 require.config({
     baseUrl : 'js',
     paths : {
-        'jquery' : 'lib/jquery-1.11.1'
+        'jquery' : 'lib/jquery-1.11.1',
+        'underscore' : 'lib/underscore'
     },
     sim : {
         'jquery' : {

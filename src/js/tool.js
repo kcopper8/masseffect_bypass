@@ -5,4 +5,5 @@ define({
     randomInt : function(v) {
         return Math.ceil(Math.random() * v) - 1;
     }
+
 });
