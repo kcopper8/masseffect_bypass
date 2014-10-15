@@ -2,10 +2,10 @@
  * Created by user on 2014-10-12.
  */
 define(['jquery', 'app/config', 'ui/Card', 'ui/Cursor'], function ($, Config, Card, Cursor) {
-    var Slider = function(el) {
+    var Slider = function(el, cardContainer) {
         var $el = this.$el = $(el);
-        var $container = this.$container = $el.find("UL");
-        var cardContainer = [];
+        var $container = $el.find("UL");
+        this.cardContainer = cardContainer;
 
         function _getMarginTop() {
             return parseInt($container.css('margin-top'));
@@ -13,7 +13,7 @@ define(['jquery', 'app/config', 'ui/Card', 'ui/Cursor'], function ($, Config, Ca
 
         this.clear = function() {
             $container.html("");
-            cardContainer = [];
+            cardContainer.clear();
         };
 
         this.addRow = function(codes) {
@@ -28,21 +28,15 @@ define(['jquery', 'app/config', 'ui/Card', 'ui/Cursor'], function ($, Config, Ca
             var $appendedLi = $("<LI></LI>").appendTo($container),
                 cardContainerRow = [];
 
-            cardContainer.push(cardContainerRow);
-
             $.each(cards, function(nIndex, oItem) {
                 cardContainerRow.push(oItem);
                 $appendedLi.append(oItem.$el);
             });
+            cardContainer.addRow(cardContainerRow);
         };
 
         this.getCard = function(row, col) {
-            return cardContainer[row][col];
-        };
-        
-        this.removeFirstRowOfElement = function () {
-            $container.find("LI:first").remove();
-            $container.css({'margin-top' : '0px'});
+            return cardContainer.get(row, col);
         };
         
         this.slideUp = function (callback) {

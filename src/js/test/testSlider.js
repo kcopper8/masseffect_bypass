@@ -1,7 +1,15 @@
 /**
  * Created by user on 2014-10-12.
  */
-define(['jquery', 'ui/Slider', 'ui/Card', 'model/code', 'test/TestTool', 'tool', 'app/config'], function ($, Slider, Card, Code, TestTool, tool, Config) {
+define(['jquery',
+    'ui/Slider',
+    'ui/Card',
+    'model/code',
+    'test/TestTool',
+    'tool',
+    'app/config',
+    'controller/CardContainer'
+], function ($, Slider, Card, Code, TestTool, tool, Config, CardContainer) {
 
     function testCard(slider) {
         var card = slider.getCard(2, 1);
@@ -62,7 +70,7 @@ define(['jquery', 'ui/Slider', 'ui/Card', 'model/code', 'test/TestTool', 'tool',
     }
 
     return function (){
-        var slider = window.slider = new Slider($(".bp_slider"));
+        var slider = window.slider = new Slider($(".bp_slider"), new CardContainer());
 
         testSlider(slider);
         testCard(slider);
