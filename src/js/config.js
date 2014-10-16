@@ -5,11 +5,18 @@ require.config({
     baseUrl : 'js',
     paths : {
         'jquery' : 'lib/jquery-1.11.1',
-        'underscore' : 'lib/underscore'
+        'underscore' : 'lib/underscore',
+        'backbone' : 'lib/backbone'
     },
     sim : {
         'jquery' : {
             exports : 'jQuery'
+        },
+        'backbone' : {
+            exports : 'Backbone'
+        },
+        'underscore' : {
+            exports : '_'
         }
     }
 });

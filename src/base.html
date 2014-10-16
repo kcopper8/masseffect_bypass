@@ -114,7 +114,9 @@
 <script type="text/javascript" src="js/lib/require.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
-    if (location.search.indexOf("test") >= 0) {
+    if (location.search.indexOf("uitest") >= 0) {
+        require([location.search.substr(location.search.indexOf('=') + 1)]);
+    } else if (location.search.indexOf("test") >= 0) {
         require(["app/test"]);
     } else {
         require(["app/base"]);
