@@ -29,5 +29,12 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             this._set(this.model.get("remain_time"));
         }
     });
+
+    Progress.build = function (selector, model) {
+        return new Progress({
+            el : $(selector)[0]
+            , model : model
+        });
+    };
     return Progress;
 });

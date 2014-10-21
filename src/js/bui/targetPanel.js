@@ -14,5 +14,11 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             this.$codeSegmentImageTag.prop("src", this.model.get("path"));
         }
     });
+    TargetPanel.build = function (selector, model) {
+        return new TargetPanel({
+            el : $(selector)[0],
+            model : model
+        });
+    };
     return TargetPanel;
 });

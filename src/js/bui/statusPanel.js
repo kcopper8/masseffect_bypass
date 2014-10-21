@@ -24,5 +24,12 @@ define(['jquery', 'backbone'], function ($, Backbone) {
             this._setCodePath(this.model.get("path2"), 2);
         }
     });
+
+    StatusPanel.build = function (selector, model) {
+        return new StatusPanel({
+            el : $(selector)[0],
+            model : model
+        });
+    };
     return StatusPanel;
 });

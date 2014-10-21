@@ -12,7 +12,7 @@
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
 <script>
-    require(["//code.jquery.com/qunit/qunit-1.15.0.js", "controller/CardContainer", "ui/Card"], function (q, CardContainer, Card) {
+    require(["//code.jquery.com/qunit/qunit-1.15.0.js", "controller/CardContainer", "ui/Card", "model/sliderRow"], function (q, CardContainer, Card, SliderRow) {
         var testCode = {
             getPath : function () {
                 return "test_path";
@@ -21,6 +21,10 @@
 
         QUnit.test("cardContainer 로딩됨", function( assert ) {
             assert.ok(CardContainer, "존재함!");
+        });
+        
+        QUnit.test("sliderRow 테스트", function (assert) {
+            
         });
         
         QUnit.test("findCard 테스트", function (assert) {

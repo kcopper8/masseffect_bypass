@@ -16,7 +16,9 @@ define(['jquery', 'underscore', 'backbone', 'bui/cursor', "test/TestTool", 'bui/
     });
 
 
-    var cursor = new Cursor();
+    var cursor = new Cursor({
+        el : $(".bp_cursor")
+    });
     cursor.show();
 
     TestTool.test(function () {

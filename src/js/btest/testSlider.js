@@ -6,6 +6,7 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
     var collection = new SliderRow();
 
     var slider = new Slider({
+        el : $(".bp_slider"),
         collection : collection
     });
 

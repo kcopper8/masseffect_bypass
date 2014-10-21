@@ -26,5 +26,10 @@ define(['jquery', 'backbone', 'bui/card'], function ($, Backbone) {
             return this.hoverTargetCard;
         }
     });
+    Cursor.build = function (selector) {
+        return  new Cursor({
+            el : $(selector)
+        });
+    };
     return Cursor;
 });

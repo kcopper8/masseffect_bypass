@@ -1,9 +1,9 @@
 /**
  * Created by user on 2014-10-16.
  */
-define(['app/config', 'jquery', 'underscore', 'backbone', 'bui/card'], function (Config, $, _, Backbone, Card) {
+define(['app/config', 'jquery', 'underscore', 'backbone', 'bui/card', 'bui/cursor'], function (Config, $, _, Backbone, Card, Cursor) {
     var Slider = Backbone.View.extend({
-        el : $(".bp_slider"),
+
         initialize : function () {
             this.$container = this.$("UL:first");
             this.listenTo(this.collection, "add", this.onAdd);
@@ -11,6 +11,9 @@ define(['app/config', 'jquery', 'underscore', 'backbone', 'bui/card'], function 
 
             this.onReset();
             this.cardRows = [];
+            this.cursor = new Cursor({
+                el : this.$('.bp_cursor')
+            });
         },
         onAdd : function (model /* , collection, option */) {
             console.log('onAdd');
@@ -47,5 +50,11 @@ define(['app/config', 'jquery', 'underscore', 'backbone', 'bui/card'], function 
             });
         }
     });
+    Slider.build = function (selector, collection) {
+        return new Slider({
+            el : $(selector)[0],
+            collection : collection
+        })
+    };
     return Slider;
 });
