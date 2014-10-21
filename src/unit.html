@@ -12,7 +12,14 @@
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
 <script>
-    require(["//code.jquery.com/qunit/qunit-1.15.0.js", "controller/CardContainer", "ui/Card", "model/sliderRow"], function (q, CardContainer, Card, SliderRow) {
+    require(["//code.jquery.com/qunit/qunit-1.15.0.js",
+        "controller/CardContainer",
+        "ui/Card",
+        "model/sliderRow",
+        "model/cardSet",
+        "model/cardModel",
+        "model/code"
+    ], function (q, CardContainer, Card, SliderRow, CardSet, CardModel, Code) {
         var testCode = {
             getPath : function () {
                 return "test_path";
@@ -24,7 +31,35 @@
         });
         
         QUnit.test("sliderRow 테스트", function (assert) {
-            
+            var cards = [];
+            var cardSets = [];
+            cardSets[0] = new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom());
+            cardSets[1] = new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom());
+            cardSets[2] = new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom());
+
+            _.each(cardSets, function (cardSet) {
+                cards.push(cardSet.get("card1"));
+                cards.push(cardSet.get("card2"));
+                cards.push(cardSet.get("card3"));
+            });
+
+            var sliderRow = window.sliderRow = new SliderRow();
+            sliderRow.add(cardSets[0]);
+            sliderRow.add(cardSets[1]);
+            sliderRow.add(cardSets[2]);
+
+            assert.equal(sliderRow.findCard(cards[4], 0, 0), cards[4], "fix 없으면 동일 카드 리턴");
+            assert.notEqual(sliderRow.findCard(cards[4], 0, 0), cards[3], "assert 정상 동작 테스트");
+
+
+            assert.equal(sliderRow.findCard(cards[4], -1, 0), cards[1], "-1, 0 => 한줄위");
+            assert.equal(sliderRow.findCard(cards[4], -1, 1), cards[2], "-1, 0 => 우상단");
+            assert.equal(sliderRow.findCard(cards[4], 0, 1), cards[5], "-1, 0 => 우측");
+            assert.equal(sliderRow.findCard(cards[4], 1, 1), cards[8], "-1, 0 => 우하단");
+            assert.equal(sliderRow.findCard(cards[4], 1, 0), cards[7], "-1, 0 => 하단");
+            assert.equal(sliderRow.findCard(cards[4], 1, -1), cards[6], "-1, 0 => 좌하단");
+            assert.equal(sliderRow.findCard(cards[4], 0, -1), cards[3], "-1, 0 => 좌측");
+            assert.equal(sliderRow.findCard(cards[4], -1, -1), cards[0], "-1, 0 => 좌상단");
         });
         
         QUnit.test("findCard 테스트", function (assert) {

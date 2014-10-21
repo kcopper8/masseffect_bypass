@@ -11,19 +11,18 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
     });
 
     function prepare(collection) {
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
     }
 
     window.slider=  slider;
     window.CardSet = CardSet;
 
     slider.slideUp(function () {
-        collection.add(new CardSet(Code.getRandom(), Code.getRandom(), Code.getRandom()));
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
         return true;
     });
 
