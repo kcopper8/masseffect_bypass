@@ -48,6 +48,9 @@ define(['app/config', 'jquery', 'underscore', 'backbone', 'bui/card', 'bui/curso
                     }
                 }
             });
+        },
+        showCursor : function () {
+            this.cursor.show();
         }
     });
     Slider.build = function (selector, collection) {

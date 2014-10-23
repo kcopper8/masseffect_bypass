@@ -21,11 +21,15 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
     window.slider=  slider;
     window.CardSet = CardSet;
 
+    prepare(collection);
+
+
     slider.slideUp(function () {
         collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
         return true;
     });
 
-    prepare(collection);
+    slider.showCursor();
+
     return {};
 });

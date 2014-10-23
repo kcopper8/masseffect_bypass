@@ -6,9 +6,9 @@ define(['underscore', 'backbone', 'model/cardModel'], function (_, Backbone, Car
     var CardSet = Backbone.Model.extend({
         initialize : function (code1, code2, code3) {
             this.set({
-                card1 : new CardModel(code1),
-                card2 : new CardModel(code2),
-                card3 : new CardModel(code3)
+                card1 : CardModel.build(code1),
+                card2 : CardModel.build(code2),
+                card3 : CardModel.build(code3)
             });
         },
         getIndexOf : function (cardModel) {

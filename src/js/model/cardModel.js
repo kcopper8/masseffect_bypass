@@ -7,5 +7,13 @@ define(['backbone', 'model/code'], function (Backbone) {
             this.set("imgPath", code.getPath());
         }
     });
+
+    CardModel.build = function (v) {
+        if (v instanceof CardModel) {
+            return v;
+        } else {
+            return new CardModel(v);
+        }
+    };
     return CardModel;
 });

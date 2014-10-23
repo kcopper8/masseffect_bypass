@@ -11,6 +11,8 @@ define([
     'bui/slider',
     'bui/cursor',
     'model/sliderRow',
+    'model/code',
+    'model/cardModel',
     'controller/CardContainer'
 ], function (
     $,
@@ -22,6 +24,8 @@ define([
     Slider,
     Cursor,
     SliderRow,
+    Code,
+    CardModel,
     CardContainer
     ) {
 
@@ -42,8 +46,35 @@ define([
     var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
     var slider = Slider.build('.bp_slider', sliderRowCollection);
 
-    var CardContainer = new CardContainer();
+    sliderRowCollection.addCodes(
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom())
+    );
 
+    sliderRowCollection.addCodes(
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom())
+    );
+
+    sliderRowCollection.addCodes(
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom())
+    );
+
+    sliderRowCollection.addCodes(
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom())
+    );
+
+    sliderRowCollection.addCodes(
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom()),
+        CardModel.build(Code.getRandom())
+    );
 
     return {};
 });
