@@ -29,7 +29,5 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
         return true;
     });
 
-    slider.showCursor();
-
     return {};
 });

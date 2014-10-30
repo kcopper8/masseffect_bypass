@@ -2,8 +2,17 @@
  * Created by user on 2014-10-18.
  */
 define(['jquery', 'backbone', 'bui/card'], function ($, Backbone) {
+    var template = [
+        '<img class="bp_left" src="img/cursor_left.png">',
+        '<img class="bp_arrow" src="img/cursor_arrow.png">',
+        '<img class="bp_right" src="img/cursor_right.png">'
+    ].join('');
+
     var Cursor = Backbone.View.extend({
-        el : $(".bp_cursor"),
+        className : "bp_cursor",
+        initialize : function () {
+            this.$el.html(template);
+        },
         show : function () {
             this.$el.show();
         },
@@ -26,10 +35,5 @@ define(['jquery', 'backbone', 'bui/card'], function ($, Backbone) {
             return this.hoverTargetCard;
         }
     });
-    Cursor.build = function (selector) {
-        return  new Cursor({
-            el : $(selector)
-        });
-    };
     return Cursor;
 });

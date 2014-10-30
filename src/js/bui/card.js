@@ -35,6 +35,11 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
 
         getOffset : function () {
             return this.$card.offset();
+        },
+
+        moveCursorToHere : function (cursor) {
+            this.$el.prepend(cursor.$el);
+            cursor.show();
         }
     });
     return Card;

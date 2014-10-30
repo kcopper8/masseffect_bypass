@@ -61,35 +61,6 @@
             assert.equal(sliderRow.findCard(cards[4], 0, -1), cards[3], "-1, 0 => 좌측");
             assert.equal(sliderRow.findCard(cards[4], -1, -1), cards[0], "-1, 0 => 좌상단");
         });
-        
-        QUnit.test("findCard 테스트", function (assert) {
-            var cards = _.map(_.range(9), function (num) {
-                return new Card({
-                    getPath : function () {
-                        return "test_path_" + num;
-                    }
-                });
-            });
-            var cardContainer = new CardContainer();
-
-            cardContainer.addRow([cards[0], cards[1], cards[2]]);
-            cardContainer.addRow([cards[3], cards[4], cards[5]]);
-            cardContainer.addRow([cards[6], cards[7], cards[8]]);
-
-            assert.equal(cardContainer.findCard(cards[4], 0, 0), cards[4], "fix 없으면 동일 카드 리턴");
-            assert.notEqual(cardContainer.findCard(cards[4], 0, 0), cards[3], "assert 정상 동작 테스트");
-
-
-            assert.equal(cardContainer.findCard(cards[4], -1, 0), cards[1], "-1, 0 => 한줄위");
-            assert.equal(cardContainer.findCard(cards[4], -1, 1), cards[2], "-1, 0 => 우상단");
-            assert.equal(cardContainer.findCard(cards[4], 0, 1), cards[5], "-1, 0 => 우측");
-            assert.equal(cardContainer.findCard(cards[4], 1, 1), cards[8], "-1, 0 => 우하단");
-            assert.equal(cardContainer.findCard(cards[4], 1, 0), cards[7], "-1, 0 => 하단");
-            assert.equal(cardContainer.findCard(cards[4], 1, -1), cards[6], "-1, 0 => 좌하단");
-            assert.equal(cardContainer.findCard(cards[4], 0, -1), cards[3], "-1, 0 => 좌측");
-            assert.equal(cardContainer.findCard(cards[4], -1, -1), cards[0], "-1, 0 => 좌상단");
-
-        });
 
         QUnit.load();
     });

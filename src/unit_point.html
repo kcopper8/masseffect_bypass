@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+    <script type="text/javascript" src="js/lib/require.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <!--<script src="//code.jquery.com/qunit/qunit-1.15.0.js"></script>-->
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script>
+    require(["//code.jquery.com/qunit/qunit-1.15.0.js",
+        "model/point"
+    ], function (q, Point) {
+        QUnit.test("point.build 됨", function( assert ) {
+            assert.ok(Point, "존재함!");
+
+            var p = Point.build(3, 4);
+            assert.equal(p.row, 3, 'row 동일');
+            assert.equal(p.col, 4, 'col 동일');
+
+        });
+
+        QUnit.test('멀티 파라메터 테스트', function (assert) {
+            var p = Point.build(3, 4);
+
+            assert.ok(p instanceof  Point, '객체가 Point 의 instance 임');
+            assert.ok(!(3 instanceof  Point), '다른 값은 Point 의 instance 가 아님');
+
+        });
+
+        QUnit.test('자기 파라메터 테스트', function (assert) {
+            var p = Point.build(3, 4);
+
+            var p2 = Point.build(p);
+
+            assert.ok(p2 instanceof  Point, '다른 point 로 만든 point 도 Point 의 instance');
+            assert.equal(p.row, p2.row, '다른 point 로 만든 point 와 row 값이 같음');
+            assert.equal(p.col, p2.col, '다른 point 로 만든 point 와 col 값이 같음');
+        });
+
+
+
+
+
+        QUnit.load();
+    });
+</script>
+</body>
+</html>

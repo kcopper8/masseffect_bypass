@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-10-15.
  */
-define(['underscore'], function (_) {
+define(['underscore', 'model/point'], function (_, Point) {
     var CardContainer = function () {
         var container = [];
 
@@ -14,7 +14,30 @@ define(['underscore'], function (_) {
         };
 
         this.get = function (row, col) {
-            return container[row][col];
+            var point = Point.build(row, col);
+            return container[point.row][point.col];
+        };
+
+        this.setCurrent = function (row, col) {
+            this.current = Point.build(row, col);
+        };
+
+        this.getCurrentCard = function () {
+            return this.get(this.current);
+        };
+
+        this.cursorMove = function (rowFix, colFix) {
+            var fixedPoint = this.current.fix(rowFix, colFix);
+            var item = this.get(fixedPoint);
+
+            if (!!item ) {
+                this.setCurrent(fixedPoint);
+                return item;
+            }
+        };
+
+        this.getPositionFixedCard = function (rowFix, colFix) {
+            return this.get(this.current.row + rowFix, this.current.col + colFix);
         };
 
         this.findCard = function (card, rowFix, colFix) {

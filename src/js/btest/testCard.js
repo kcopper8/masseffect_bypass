@@ -10,6 +10,7 @@ define(['jquery', 'backbone', 'bui/card', 'model/code', 'test/TestTool'], functi
         model : model
     });
 
+    $(".bp_slider UL").append("<LI>");
     $(".bp_slider LI:first")
         .empty()
         .append(card.$el);

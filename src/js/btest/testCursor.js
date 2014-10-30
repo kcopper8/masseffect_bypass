@@ -1,35 +1,29 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'underscore', 'backbone', 'bui/cursor', "test/TestTool", 'bui/card', 'model/code'], function ($, _, Backbone, Cursor, TestTool, Card, Code) {
-    $(".bp_slider LI:first").empty();
+define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'model/sliderRow', 'model/code'], function ($, _, Backbone, CardSet, Slider, SliderRow, Code) {
 
-    var cards = _.map(_.range(3), function (num) {
-        var card =  new Card({
-            model : new Backbone.Model({
-                'imgPath' : Code.getRandom().getPath()
-            })
-        });
+    var collection = new SliderRow();
 
-        $(".bp_slider LI:first").append(card.$el);
-        return card;
+    var slider = new Slider({
+        el : $(".bp_slider"),
+        collection : collection
     });
 
+    function prepare(collection) {
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+        collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
+    }
 
-    var cursor = new Cursor({
-        el : $(".bp_cursor")
-    });
-    cursor.show();
+    window.slider=  slider;
+    window.CardSet = CardSet;
 
-    TestTool.test(function () {
-       cursor.hide(); 
-    }, function () {
-        cursor.show();
-    }, function () {
-        var card = cards[_.random(0, 2)];
-        console.log(card);
-        cursor.moveTo(card);
-    });
+    prepare(collection);
+
+    slider.setCursorToSomePoint();
 
     return {};
 });
