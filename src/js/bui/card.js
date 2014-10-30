@@ -3,35 +3,38 @@
  */
 define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
     var template = [
+        '<div class="bp_card">',
         '<div class="bp_card_cover"></div>',
-        '<img src="<%=imgPath%>">'
+        '<img src="<%=imgPath%>">',
+        '</div>'
     ].join('');
 
     var Card = Backbone.View.extend({
         initialize : function () {
             this.$el.html(this.template(this.model.toJSON()));
+            this.$card = this.$(".bp_card");
 
             this.listenTo(this.model, "change", this.render);
         },
-        className : "bp_card",
+        className : "bp_card_outline",
         template : _.template(template),
         render : function () {
             this._setNormal();
 
             var state = this.model.get("state");
             if (state == "districted") {
-                this.$el.addClass("bp_districted");
+                this.$card.addClass("bp_districted");
             } else if (state == "selected") {
-                this.$el.addClass("bp_selected");
+                this.$card.addClass("bp_selected");
             }
         },
 
         _setNormal : function () {
-            this.$el.prop("class", "bp_card");
+            this.$card.prop("class", "bp_card");
         },
 
         getOffset : function () {
-            return this.$el.offset();
+            return this.$card.offset();
         }
     });
     return Card;

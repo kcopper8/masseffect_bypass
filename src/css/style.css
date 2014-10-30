@@ -197,18 +197,22 @@ body {
     list-style-type: none;
 }
 
-.bp_card {
+.bp_card_outline {
     display: inline-block;
+    margin-right: 8px;
+}
+
+.bp_card_outline:last-child {
+    margin-right: 0px;
+}
+
+.bp_card {
     border-style: solid;
     border-width: 1px;
     border-color: #DFBA7A;
-    margin-right: 8px;
+
     width: 340px;
     height: 81px;
-}
-
-.bp_card:last-child {
-    margin-right: 0px;
 }
 
 .bp_card_cover {
@@ -234,12 +238,9 @@ body {
     position: absolute;
     width: 397px;
     height: 81px;
-    top: 184px;
-    left: 18px;
 
     margin-left: -29px;
     margin-top: -5px;
-    display: none;
 }
 
 .bp_cursor > IMG.bp_left {
