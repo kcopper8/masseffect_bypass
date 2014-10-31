@@ -13,7 +13,9 @@ define([
     'model/sliderRow',
     'model/code',
     'model/cardModel',
-    'controller/CardContainer'
+    'controller/CardContainer',
+    'app/config',
+    'tool'
 ], function (
     $,
     _,
@@ -26,7 +28,9 @@ define([
     SliderRow,
     Code,
     CardModel,
-    CardContainer
+    CardContainer,
+    Config,
+    tool
     ) {
 
     var gameStatusModel = new Backbone.Model({
@@ -45,36 +49,41 @@ define([
     var targetPanel = TargetPanel.build(".bp_target_panel", gameStatusModel);
     var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
     var slider = Slider.build('.bp_slider', sliderRowCollection);
+    slider.on("cursor:moved", function (card) {
+        if (card.model.isDistricted()) {
+            console.log('isDistricted');
+        }
+    });
+    
+    slider.on("cursor:selected", function (card) {
+        var code = card.model.getCode();
+        console.log(code);
+    });
 
-    sliderRowCollection.addCodes(
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom())
-    );
+    function createRandomCard() {
+        var card = CardModel.build(Code.getRandom());
+        if (tool.randomBoolean(Config.CardDistrictedRatio)) {
+            card.setDistricted();
+        }
+        return card;
+    }
 
-    sliderRowCollection.addCodes(
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom())
-    );
+    function addRandomCard() {
+        sliderRowCollection.addCodes(
+            createRandomCard(),
+            createRandomCard(),
+            createRandomCard()
+        );
+    }
 
-    sliderRowCollection.addCodes(
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom())
-    );
+    _.times(5, addRandomCard);
 
-    sliderRowCollection.addCodes(
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom())
-    );
+    slider.setCursorToSomePoint();
 
-    sliderRowCollection.addCodes(
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom()),
-        CardModel.build(Code.getRandom())
-    );
+    slider.slideUp(function () {
+        addRandomCard();
+        return true;
+    });
 
     return {};
 });

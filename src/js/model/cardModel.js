@@ -5,6 +5,19 @@ define(['backbone', 'model/code'], function (Backbone) {
     var CardModel = Backbone.Model.extend({
         initialize : function (code) {
             this.set("imgPath", code.getPath());
+            this.__code = code;
+        },
+
+        setDistricted : function () {
+            this.set('state', 'districted');
+        },
+
+        isDistricted : function () {
+            return this.get('state') == 'districted';
+        },
+
+        getCode : function () {
+            return this.__code;
         }
     });
 

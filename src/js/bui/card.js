@@ -15,6 +15,7 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             this.$card = this.$(".bp_card");
 
             this.listenTo(this.model, "change", this.render);
+            this.render();
         },
         className : "bp_card_outline",
         template : _.template(template),
@@ -40,6 +41,10 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
         moveCursorToHere : function (cursor) {
             this.$el.prepend(cursor.$el);
             cursor.show();
+        },
+
+        clearContents : function () {
+            this.$el.empty();
         }
     });
     return Card;

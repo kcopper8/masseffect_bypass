@@ -24,9 +24,11 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
     prepare(collection);
 
 
+    slider.setCursorToSomePoint();
+
     slider.slideUp(function () {
         collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());
-        return true;
+        return !window.tpStop;
     });
 
     return {};

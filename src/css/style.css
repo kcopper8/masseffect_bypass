@@ -5,6 +5,7 @@ body {
 
 .bp_container {
     overflow-x: hidden;
+    padding: 0 10px;
 }
 
 
@@ -181,20 +182,25 @@ body {
 
 .bp_slider {
     height: 340px;
-    margin-left: 18px;
+    margin-left: -10px;
     margin-top: 3px;
+    padding-left: 29px;
     overflow-y: hidden;
-    width: 1042px;
+    width: 1068px;
+    position: relative;
 }
 
 .bp_slider > ul {
     margin: 0px;
     padding: 0px;
+    position: absolute;
+    top: 0;
 }
 .bp_slider > ul > li {
     margin: 0px 0px -3px 0px;
     padding: 0px;
     list-style-type: none;
+    height: 85px;
 }
 
 .bp_card_outline {
@@ -232,6 +238,14 @@ body {
     background-color: red;
     display: block;
     opacity: 0.4;
+}
+
+.bp_unauthorized_access::before {
+    content: 'Unauthorized Access';
+    color: white;
+    margin: 28px 68px;
+    font-weight: bold;
+    position: absolute;
 }
 
 .bp_cursor {

@@ -13,6 +13,10 @@ define(['underscore', 'model/point'], function (_, Point) {
             container.push(cards);
         };
 
+        this.getRow = function (row) {
+            return container[row];
+        };
+
         this.get = function (row, col) {
             var point = Point.build(row, col);
             return container[point.row][point.col];
@@ -24,6 +28,10 @@ define(['underscore', 'model/point'], function (_, Point) {
 
         this.getCurrentCard = function () {
             return this.get(this.current);
+        };
+
+        this.getCurrentCardPosition = function () {
+            return Point.build(this.current);
         };
 
         this.cursorMove = function (rowFix, colFix) {
