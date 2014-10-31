@@ -13,6 +13,7 @@ define([
     'model/sliderRow',
     'model/code',
     'model/cardModel',
+    'model/gameStatusModel',
     'controller/CardContainer',
     'app/config',
     'tool'
@@ -28,26 +29,22 @@ define([
     SliderRow,
     Code,
     CardModel,
+    GameStatusModel,
     CardContainer,
     Config,
     tool
     ) {
 
-    var gameStatusModel = new Backbone.Model({
-        'remain_time' : 100,
-        'completed' : false
-        /*
-        path : '',
-        path0 : '',
-        path1 : '',
-        path2 : ''
-         */
-    });
+    var gameStatusModel = new GameStatusModel();
     var sliderRowCollection = new SliderRow();
 
     var progress = Progress.build(".bp_progress", gameStatusModel);
     var targetPanel = TargetPanel.build(".bp_target_panel", gameStatusModel);
     var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
+
+    gameStatusModel.setCurrentTargetCode(Code.getRandom());
+
+
     var slider = Slider.build('.bp_slider', sliderRowCollection);
     slider.on("cursor:moved", function (card) {
         if (card.model.isDistricted()) {
@@ -57,7 +54,13 @@ define([
     
     slider.on("cursor:selected", function (card) {
         var code = card.model.getCode();
-        console.log(code);
+        if (code != gameStatusModel.getCurrentTargetCode()) {
+            // 실패 처리
+
+            return;
+        }
+
+        console.log('successed', card);
     });
 
     function createRandomCard() {
