@@ -14,7 +14,7 @@ define([
     'model/sliderRow',
     'model/code',
     'model/cardModel',
-    'model/gameStatusModel',
+    'model/GameStatusModel',
     'controller/CardContainer',
     'controller/prizeController',
     'app/config',
