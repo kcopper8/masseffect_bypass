@@ -25,8 +25,14 @@ define(['backbone', 'model/code'], function (Backbone) {
         setSelected : function () {
             this.set('state', 'selected');
         },
+        isSelected : function () {
+            return this.get('state') == 'selected';
+        },
         setUnauthorizedAccess : function () {
-            this.set('unauthorized_access', true);
+            this.set({
+                'unauthorized_access' : true,
+                'state' : 'districted'
+            });
         }
     });
 

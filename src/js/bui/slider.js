@@ -48,9 +48,9 @@ define([
             var fnOnSlideComplete = _.bind(function () {
                 this.overflowdCardRow++;
 
-                var beforeoverflowdCardRow = this.overflowdCardRow;
+                var beforeOverflowedCardRow = this.overflowdCardRow;
                 setTimeout(_.bind(function () {
-                    var cardsForClear = this.cardContainer.getRow(beforeoverflowdCardRow);
+                    var cardsForClear = this.cardContainer.getRow(beforeOverflowedCardRow);
                     _.each(cardsForClear, function (card) {
                         card.clearContents();
                     });
@@ -61,10 +61,8 @@ define([
                     this.moveCursor(1, 0);
                 }
 
-                if (!!callback) {
-                    if (callback()) {
-                        this.slideUp(callback);
-                    }
+                if (!!callback && callback()) {
+                    this.slideUp(callback);
                 }
             }, this);
 
@@ -132,6 +130,10 @@ define([
                 }
                 e.preventDefault();
                 e.stopPropagation();
+
+                if (this.model.isGameStopped()) {
+                    return;
+                }
 
                 switch (e.keyCode) {
                     case 32: // space

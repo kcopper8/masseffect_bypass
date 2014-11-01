@@ -6,6 +6,7 @@ define(['backbone', 'jquery'], function (Backbone, $) {
         initialize : function () {
             this.$remainCodeCounter = this.$(".bp_remain_code_count");
             this.listenTo(this.model, 'change', this.render);
+            this.render();
         },
         events : {
             'click .bp_exit A' : function (e) {

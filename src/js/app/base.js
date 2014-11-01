@@ -10,11 +10,13 @@ define([
     'bui/statusPanel',
     'bui/slider',
     'bui/cursor',
+    'bui/footer',
     'model/sliderRow',
     'model/code',
     'model/cardModel',
     'model/gameStatusModel',
     'controller/CardContainer',
+    'controller/prizeController',
     'app/config',
     'tool'
 ], function (
@@ -26,11 +28,13 @@ define([
     StatusPanel,
     Slider,
     Cursor,
+    Footer,
     SliderRow,
     Code,
     CardModel,
     GameStatusModel,
     CardContainer,
+    prizeController,
     Config,
     tool
     ) {
@@ -41,26 +45,14 @@ define([
     var progress = Progress.build(".bp_progress", gameStatusModel);
     var targetPanel = TargetPanel.build(".bp_target_panel", gameStatusModel);
     var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
+    var footer = Footer.build('.bp_footer', gameStatusModel);
 
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
-
-
-    var completeController = new (function(){
-        this.moveToSuccessTarget = function () {
-            return;
-            location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
-        };
-
-        this.moveToFailedTarget = function () {
-            return;
-            location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
-        };
-    })();
 
     var gameController = new (function () {
         this.gameCompletelyFailed = function () {
             _.delay(function () {
-                completeController.moveToFailedTarget();
+                prizeController.moveToFailedTarget();
             }, 2000);
         };
 
@@ -68,7 +60,7 @@ define([
             statusPanel.once("codeCompiled", function () {
                 gameStatusModel.set('completed', true);
                 _.delay(function () {
-                    completeController.moveToSuccessTarget();
+                    prizeController.moveToSuccessTarget();
                 }, 2000);
             });
             statusPanel.hackingSuccessed();
@@ -105,6 +97,10 @@ define([
         gameController.gameCompletelyFailed();
     });
 
+    footer.on("exit", function () {
+        gameStatusModel.accessDenied();
+    });
+
     var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
 
     slider.on("cursor:moved", function (card) {
@@ -116,6 +112,11 @@ define([
 
     slider.on("cursor:selected", function (card) {
         var cardModel = card.model;
+        if (cardModel.isSelected()) {
+            // 이미 선택한 코드는 반응하지 않는다.
+            return;
+        }
+
         var code = cardModel.getCode();
         if (code != gameStatusModel.getCurrentTargetCode()) {
             // 실패 처리
@@ -137,6 +138,7 @@ define([
         return true;
     });
     gameStatusModel.startGameTime();
+
 
     return {};
 });

@@ -8,5 +8,6 @@ define([], {
     "SlideSpeedPerCard" : 3000,
     "CardDistrictedRatio" : 15,
     "RowsCountInSlide" : 5,
-    "GameTimeSeconds" : 30
+    "GameTimeSeconds" : 30,
+    "DefaultPrizeLocation" : 'http://masseffect.wikia.com/wiki/Mass_Effect_Wiki'
 });
