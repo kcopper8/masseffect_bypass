@@ -9,5 +9,5 @@ define([], {
     "CardDistrictedRatio" : 15,
     "RowsCountInSlide" : 5,
     "GameTimeSeconds" : 60,
-    "DefaultPrizeLocation" : 'http://masseffect.wikia.com/wiki/Mass_Effect_Wiki'
+    "DefaultPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/'
 });
