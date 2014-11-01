@@ -51,16 +51,27 @@ define([
             console.log('isDistricted');
         }
     });
+
+    function hackingCompleted() {
+
+    }
     
     slider.on("cursor:selected", function (card) {
         var code = card.model.getCode();
         if (code != gameStatusModel.getCurrentTargetCode()) {
             // 실패 처리
+            console.log('failed', card);
 
             return;
         }
 
-        console.log('successed', card);
+        card.model.setSelected();
+        gameStatusModel.addHacked(code);
+        if (gameStatusModel.isSucessed()) {
+            hackingCompleted();
+        } else {
+            gameStatusModel.setCurrentTargetCode(Code.getRandom());
+        }
     });
 
     function createRandomCard() {
@@ -79,7 +90,7 @@ define([
         );
     }
 
-    _.times(5, addRandomCard);
+    _.times(6, addRandomCard);
 
     slider.setCursorToSomePoint();
 

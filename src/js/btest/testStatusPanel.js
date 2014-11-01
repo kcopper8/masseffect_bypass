@@ -8,6 +8,20 @@ define(['bui/statusPanel', 'backbone', 'test/TestTool', 'model/code'], function 
         el : $(".bp_status_panel")[0],
         model : model
     });
+    
+        model.set("completed", false);
+        model.set("path0", Code.createRandomCode().getPath());
+        model.set("path1", Code.createRandomCode().getPath());
+        model.set("path2", Code.createRandomCode().getPath());
+
+    setTimeout(function () {
+        model.trigger("hackingSuccessed");
+        panel.on('codeCompiled', function () {
+           model.set('completed', true);
+        });
+    }, 1000);
+
+    return;
 
     TestTool.test(function() {
             model.set("completed", true);

@@ -18,6 +18,9 @@ define(['backbone', 'model/code'], function (Backbone) {
 
         getCode : function () {
             return this.__code;
+        },
+        setSelected : function () {
+            this.set('state', 'selected');
         }
     });
 

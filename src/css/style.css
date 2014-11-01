@@ -154,6 +154,14 @@ body {
 
 .bp_status_panel > dd > DIV .bp_cover {
     display: none;
+    position: absolute;
+    width: 110px;
+    height: 26px;
+    background-color: green;
+    border-color: green;
+    border-style: solid;
+    border-width: 1px;
+    opacity: 0.6;
 }
 
 .bp_status_panel > dd > DIV IMG{
@@ -168,14 +176,10 @@ body {
     text-indent: -1400px;
 }
 .bp_status_panel.bp_completed > dd > DIV .bp_cover {
-    position: absolute;
-    width: 110px;
-    height: 26px;
-    background-color: green;
-    border-color: green;
-    border-style: solid;
-    border-width: 1px;
-    opacity: 0.6;
+    display: block;
+}
+
+.bp_status_panel > dd > DIV .bp_cover.bp_accepted {
     display: block;
 }
 
