@@ -85,6 +85,22 @@ define([
                 }
             );
         },
+        _isCanMovePosition : function (point) {
+            if (!point || !(point instanceof Point)) {
+                return false;
+            }
+
+            if (this.overflowdCardRow + 1 >= point.row) {
+                return false;
+            }
+
+            if (this.overflowdCardRow + 1 + Config.RowsCountInSlide <= point.row) {
+                return false;
+            }
+
+            return true;
+        },
+
         setCursorToSomePoint : function () {
             this.setCursor(1, 1);
         },
@@ -95,13 +111,15 @@ define([
             card.moveCursorToHere(this.cursor);
         },
         moveCursor : function (rowFix, colFix) {
-            var movedCard = this.cardContainer.cursorMove(rowFix, colFix);
-            if (!movedCard) {
-                // can't move target
+            var toMovePoint = this.cardContainer.getFixedPosition(rowFix, colFix);
+            if (!this._isCanMovePosition(toMovePoint)) {
                 return;
             }
-            movedCard.moveCursorToHere(this.cursor);
-            this.trigger("cursor:moved", movedCard);
+
+            this.cardContainer.cursorMoveToPosition(toMovePoint);
+            var cursorMovedToCard = this.cardContainer.getCurrentCard();
+            cursorMovedToCard.moveCursorToHere(this.cursor);
+            this.trigger("cursor:moved", cursorMovedToCard);
         },
         onSelected : function () {
             var card = this.cardContainer.getCurrentCard();

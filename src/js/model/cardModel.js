@@ -3,6 +3,9 @@
  */
 define(['backbone', 'model/code'], function (Backbone) {
     var CardModel = Backbone.Model.extend({
+        defaults : {
+            unauthorized_access : false
+        },
         initialize : function (code) {
             this.set("imgPath", code.getPath());
             this.__code = code;
@@ -21,6 +24,9 @@ define(['backbone', 'model/code'], function (Backbone) {
         },
         setSelected : function () {
             this.set('state', 'selected');
+        },
+        setUnauthorizedAccess : function () {
+            this.set('unauthorized_access', true);
         }
     });
 

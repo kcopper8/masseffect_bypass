@@ -46,9 +46,17 @@ define([
 
 
     var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
+
+    function failure(card) {
+        card.model.setUnauthorizedAccess();
+        gameStatusModel.addFailure();
+    }
+
+
     slider.on("cursor:moved", function (card) {
         if (card.model.isDistricted()) {
             console.log('isDistricted');
+            failure(card);
         }
     });
 
@@ -59,13 +67,19 @@ define([
         statusPanel.hackingSuccessed();
     });
 
+    gameStatusModel.on("accessDenied", function () {
+       alert('access Deined!');
+        alert('access Deined!');
+        alert('access Deined!');
+    });
+
 
     slider.on("cursor:selected", function (card) {
         var code = card.model.getCode();
         if (code != gameStatusModel.getCurrentTargetCode()) {
             // 실패 처리
             console.log('failed', card);
-
+            failure(card);
             return;
         }
 
@@ -90,7 +104,7 @@ define([
         );
     }
 
-    _.times(6, addRandomCard);
+    _.times(Config.RowsCountInSlide + 1, addRandomCard);
 
     slider.setCursorToSomePoint();
 

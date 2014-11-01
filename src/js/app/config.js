@@ -6,6 +6,6 @@ define([], {
     "CodePathPrefix" : 'img/codes/',
     "CardHeight" : 82,
     "SlideSpeedPerCard" : 3000,
-    "SlideAmount" : 3,
-    "CardDistrictedRatio" : 15
+    "CardDistrictedRatio" : 15,
+    "RowsCountInSlide" : 5
 });

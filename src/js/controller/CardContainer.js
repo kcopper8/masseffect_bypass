@@ -34,18 +34,31 @@ define(['underscore', 'model/point'], function (_, Point) {
             return Point.build(this.current);
         };
 
-        this.cursorMove = function (rowFix, colFix) {
-            var fixedPoint = this.current.fix(rowFix, colFix);
-            var item = this.get(fixedPoint);
-
-            if (!!item ) {
-                this.setCurrent(fixedPoint);
-                return item;
-            }
+        this.cursorMoveToPosition = function (point) {
+            this.setCurrent(point);
         };
 
-        this.getPositionFixedCard = function (rowFix, colFix) {
-            return this.get(this.current.row + rowFix, this.current.col + colFix);
+        this.isValidPosition = function (point) {
+            if (!point) {
+                return false;
+            }
+
+            if (point.row < 0 || point.row > container.length - 1) {
+                return false;
+            }
+
+            if (point.col < 0 || point.col > 2) {
+                return false;
+            }
+
+            return true;
+        };
+
+        this.getFixedPosition = function (rowFix, colFix) {
+            var point = this.current.fix(rowFix, colFix);
+            if (this.isValidPosition(point)) {
+                return point;
+            }
         };
 
         this.findCard = function (card, rowFix, colFix) {

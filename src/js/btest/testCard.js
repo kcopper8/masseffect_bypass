@@ -21,6 +21,8 @@ define(['jquery', 'backbone', 'bui/card', 'model/code', 'test/TestTool'], functi
         model.set("state", "districted");
     }, function () {
         model.set("state", "");
+    }, function () {
+        model.set('unauthorized_access', true);
     });
     return {};
 });

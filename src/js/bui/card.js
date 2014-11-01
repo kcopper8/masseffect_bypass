@@ -28,6 +28,10 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             } else if (state == "selected") {
                 this.$card.addClass("bp_selected");
             }
+
+            if (this.model.get('unauthorized_access')) {
+                this.$card.addClass('bp_unauthorized_access');
+            }
         },
 
         _setNormal : function () {
