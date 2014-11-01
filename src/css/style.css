@@ -25,8 +25,8 @@ body {
 }
 
 .bp_progress {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     background-color: black;
 }
 .bp_progress li {
@@ -38,7 +38,7 @@ body {
     width: 4px;
     height: 26px;
     background-color: #68744A;
-    margin: 0px 2px;
+    margin: 0 2px;
 
 }
 
@@ -61,7 +61,7 @@ body {
 
 .bp_target_panel > h2.bp_target_code {
     background-image: url(../img/target_title.png);
-    margin: 0px;
+    margin: 0;
     height: 86px;
     width: 235px;
     text-indent: -1400px;
@@ -89,22 +89,37 @@ body {
 
 .bp_target_panel > h2.bp_firewall_removed {
     display: none;
+    background-image: url(../img/firewall_removed_title.png);
+    margin-left: 48px;
+    margin-top: 0;
+    height: 67px;
+    width: 426px;
+    text-indent: -1400px;
+    float:left
 }
 
-
-.bp_target_panel.bp_completed > h2.bp_target_code{
+.bp_target_panel > h2.bp_access_denied {
     display: none;
 }
 
-.bp_target_panel.bp_completed > .bp_segment {
+.bp_target_panel.bp_completed > h2.bp_target_code,.bp_target_panel.bp_access_denied > h2.bp_target_code{
+    display: none;
+}
+
+.bp_target_panel.bp_completed > .bp_segment,.bp_target_panel.bp_access_denied > .bp_segment {
     display: none;
 }
 
 .bp_target_panel.bp_completed > h2.bp_firewall_removed {
     display: block;
-    background-image: url(../img/firewall_removed_title.png);
+
+}
+
+.bp_target_panel.bp_access_denied > h2.bp_access_denied {
+    display: block;
+    background-image: url(../img/access_denied_target.png);
     margin-left: 48px;
-    margin-top: 0px;
+    margin-top: 0;
     height: 67px;
     width: 426px;
     text-indent: -1400px;
@@ -114,7 +129,7 @@ body {
 
 .bp_status_panel {
     float: left;
-    margin: 0px;
+    margin: 0;
     padding-top: 3px;
     padding-left: 62px;
     width: 383px;
@@ -125,7 +140,7 @@ body {
 }
 
 .bp_status_panel dt,dd {
-    margin: 0px;
+    margin: 0;
     float: right;
 }
 
@@ -195,14 +210,14 @@ body {
 }
 
 .bp_slider > ul {
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     position: absolute;
     top: 0;
 }
 .bp_slider > ul > li {
-    margin: 0px 0px -3px 0px;
-    padding: 0px;
+    margin: 0 0 -3px 0;
+    padding: 0;
     list-style-type: none;
     height: 85px;
 }
@@ -213,7 +228,7 @@ body {
 }
 
 .bp_card_outline:last-child {
-    margin-right: 0px;
+    margin-right: 0;
 }
 
 .bp_card {

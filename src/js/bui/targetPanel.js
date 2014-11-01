@@ -11,6 +11,7 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
 
         render : function () {
             this.$el.toggleClass("bp_completed", !!this.model.get("completed"));
+            this.$el.toggleClass('bp_access_denied', !!this.model.get("accessDenied"));
             this.$codeSegmentImageTag.prop("src", this.model.get("path"));
         }
     });

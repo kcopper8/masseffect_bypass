@@ -12,14 +12,19 @@ define(['bui/targetPanel', 'backbone', 'model/code', 'test/TestTool'], function 
     });
 
     TestTool.test(function () {
+        model.set('accessDenied', false);
         model.set("completed", true);
     }, function () {
+        model.set('accessDenied', false);
         model.set("completed", false);
     }, function () {
         model.set({
             'completed' : false,
             'path' : Code.getRandom().getPath()
         });
+    }, function () {
+        model.set('completed', false);
+        model.set('accessDenied', true);
     });
 
     return {};

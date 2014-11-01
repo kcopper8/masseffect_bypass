@@ -5,12 +5,12 @@ define(['backbone', 'model/code'], function (Backbone) {
     return Backbone.Model.extend({
         defaults : {
             'remain_time' : 100,
-            'completed' : false
+            'completed' : false,
+            'accessDenied' : false
         },
         initialize : function () {
             this.currentTargetCode = null;
             this.hackedCodes = [];
-            this.accessDenied = false;
         },
         setCurrentTargetCode : function (code) {
             this.currentTargetCode = code;
@@ -43,7 +43,7 @@ define(['backbone', 'model/code'], function (Backbone) {
                 this.hackedCodes.pop();
                 this._applyCurrentHackedCode();
             } else {
-                this.accessDenied = true;
+                this.set('accessDenied', true);
                 this.trigger('accessDenied');
             }
         },
@@ -51,7 +51,7 @@ define(['backbone', 'model/code'], function (Backbone) {
             return this.hackedCodes.length >= 3;
         },
         isGameStopped : function () {
-            return this.isSucessed() || this.accessDenied;
+            return this.isSucessed() || this.get('accessDenied');
         }
     });
 });

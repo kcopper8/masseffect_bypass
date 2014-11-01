@@ -68,9 +68,8 @@ define([
     });
 
     gameStatusModel.on("accessDenied", function () {
-       alert('access Deined!');
-        alert('access Deined!');
-        alert('access Deined!');
+
+
     });
 
 
