@@ -45,44 +45,68 @@ define([
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
 
 
+    var completeController = new (function(){
+        this.moveToSuccessTarget = function () {
+            location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
+        };
+
+        this.moveToFailedTarget = function () {
+            location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
+        };
+    })();
+
+    var gameController = new (function () {
+        this.gameCompletelyFailed = function () {
+            _.delay(function () {
+                completeController.moveToFailedTarget();
+            }, 2000);
+        };
+
+        this.gameCompletelySuccessed = function () {
+            statusPanel.once("codeCompiled", function () {
+                gameStatusModel.set('completed', true);
+                _.delay(function () {
+                    completeController.moveToSuccessTarget();
+                }, 2000);
+            });
+            statusPanel.hackingSuccessed();
+
+        };
+
+        this.failureOnce = function (cardModel) {
+            cardModel.setUnauthorizedAccess();
+            gameStatusModel.addFailure();
+        };
+    })();
+
     var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
 
-    function failure(card) {
-        card.model.setUnauthorizedAccess();
-        gameStatusModel.addFailure();
-    }
-
-
     slider.on("cursor:moved", function (card) {
-        if (card.model.isDistricted()) {
-            console.log('isDistricted');
-            failure(card);
+        var cardModel = card.model;
+        if (cardModel.isDistricted()) {
+            gameController.failureOnce(cardModel);
         }
     });
 
     gameStatusModel.on("hackingSuccessed", function () {
-        statusPanel.once("codeCompiled", function () {
-           gameStatusModel.set('completed', true);
-        });
-        statusPanel.hackingSuccessed();
+        gameController.gameCompletelySuccessed();
     });
 
     gameStatusModel.on("accessDenied", function () {
-
-
+        gameController.gameCompletelyFailed();
     });
 
 
     slider.on("cursor:selected", function (card) {
-        var code = card.model.getCode();
+        var cardModel = card.model;
+        var code = cardModel.getCode();
         if (code != gameStatusModel.getCurrentTargetCode()) {
             // 실패 처리
-            console.log('failed', card);
-            failure(card);
+            gameController.failureOnce(cardModel);
             return;
         }
 
-        card.model.setSelected();
+        cardModel.setSelected();
         gameStatusModel.addHacked(code);
         gameStatusModel.setCurrentTargetCode(Code.getRandom());
     });
