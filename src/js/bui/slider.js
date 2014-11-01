@@ -45,10 +45,7 @@ define([
 
 
         slideUp : function (callback) {
-            var self = this;
-            this.$container.animate({
-                'top' : (this.$container.position().top - Config.CardHeight)
-            }, Config.SlideSpeedPerCard, 'linear', _.bind(function () {
+            var fnOnSlideComplete = _.bind(function () {
                 this.overflowdCardRow++;
 
                 var beforeoverflowdCardRow = this.overflowdCardRow;
@@ -62,14 +59,31 @@ define([
                 var point = this.cardContainer.getCurrentCardPosition();
                 if (point.row - 1 <= this.overflowdCardRow) {
                     this.moveCursor(1, 0);
-                 }
+                }
 
                 if (!!callback) {
                     if (callback()) {
-                        self.slideUp(callback);
+                        this.slideUp(callback);
                     }
                 }
-            }, this));
+            }, this);
+
+            var fnOnSlideProgress = _.bind(function (/* Promise */ animation, /* Number */ progress, /* Number */ remainingMs) {
+                if (this.model.isGameStopped()) {
+                    animation.stop();
+                }
+            }, this);
+
+
+            this.$container.animate({
+                'top' : (this.$container.position().top - Config.CardHeight)
+            }, {
+                    duration: Config.SlideSpeedPerCard,
+                    easing: 'linear',
+                    complete: fnOnSlideComplete,
+                    progress : fnOnSlideProgress
+                }
+            );
         },
         setCursorToSomePoint : function () {
             this.setCursor(1, 1);
@@ -133,10 +147,11 @@ define([
             }, this));
         }
     });
-    Slider.build = function (selector, collection) {
+    Slider.build = function (selector, collection, gameStatusModel) {
         return new Slider({
             el : $(selector)[0],
-            collection : collection
+            collection : collection,
+            model : gameStatusModel
         })
     };
     return Slider;

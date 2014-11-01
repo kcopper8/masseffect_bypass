@@ -7,7 +7,6 @@ define(['jquery', 'backbone', 'underscore'], function ($, Backbone, _) {
             this.$foundCodeViews = this.$el.find("DD .img_container");
             this.$foundCodeViewCovers = this.$el.find("DD .bp_cover");
             this.listenTo(this.model, "change", this.render);
-            this.listenTo(this.model, "hackingSuccessed", this.hackingSuccessed);
             this.render();
         },
 
@@ -34,8 +33,8 @@ define(['jquery', 'backbone', 'underscore'], function ($, Backbone, _) {
             this._setCodeAccepted(0);
 
             var thisSetCodeAccepted = _.bind(this._setCodeAccepted, this);
-            _.delay(thisSetCodeAccepted, 1000, 1);
-            _.delay(thisSetCodeAccepted, 2000, 2);
+            _.delay(thisSetCodeAccepted, 500, 1);
+            _.delay(thisSetCodeAccepted, 1000, 2);
 
             _.delay(_.bind(function () {
                 this.trigger("codeCompiled")

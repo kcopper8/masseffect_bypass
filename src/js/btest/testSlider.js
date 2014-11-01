@@ -1,13 +1,15 @@
 /**
  * Created by user on 2014-10-18.
  */
-define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'model/sliderRow', 'model/code'], function ($, _, Backbone, CardSet, Slider, SliderRow, Code) {
+define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'model/sliderRow', 'model/code', 'model/GameStatusModel'], function ($, _, Backbone, CardSet, Slider, SliderRow, Code, GameStatusModel) {
 
     var collection = new SliderRow();
+    var gameStatusModel = window.model =  new GameStatusModel();
 
     var slider = new Slider({
         el : $(".bp_slider"),
-        collection : collection
+        collection : collection,
+        model : gameStatusModel
     });
 
     function prepare(collection) {

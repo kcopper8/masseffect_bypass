@@ -45,17 +45,21 @@ define([
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
 
 
-    var slider = Slider.build('.bp_slider', sliderRowCollection);
+    var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
     slider.on("cursor:moved", function (card) {
         if (card.model.isDistricted()) {
             console.log('isDistricted');
         }
     });
 
-    function hackingCompleted() {
+    gameStatusModel.on("hackingSuccessed", function () {
+        statusPanel.once("codeCompiled", function () {
+           gameStatusModel.set('completed', true);
+        });
+        statusPanel.hackingSuccessed();
+    });
 
-    }
-    
+
     slider.on("cursor:selected", function (card) {
         var code = card.model.getCode();
         if (code != gameStatusModel.getCurrentTargetCode()) {
@@ -67,11 +71,7 @@ define([
 
         card.model.setSelected();
         gameStatusModel.addHacked(code);
-        if (gameStatusModel.isSucessed()) {
-            hackingCompleted();
-        } else {
-            gameStatusModel.setCurrentTargetCode(Code.getRandom());
-        }
+        gameStatusModel.setCurrentTargetCode(Code.getRandom());
     });
 
     function createRandomCard() {

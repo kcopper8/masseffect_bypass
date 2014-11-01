@@ -31,7 +31,10 @@ define(['backbone', 'model/code'], function (Backbone, Code) {
             }
         },
         isSucessed : function () {
-            return this.hackedCodes.length >= 1;
+            return this.hackedCodes.length >= 3;
+        },
+        isGameStopped : function () {
+            return this.isSucessed();
         }
     });
 });
