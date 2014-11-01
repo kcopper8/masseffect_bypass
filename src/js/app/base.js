@@ -47,10 +47,12 @@ define([
 
     var completeController = new (function(){
         this.moveToSuccessTarget = function () {
+            return;
             location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
         };
 
         this.moveToFailedTarget = function () {
+            return;
             location.href = "http://masseffect.wikia.com/wiki/Mass_Effect_Wiki";
         };
     })();
@@ -77,16 +79,23 @@ define([
             cardModel.setUnauthorizedAccess();
             gameStatusModel.addFailure();
         };
-    })();
 
-    var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
-
-    slider.on("cursor:moved", function (card) {
-        var cardModel = card.model;
-        if (cardModel.isDistricted()) {
-            gameController.failureOnce(cardModel);
+        function createRandomCard () {
+            var card = CardModel.build(Code.getRandom());
+            if (tool.randomBoolean(Config.CardDistrictedRatio)) {
+                card.setDistricted();
+            }
+            return card;
         }
-    });
+
+        this.addRandomCard =function () {
+            sliderRowCollection.addCodes(
+                createRandomCard(),
+                createRandomCard(),
+                createRandomCard()
+            );
+        };
+    })();
 
     gameStatusModel.on("hackingSuccessed", function () {
         gameController.gameCompletelySuccessed();
@@ -96,6 +105,14 @@ define([
         gameController.gameCompletelyFailed();
     });
 
+    var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
+
+    slider.on("cursor:moved", function (card) {
+        var cardModel = card.model;
+        if (cardModel.isDistricted()) {
+            gameController.failureOnce(cardModel);
+        }
+    });
 
     slider.on("cursor:selected", function (card) {
         var cardModel = card.model;
@@ -111,30 +128,15 @@ define([
         gameStatusModel.setCurrentTargetCode(Code.getRandom());
     });
 
-    function createRandomCard() {
-        var card = CardModel.build(Code.getRandom());
-        if (tool.randomBoolean(Config.CardDistrictedRatio)) {
-            card.setDistricted();
-        }
-        return card;
-    }
-
-    function addRandomCard() {
-        sliderRowCollection.addCodes(
-            createRandomCard(),
-            createRandomCard(),
-            createRandomCard()
-        );
-    }
-
-    _.times(Config.RowsCountInSlide + 1, addRandomCard);
+    _.times(Config.RowsCountInSlide + 1, gameController.addRandomCard);
 
     slider.setCursorToSomePoint();
 
     slider.slideUp(function () {
-        addRandomCard();
+        gameController.addRandomCard();
         return true;
     });
+    gameStatusModel.startGameTime();
 
     return {};
 });

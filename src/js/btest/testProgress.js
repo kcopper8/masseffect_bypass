@@ -18,4 +18,6 @@ define(['jquery',
         console.log("aaa", aaa);
         model.set("remain_time", aaa--);
     }, 50);
+
+
 });

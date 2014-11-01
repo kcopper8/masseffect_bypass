@@ -7,5 +7,6 @@ define([], {
     "CardHeight" : 82,
     "SlideSpeedPerCard" : 3000,
     "CardDistrictedRatio" : 15,
-    "RowsCountInSlide" : 5
+    "RowsCountInSlide" : 5,
+    "GameTimeSeconds" : 30
 });

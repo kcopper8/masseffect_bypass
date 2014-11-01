@@ -14,7 +14,7 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
 
         _set : function (stat) {
             var max = this._max(),
-                nOnItemAmount = Math.max(parseInt(stat * max / 100), 0);
+                nOnItemAmount = Math.max(Math.ceil(stat * max / 100), 0);
 
             $.each(this.$el.children(), function(index) {
                 if (index < nOnItemAmount) {
