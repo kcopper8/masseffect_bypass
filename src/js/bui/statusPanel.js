@@ -35,11 +35,9 @@ define(['jquery', 'backbone', 'underscore'], function ($, Backbone, _) {
             var thisSetCodeAccepted = _.bind(this._setCodeAccepted, this);
             _.delay(thisSetCodeAccepted, 500, 1);
             _.delay(thisSetCodeAccepted, 1000, 2);
-
             _.delay(_.bind(function () {
                 this.trigger("codeCompiled")
-            }, this), 3000);
-
+            }, this), 1500);
         }
     });
 

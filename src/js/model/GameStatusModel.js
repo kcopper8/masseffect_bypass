@@ -21,9 +21,13 @@ define(['backbone', 'model/code'], function (Backbone) {
         },
         _applyCurrentHackedCode : function () {
             var param = {};
-            _.each(this.hackedCodes, function (code, idx) {
-                param['path'+idx] = code.getPath();
-            });
+            for(var i = 0; i < 3; i++) {
+                if (!!this.hackedCodes[i]) {
+                    param['path'+i] = this.hackedCodes[i].getPath();
+                } else {
+                    param['path'+i] = '';
+                }
+            }
 
             this.set(param);
         },
