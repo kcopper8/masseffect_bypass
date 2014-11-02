@@ -158,22 +158,22 @@ define([
                     // arrows start
                     // left
                     case 37:
-                    case 65:
+                    case 65: // a
                         this.moveCursor(0, -1);
                         break;
                     // up
                     case 38:
-                    case 87:
+                    case 87: // w
                         this.moveCursor(-1, 0);
                         break;
                     // right
                     case 39:
-                    case 68:
+                    case 68: // d
                         this.moveCursor(0, 1);
                         break;
                     // down
                     case 40:
-                    case 83:
+                    case 83: // s
                         this.moveCursor(1, 0);
                         break;
                     // arrows end
