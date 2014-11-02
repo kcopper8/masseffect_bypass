@@ -18,21 +18,6 @@ define(['jquery', 'backbone', 'bui/card'], function ($, Backbone) {
         },
         hide : function () {
             this.$el.hide();
-        },
-        moveTo : function (card) {
-            if (!card) {
-                return;
-            }
-            this.hoverTargetCard = card;
-
-            var coordinates = card.getOffset();
-            this.$el.css({
-                'top' : coordinates.top + 'px',
-                'left' : coordinates.left + 'px'
-            });
-        },
-        getHoverCard : function () {
-            return this.hoverTargetCard;
         }
     });
     return Cursor;

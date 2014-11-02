@@ -24,19 +24,35 @@ define([
             this.attachKeyDownListener();
             this.overflowdCardRow = -1;
         },
+        events : {
+            "click .bp_cursor" : "onClickCursor"
+        },
         onAdd : function (model /* , collection, option */) {
             var $li = $("<LI>");
 
-            var cardRow = _.map(['card1', 'card2', 'card3'], function (cardNumberPropertyName) {
+            var cardRow = _.map(['card1', 'card2', 'card3'], _.bind(function (cardNumberPropertyName) {
                 var cardModel = model.get(cardNumberPropertyName),
                     cardUi = new Card({
                         model : cardModel
                     });
+
                 $li.append(cardUi.$el);
+                this.listenTo(cardUi, "click", _.bind(this.onClickCard, this));
                 return cardUi;
-            });
+            }, this));
             this.$container.append($li);
             this.cardContainer.addRow(cardRow);
+        },
+
+        onClickCursor : function () {
+            this.onSelected();
+        },
+
+        onClickCard : function (card) {
+            var fixs = this.cardContainer.findCardPositionAroundCursor(card);
+            if (!!fixs) {
+                this.moveCursor(fixs[0], fixs[1]);
+            }
         },
 
         onReset : function () {

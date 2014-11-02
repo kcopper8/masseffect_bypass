@@ -17,6 +17,11 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             this.listenTo(this.model, "change", this.render);
             this.render();
         },
+        events : {
+            "click .bp_card" : function () {
+                this.trigger("click", this);
+            }
+        },
         className : "bp_card_outline",
         template : _.template(template),
         render : function () {

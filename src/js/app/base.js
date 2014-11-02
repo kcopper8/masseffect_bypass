@@ -80,7 +80,7 @@ define([
             return card;
         }
 
-        this.addRandomCard =function () {
+        this.addRandomCard = function () {
             sliderRowCollection.addCodes(
                 createRandomCard(),
                 createRandomCard(),

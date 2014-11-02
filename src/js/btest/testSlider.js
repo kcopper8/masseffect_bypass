@@ -26,6 +26,9 @@ define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'mode
     prepare(collection);
 
 
+    slider.on("cursor:selected", function () {
+        console.log('cursor:selected');
+    });
     slider.setCursorToSomePoint();
 
     slider.slideUp(function () {

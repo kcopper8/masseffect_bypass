@@ -61,6 +61,13 @@ define(['underscore', 'model/point'], function (_, Point) {
             }
         };
 
+        this.findCardPositionAroundCursor = function (card) {
+            return _.find([[0, -1], [0, 1], [1, 0], [-1, 0]], function (fixs) {
+                var point = this.current.fix(fixs[0], fixs[1]);
+                return this.get(point) === card;
+            }, this);
+        };
+
         this.findCard = function (card, rowFix, colFix) {
             var findStandard = card,
                 rowIndexFix = rowFix || 0,
