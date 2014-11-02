@@ -18,10 +18,6 @@ define(['app/config', 'underscore'], function (Config, _) {
         holder.push(new Code(i));
     }
 
-    Code.createRandomCode = function() {
-        var codeNumber = _.random(1, Config.CodeTypeCount);
-        return new Code(codeNumber);
-    };
     Code.get = function(number) {
         return holder[number - 1];
     };

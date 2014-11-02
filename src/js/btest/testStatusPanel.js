@@ -10,9 +10,9 @@ define(['bui/statusPanel', 'backbone', 'test/TestTool', 'model/code'], function 
     });
     
         model.set("completed", false);
-        model.set("path0", Code.createRandomCode().getPath());
-        model.set("path1", Code.createRandomCode().getPath());
-        model.set("path2", Code.createRandomCode().getPath());
+        model.set("path0", Code.getRandom().getPath());
+        model.set("path1", Code.getRandom().getPath());
+        model.set("path2", Code.getRandom().getPath());
 
     setTimeout(function () {
         model.trigger("hackingSuccessed");

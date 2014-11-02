@@ -10,26 +10,6 @@ define(['backbone', 'model/cardSet', 'model/cardModel'], function (Backbone, Car
         },
         getByIndex : function (row, col) {
             return this.at(row).at(col);
-        },
-        findCard : function (cardModel, rowFix, colFix) {
-            var findStandard = cardModel,
-                rowIndexFix = rowFix || 0,
-                colIndexFix = colFix || 0,
-                rowIndex,
-                colIndex = 0,
-                tempColIndex;
-
-            for (rowIndex = 0; rowIndex < this.models.length; rowIndex++) {
-                tempColIndex = this.models[rowIndex].getIndexOf(findStandard);
-
-                if (tempColIndex >= 0) {
-                    colIndex = tempColIndex;
-                    break;
-                }
-            }
-
-            return this.getByIndex(rowIndex + rowIndexFix, colIndex + colIndexFix);
-
         }
     });
     return SliderRow;
