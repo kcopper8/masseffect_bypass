@@ -1,14 +1,7 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
-    var template = [
-        '<div class="bp_card">',
-        '<div class="bp_card_cover"></div>',
-        '<img src="<%=imgPath%>">',
-        '</div>'
-    ].join('');
-
+define(['jquery', 'underscore', 'backbone', 'text!bui/template/cardTemplate.html'], function ($, _, Backbone, cardTemplate) {
     var Card = Backbone.View.extend({
         initialize : function () {
             this.$el.html(this.template(this.model.toJSON()));
@@ -23,7 +16,7 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             }
         },
         className : "bp_card_outline",
-        template : _.template(template),
+        template : _.template(cardTemplate),
         render : function () {
             this._setNormal();
 
