@@ -13,12 +13,14 @@ define([
     'bui/layout/descriptorView',
     'bui/layout/sliderView',
     'bui/layout/footerView',
+    'bui/layout/viewContainer',
     'model/sliderRow',
     'model/code',
     'model/cardModel',
     'model/GameStatusModel',
     'controller/CardContainer',
     'controller/prizeController',
+    'controller/gameController',
     'app/config',
     'tool'
 ], function (
@@ -33,78 +35,26 @@ define([
     DescriptorView,
     SliderView,
     FooterView,
+    ViewContainer,
     SliderRow,
     Code,
     CardModel,
     GameStatusModel,
     CardContainer,
     prizeController,
+    GameController,
     Config,
     tool
     ) {
 
     var gameStatusModel = new GameStatusModel();
-    var sliderRowCollection = new SliderRow();
-
-
-    var headerView = HeaderView.create(gameStatusModel);
-    var descriptorView = DescriptorView.create(gameStatusModel);
-    var sliderView = SliderView.create(sliderRowCollection, gameStatusModel);
-    var footerView = FooterView.create(gameStatusModel)
-
-    $(".bp_container").html("")
-        .append(headerView.$el)
-        .append(descriptorView.$el)
-        .append(sliderView.$el)
-        .append(footerView.$el);
-
-    var progress = headerView.progress;
-    var targetPanel = descriptorView.targetPanelView;
-    var statusPanel = descriptorView.statusPanelView;
-    var footer = footerView;
-    var slider = sliderView;
-
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
 
-    var gameController = new (function () {
-        this.gameCompletelyFailed = function () {
-            _.delay(function () {
-                prizeController.moveToFailedTarget();
-            }, 2000);
-        };
+    var sliderRowCollection = new SliderRow();
 
-        this.gameCompletelySuccessed = function () {
-            statusPanel.once("codeCompiled", function () {
-                gameStatusModel.set('completed', true);
-                _.delay(function () {
-                    prizeController.moveToSuccessTarget();
-                }, 2000);
-            });
-            statusPanel.hackingSuccessed();
+    var viewContainer = new ViewContainer(".bp_container", sliderRowCollection, gameStatusModel);
 
-        };
-
-        this.failureOnce = function (cardModel) {
-            cardModel.setUnauthorizedAccess();
-            gameStatusModel.addFailure();
-        };
-
-        function createRandomCard () {
-            var card = CardModel.build(Code.getRandom());
-            if (tool.randomBoolean(Config.CardDistrictedRatio)) {
-                card.setDistricted();
-            }
-            return card;
-        }
-
-        this.addRandomCard = function () {
-            sliderRowCollection.addCodes(
-                createRandomCard(),
-                createRandomCard(),
-                createRandomCard()
-            );
-        };
-    })();
+    var gameController = new GameController(viewContainer, sliderRowCollection, gameStatusModel, prizeController);
 
     gameStatusModel.on("hackingSuccessed", function () {
         gameController.gameCompletelySuccessed();
@@ -114,43 +64,7 @@ define([
         gameController.gameCompletelyFailed();
     });
 
-    footer.on("exit", function () {
-        gameStatusModel.accessDenied();
-    });
-
-
-
-    slider.on("cursor:moved", function (card) {
-        var cardModel = card.model;
-        if (cardModel.isDistricted()) {
-            gameController.failureOnce(cardModel);
-        }
-    });
-
-    slider.on("cursor:selected", function (card) {
-        var cardModel = card.model;
-        if (cardModel.isSelected()) {
-            // 이미 선택한 코드는 반응하지 않는다.
-            return;
-        }
-
-        var code = cardModel.getCode();
-        if (code != gameStatusModel.getCurrentTargetCode()) {
-            // 실패 처리
-            gameController.failureOnce(cardModel);
-            return;
-        }
-
-        cardModel.setSelected();
-        gameStatusModel.addHacked(code);
-        gameStatusModel.setCurrentTargetCode(Code.getRandom());
-    });
-
-    _.times(Config.RowsCountInSlide + 1, gameController.addRandomCard);
-
-    slider.setCursorToSomePoint();
-
-    slider.slideUp(function () {
+    viewContainer.sliderView.slideUp(function () {
         gameController.addRandomCard();
         return true;
     });
