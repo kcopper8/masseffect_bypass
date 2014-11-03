@@ -29,8 +29,7 @@
     require(['jquery', 'underscore'], function ($, _) {
         _.each(testFiles, function (fileName) {
             var $link = $("<A>").attr({
-                "href" : "uitest.html?uitest=btest/" + fileName,
-                "target" : "_blank"
+                "href" : "uitest.html?uitest=btest/" + fileName
             }).html(fileName);
             $("<LI>").append($link).appendTo($("#test_links"));
         });

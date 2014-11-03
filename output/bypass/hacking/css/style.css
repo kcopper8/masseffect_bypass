@@ -42,7 +42,7 @@ body {
 
 }
 
-.bp_descripter {
+.bp_descriptor {
     background-image: url(../img/description_area.png);
     background-repeat: no-repeat;
     height: 97px;
@@ -295,7 +295,6 @@ body {
     background-image: url(../img/footer.png);
     background-repeat: no-repeat;
     background-color: #000000;
-    position: absolute;
     height: 200px;
     width: 1080px;
     margin-left: 7px;
