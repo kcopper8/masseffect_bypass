@@ -6,7 +6,8 @@ require.config({
     paths : {
         'jquery' : 'lib/jquery-1.11.1',
         'underscore' : 'lib/underscore',
-        'backbone' : 'lib/backbone'
+        'backbone' : 'lib/backbone',
+        'text' : 'lib/text'
     },
     sim : {
         'jquery' : {
