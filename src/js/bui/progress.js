@@ -3,7 +3,19 @@
  */
 define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
     var Progress = Backbone.View.extend({
+        itemCount : 30,
+        tagName : "UL",
+        className : "bp_progress",
+        initializeHtml : function () {
+            var html = '';
+            for (var i = 0; i < this.itemCount; i++) {
+                html += '<li></li>';
+            }
+
+            this.$el.html(html);
+        },
         initialize : function () {
+            this.initializeHtml();
             this.listenTo(this.model, "change:remain_time", this.render);
             this.render();
         },
