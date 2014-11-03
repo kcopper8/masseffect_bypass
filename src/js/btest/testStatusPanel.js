@@ -1,12 +1,13 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['bui/descriptor/statusPanelView', 'backbone', 'test/TestTool', 'model/code'], function (StatusPanelView, Backbone, TestTool, Code) {
+define(['bui/layout/descriptorView', 'backbone', 'test/TestTool', 'model/code'], function (DescriptorView, Backbone, TestTool, Code) {
     var model = new Backbone.Model();
 
-    var panel = StatusPanelView.create(model);
-    $(".bp_status_panel").remove();
-    $(".bp_descriptor").append(panel.$el);
+
+    var descriptor = DescriptorView.create(model);
+    $(".bp_container").append(descriptor.$el);
+    var panel = descriptor.statusPanelView;
 
     model.set("completed", false);
     model.set("path0", Code.getRandom().getPath());

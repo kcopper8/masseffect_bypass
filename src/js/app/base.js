@@ -8,8 +8,10 @@ define([
     'bui/progress',
     'bui/targetPanel',
     'bui/statusPanel',
-    'bui/layout/sliderView',
     'bui/cursor',
+    'bui/layout/headerView',
+    'bui/layout/descriptorView',
+    'bui/layout/sliderView',
     'bui/layout/footerView',
     'model/sliderRow',
     'model/code',
@@ -26,8 +28,10 @@ define([
     Progress,
     TargetPanel,
     StatusPanel,
-    SliderView,
     Cursor,
+    HeaderView,
+    DescriptorView,
+    SliderView,
     FooterView,
     SliderRow,
     Code,
@@ -42,12 +46,23 @@ define([
     var gameStatusModel = new GameStatusModel();
     var sliderRowCollection = new SliderRow();
 
-    var progress = Progress.build(".bp_progress", gameStatusModel);
-    var targetPanel = TargetPanel.build(".bp_target_panel", gameStatusModel);
-    var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
-    var footer = FooterView.create(gameStatusModel);
-    $(".bp_footer").remove();
-    $(".bp_container").append(footer.$el);
+
+    var headerView = HeaderView.create(gameStatusModel);
+    var descriptorView = DescriptorView.create(gameStatusModel);
+    var sliderView = SliderView.create(sliderRowCollection, gameStatusModel);
+    var footerView = FooterView.create(gameStatusModel)
+
+    $(".bp_container").html("")
+        .append(headerView.$el)
+        .append(descriptorView.$el)
+        .append(sliderView.$el)
+        .append(footerView.$el);
+
+    var progress = headerView.progress;
+    var targetPanel = descriptorView.targetPanelView;
+    var statusPanel = descriptorView.statusPanelView;
+    var footer = footerView;
+    var slider = sliderView;
 
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
 
@@ -103,9 +118,7 @@ define([
         gameStatusModel.accessDenied();
     });
 
-    var slider = SliderView.create(sliderRowCollection, gameStatusModel);
-    $(".bp_slider").remove();
-    $(".bp_descriptor").after(slider.$el);
+
 
     slider.on("cursor:moved", function (card) {
         var cardModel = card.model;

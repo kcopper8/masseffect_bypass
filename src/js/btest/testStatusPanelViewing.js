@@ -1,10 +1,12 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'bui/descriptor/statusPanelView', 'backbone', 'test/TestTool', 'model/code'], function ($, StatusPanelView, Backbone, TestTool, Code) {
+define(['jquery', 'bui/layout/descriptorView', 'backbone', 'test/TestTool', 'model/code'], function ($, DescriptorView, Backbone, TestTool, Code) {
     var model = new Backbone.Model();
 
-    var panel = StatusPanelView.create(model);
+    var descriptor = DescriptorView.create(model);
+    $(".bp_container").append(descriptor.$el);
+    var panel = descriptor.statusPanelView;
 
     $(".bp_status_panel").remove();
     $(".bp_descriptor").append(panel.$el);
