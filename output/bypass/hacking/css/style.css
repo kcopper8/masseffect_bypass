@@ -8,19 +8,18 @@ body {
     padding: 0 10px;
 }
 
-
-
 .bp_header {
     background-image: url(../img/header.png);
     background-repeat: no-repeat;
     height: 80px;
     margin-left: 7px;
+    position: relative;
 }
 
 .bp_progresser {
     position: absolute;
     top: 10px;
-    left: 360px;
+    left: 350px;
     width: 360px;
 }
 
