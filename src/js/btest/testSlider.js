@@ -1,16 +1,13 @@
 /**
  * Created by user on 2014-10-18.
  */
-define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/slider', 'model/sliderRow', 'model/code', 'model/GameStatusModel'], function ($, _, Backbone, CardSet, Slider, SliderRow, Code, GameStatusModel) {
+define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/layout/sliderView', 'model/sliderRow', 'model/code', 'model/GameStatusModel'], function ($, _, Backbone, CardSet, SliderView, SliderRow, Code, GameStatusModel) {
 
     var collection = new SliderRow();
     var gameStatusModel = window.model =  new GameStatusModel();
 
-    var slider = new Slider({
-        el : $(".bp_slider"),
-        collection : collection,
-        model : gameStatusModel
-    });
+    var slider = SliderView.create(collection, gameStatusModel);
+    $(".bp_container").html("").append(slider.$el);
 
     function prepare(collection) {
         collection.addCodes(Code.getRandom(), Code.getRandom(), Code.getRandom());

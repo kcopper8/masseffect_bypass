@@ -8,7 +8,7 @@ define([
     'bui/progress',
     'bui/targetPanel',
     'bui/statusPanel',
-    'bui/slider',
+    'bui/layout/sliderView',
     'bui/cursor',
     'bui/layout/footerView',
     'model/sliderRow',
@@ -26,7 +26,7 @@ define([
     Progress,
     TargetPanel,
     StatusPanel,
-    Slider,
+    SliderView,
     Cursor,
     FooterView,
     SliderRow,
@@ -103,7 +103,9 @@ define([
         gameStatusModel.accessDenied();
     });
 
-    var slider = Slider.build('.bp_slider', sliderRowCollection, gameStatusModel);
+    var slider = SliderView.create(sliderRowCollection, gameStatusModel);
+    $(".bp_slider").remove();
+    $(".bp_descriptor").after(slider.$el);
 
     slider.on("cursor:moved", function (card) {
         var cardModel = card.model;

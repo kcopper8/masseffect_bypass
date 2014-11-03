@@ -1,8 +1,8 @@
 /**
- * Created by user on 2014-10-16.
+ * Created by user on 2014-11-04.
  */
 define([
-    'app/config',
+    '../../app/config',
     'jquery',
     'underscore',
     'backbone',
@@ -10,10 +10,13 @@ define([
     'bui/cursor',
     'controller/CardContainer',
     'model/point'], function (Config, $, _, Backbone, Card, Cursor, CardContainer, Point) {
-    var Slider = Backbone.View.extend({
+    var SliderView = Backbone.View.extend({
+        className : "bp_slider",
 
         initialize : function () {
-            this.$container = this.$("UL:first");
+            this.$el.html("<ul></ul>");
+            this.$container = $("<UL>").appendTo(this.$el);
+
             this.listenTo(this.collection, "add", this.onAdd);
             this.listenTo(this.collection, "reset", this.onReset);
 
@@ -90,8 +93,8 @@ define([
 
 
             this.$container.animate({
-                'top' : (this.$container.position().top - Config.CardHeight)
-            }, {
+                    'top' : (this.$container.position().top - Config.CardHeight)
+                }, {
                     duration: Config.SlideSpeedPerCard,
                     easing: 'linear',
                     complete: fnOnSlideComplete,
@@ -183,12 +186,12 @@ define([
             }, this));
         }
     });
-    Slider.build = function (selector, collection, gameStatusModel) {
-        return new Slider({
-            el : $(selector)[0],
+
+    SliderView.create = function (collection, gameStatusModel) {
+        return new SliderView({
             collection : collection,
             model : gameStatusModel
-        })
+        });
     };
-    return Slider;
+    return SliderView;
 });
