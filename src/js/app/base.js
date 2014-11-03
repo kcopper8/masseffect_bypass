@@ -10,7 +10,7 @@ define([
     'bui/statusPanel',
     'bui/slider',
     'bui/cursor',
-    'bui/footer',
+    'bui/layout/footerView',
     'model/sliderRow',
     'model/code',
     'model/cardModel',
@@ -28,7 +28,7 @@ define([
     StatusPanel,
     Slider,
     Cursor,
-    Footer,
+    FooterView,
     SliderRow,
     Code,
     CardModel,
@@ -45,7 +45,9 @@ define([
     var progress = Progress.build(".bp_progress", gameStatusModel);
     var targetPanel = TargetPanel.build(".bp_target_panel", gameStatusModel);
     var statusPanel = StatusPanel.build(".bp_status_panel", gameStatusModel);
-    var footer = Footer.build('.bp_footer', gameStatusModel);
+    var footer = FooterView.create(gameStatusModel);
+    $(".bp_footer").remove();
+    $(".bp_container").append(footer.$el);
 
     gameStatusModel.setCurrentTargetCode(Code.getRandom());
 
