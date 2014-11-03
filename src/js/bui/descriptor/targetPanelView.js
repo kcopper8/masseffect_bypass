@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['backbone', 'jquery', 'text!bui/descripter/targetPanelViewTemplate.html'], function (Backbone, $, targetPanelViewTemplate) {
+define(['backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html'], function (Backbone, $, targetPanelViewTemplate) {
     var TargetPanelView = Backbone.View.extend({
         className : "bp_target_panel",
         initialize : function () {

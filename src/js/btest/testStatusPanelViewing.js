@@ -1,13 +1,13 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'bui/descripter/statusPanelView', 'backbone', 'test/TestTool', 'model/code'], function ($, StatusPanelView, Backbone, TestTool, Code) {
+define(['jquery', 'bui/descriptor/statusPanelView', 'backbone', 'test/TestTool', 'model/code'], function ($, StatusPanelView, Backbone, TestTool, Code) {
     var model = new Backbone.Model();
 
     var panel = StatusPanelView.create(model);
 
     $(".bp_status_panel").remove();
-    $(".bp_descripter").append(panel.$el);
+    $(".bp_descriptor").append(panel.$el);
 
     TestTool.test(function() {
             model.set("completed", true);

@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['bui/layout/descripterView', 'model/GameStatusModel', 'test/TestTool', 'model/code'], function (DescripterView, GameStatusModel, TestTool, Code) {
+define(['bui/layout/descriptorView', 'model/GameStatusModel', 'test/TestTool', 'model/code'], function (DescripterView, GameStatusModel, TestTool, Code) {
     var model = new GameStatusModel();
     var view = DescripterView.create(model);
     $(".bp_container").html("").append(view.el);

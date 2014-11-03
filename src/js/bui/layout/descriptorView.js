@@ -1,9 +1,9 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['backbone', 'bui/descripter/targetPanelView', 'bui/descripter/statusPanelView'], function (Backbone, TargetPanelView, StatusPanelView) {
+define(['backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPanelView'], function (Backbone, TargetPanelView, StatusPanelView) {
     var DescripterView = Backbone.View.extend({
-        className : "bp_descripter",
+        className : "bp_descriptor",
         initialize : function () {
             this.targetPanelView = TargetPanelView.create(this.model);
             this.$el.append(this.targetPanelView.$el);
