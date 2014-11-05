@@ -6,6 +6,8 @@ body {
 .bp_container {
     overflow-x: hidden;
     padding: 0 10px;
+    width: 1080px;
+    margin: 0 auto;
 }
 
 .bp_header {
