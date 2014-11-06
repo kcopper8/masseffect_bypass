@@ -3,6 +3,17 @@ body {
     color: cyan;
 }
 
+BUTTON.bp_button {
+    background-color: transparent;
+    background-image: url(../img/button_background.png);
+    border: none;
+    width: 207px;
+    height: 31px;
+    color: #B49969;
+    font-weight: bold;
+}
+
+
 .bp_container {
     overflow-x: hidden;
     padding: 0 10px;
@@ -127,7 +138,6 @@ body {
     float:left
 }
 
-
 .bp_status_panel {
     float: left;
     margin: 0;
@@ -136,8 +146,37 @@ body {
     width: 383px;
 }
 
+.bp_status_panel > .bp_start_area {
+    position: relative;
+    float: right;
+    margin-top: 26px;
+    display: none;
+}
+
+.bp_status_panel.bp_start_stage > .bp_start_area {
+    display: block;
+}
+
+.bp_status_panel.bp_start_stage dl {
+    display: none;
+}
+
+/*
+.bp_status_panel {
+    float: left;
+    margin: 0;
+    padding-top: 3px;
+    padding-left: 62px;
+    width: 383px;
+}
+*/
+
 .bp_status_panel.bp_completed {
     width: 407px;
+}
+.bp_status_panel dl {
+    margin: 0;
+    padding: 0;
 }
 
 .bp_status_panel dt,dd {
@@ -153,13 +192,12 @@ body {
     text-indent: -1400px;
 }
 
-
-.bp_status_panel > dd {
+.bp_status_panel dd {
     width: 114px;
     height: 90px;
 }
 
-.bp_status_panel > dd > DIV {
+.bp_status_panel dd > DIV {
     height: 28px;
     width: 112px;
     overflow: hidden;
@@ -168,7 +206,7 @@ body {
     border-color: #9D5D39;
 }
 
-.bp_status_panel > dd > DIV .bp_cover {
+.bp_status_panel  dd > DIV .bp_cover {
     display: none;
     position: absolute;
     width: 110px;
@@ -180,7 +218,7 @@ body {
     opacity: 0.6;
 }
 
-.bp_status_panel > dd > DIV IMG{
+.bp_status_panel  dd > DIV IMG{
     height: 28px;
 }
 
@@ -191,11 +229,11 @@ body {
     height: 90px;
     text-indent: -1400px;
 }
-.bp_status_panel.bp_completed > dd > DIV .bp_cover {
+.bp_status_panel.bp_completed  dd > DIV .bp_cover {
     display: block;
 }
 
-.bp_status_panel > dd > DIV .bp_cover.bp_accepted {
+.bp_status_panel  dd > DIV .bp_cover.bp_accepted {
     display: block;
 }
 
