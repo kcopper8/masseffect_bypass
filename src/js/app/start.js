@@ -4,22 +4,22 @@
 define([
     'jquery',
     'bui/layout/viewContainer',
-    'model/GameStatusModel',
+    'model/GameModel',
     'model/sliderRow'
 ], function (
     $,
     ViewContainer,
-    GameStatusModel,
+    GameModel,
     SliderRow
 ) {
 
     var StartController = function () {
         this.sliderRow = new SliderRow();
-        this.gameStatusModel = new GameStatusModel();
-        this.viewContainer = new ViewContainer(".bp_container", this.sliderRow, this.gameStatusModel);
+        this.gameModel = new GameModel();
+        this.viewContainer = new ViewContainer(".bp_container", this.sliderRow, this.gameModel);
 
         this.startStage = function () {
-            this.gameStatusModel.set('stage', 'start');
+            this.gameModel.set('stage', 'start');
         };
 
         this.gameStage = function () {

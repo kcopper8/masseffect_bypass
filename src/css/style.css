@@ -75,15 +75,14 @@ BUTTON.bp_button:focus {
 }
 
 .bp_target_panel > h2.bp_target_code {
-    background-image: url(../img/target_title.png);
+    background-image: url(../img/messages/target_code_segment.png);
+    background-repeat: no-repeat;
     margin: 0;
     height: 86px;
     width: 235px;
     text-indent: -1400px;
-    float:left
+    float:left;
 }
-
-
 
 .bp_target_panel > .bp_segment {
     float:left;
@@ -189,7 +188,8 @@ BUTTON.bp_button:focus {
 
 .bp_status_panel dt {
     margin-left: 78px;
-    background-image: url(../img/status_title.png);
+    background-image: url(../img/messages/remaining_code.png);
+    background-repeat: no-repeat;
     width: 191px;
     height: 90px;
     text-indent: -1400px;
@@ -343,10 +343,12 @@ BUTTON.bp_button:focus {
     position: relative;
 }
 
-.bp_remain_code_count {
-    width: 22px;
+.bp_remaining_attempts {
+    width: 220px;
     height: 18px;
     background-color: black;
+    background-image: url(../img/messages/attempts_remaining.png);
+    background-repeat: no-repeat;
     left: 399px;
     top: 9px;
     color: red;
@@ -355,6 +357,11 @@ BUTTON.bp_button:focus {
     font-weight: bold;
     position: absolute;
 }
+
+.bp_remaining_attempts {
+
+}
+
 
 .bp_exit {
     position: absolute;
