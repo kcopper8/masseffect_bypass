@@ -5,10 +5,10 @@ body {
 
 BUTTON.bp_button {
     background-color: transparent;
-    background-image: url(../img/button_background.png);
+    background-image: url(../img/buttons/button_normal.png);
     border: none;
-    width: 207px;
-    height: 31px;
+    width: 206px;
+    height: 30px;
     color: #B49969;
     font-weight: bold;
 }
@@ -16,6 +16,15 @@ BUTTON.bp_button:focus {
     outline: none;
 }
 
+BUTTON.bp_button:hover {
+    background-image: url(../img/buttons/button_m_over.png);
+    color: #C5FC95;
+}
+
+BUTTON.bp_button:active {
+    background-image: url(../img/buttons/button_m_click.png);
+    color: #FCFCFC;
+}
 
 .bp_container {
     overflow-x: hidden;
@@ -403,14 +412,44 @@ BUTTON.bp_button:focus {
     text-indent: -1400px;
     margin: 0;
 }
-
-.bp_target_panel_area > h2.bp_firewall_removed {
+.bp_target_panel_area.bp_completed > h2.bp_target_code {
+    display: none;
+}
+.bp_target_panel_area.bp_access_denied > h2.bp_target_code {
     display: none;
 }
 
+.bp_target_panel_area > h2.bp_firewall_removed {
+    display: none;
+    background-image: url(../img/messages/firewalls_removed.png);
+    background-repeat: no-repeat;
+    margin-left: 48px;
+    margin-top: 0;
+    height: 67px;
+    width: 426px;
+    text-indent: -1400px;
+}
+
+.bp_target_panel_area.bp_completed > h2.bp_firewall_removed {
+    display: block;
+}
+.bp_target_panel_area.bp_access_denied > h2.bp_firewall_removed {
+    display: none;
+}
 
 .bp_target_panel_area > h2.bp_access_denied {
     display: none;
+    background-image: url(../img/messages/firewalls_intact_red.png);
+    background-repeat: no-repeat;
+    margin-left: 48px;
+    margin-top: 0;
+    height: 67px;
+    width: 426px;
+    text-indent: -1400px;
+}
+
+.bp_target_panel_area.bp_access_denied > h2.bp_access_denied {
+    display: block;
 }
 
 .bp_target_panel_area > H2 {
@@ -421,13 +460,17 @@ BUTTON.bp_button:focus {
     float:left;
 }
 
-
-
 .bp_target_panel_area > .bp_segment {
     width: 280px;
     overflow: hidden;
     text-indent: -20px;
     padding-top: 4px;
+}
+.bp_target_panel_area.bp_completed > .bp_segment {
+    display: none;
+}
+.bp_target_panel_area.bp_access_denied > .bp_segment {
+    display: none;
 }
 
 .bp_target_panel_area > .bp_segment > IMG {
@@ -442,4 +485,26 @@ BUTTON.bp_button:focus {
     height: 93px;
     margin-left: 3px;
     padding-top: 30px;
+}
+
+.bp_status_panel_area > .bp_start_area{
+    position: relative;
+    float: right;
+    margin-top: 20px;
+    margin-right: 60px;
+    display: none;
+}
+
+.bp_status_panel_area > H3 {
+    float: right;
+}
+
+.bp_status_panel_area > .bp_remaining_code {
+    background-image: url(../img/messages/remaining_code.png);
+    background-repeat: no-repeat;
+    text-indent: -1400px;
+    width: 190px;
+    height: 89px;
+    margin-top: 0;
+    margin-right: 86px;
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        BUTTON {
+            background-image: url(img/buttons/button_normal.png);
+            background-color: transparent;
+            border: none;
+            width: 206px;
+            height: 30px;
+            outline: none;
+        }
+        
+        BUTTON:focus {
+            border: none;
+            outline: none;
+        }
+
+        BUTTON:hover {
+            background-image: url(img/buttons/button_m_over.png);
+            color: #C5FC95;
+        }
+        
+        BUTTON:active {
+            background-image: url(img/buttons/button_m_click.png);
+            color: #FCFCFC;
+        }
+
+        DIV {
+            background-image: url(img/buttons/button_normal.png);
+            border: none;
+            width: 206px;
+            height: 30px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<button></button>
+
+<div><img src="img/buttons/button_glow.png"></div>
+<script src="js/lib/jquery-1.11.1.js"></script>
+<script>
+    var hideGlow = function () {
+        setTimeout(function () {
+            $("DIV > IMG").animate({
+                opacity : 0
+            }, 1000, window.showGlow);
+        }, 300);
+    }
+    var showGlow = function () {
+        $("DIV > IMG").animate({
+            opacity : 1
+        }, 1000, window.hideGlow);
+    }
+
+    hideGlow();
+</script>
+</body>
+</html>
