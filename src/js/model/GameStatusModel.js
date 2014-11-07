@@ -6,15 +6,21 @@ define(['app/config', 'backbone', 'tool', 'model/code'], function (Config, Backb
         defaults : {
             'remain_time' : 100,
             'completed' : false,
-            'accessDenied' : false
+            'accessDenied' : false,
+            'stage' : "start"
         },
         initialize : function () {
             this.currentTargetCode = null;
             this.hackedCodes = [];
+
+            this.on("startGame", function () {
+                this.set("stage", "game");
+            });
         },
         setCurrentTargetCode : function (code) {
             this.currentTargetCode = code;
             this.set('path', code.getPath());
+            this.set('currentTargetCode', code);
         },
         getCurrentTargetCode : function () {
             return this.currentTargetCode;

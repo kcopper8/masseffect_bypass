@@ -4,6 +4,10 @@
 define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelViewTemplate.html'], function ($, _, Backbone, statusPanelViewTemplate) {
     var StatusPanel = Backbone.View.extend({
         className : "bp_status_panel",
+        events : {
+            "click BUTTON.bp_button" : "onClickStartHack"
+
+        },
         initialize : function () {
             this.$el.html(statusPanelViewTemplate);
 
@@ -22,6 +26,7 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         },
 
         render : function () {
+            this.$el.toggleClass("bp_start_stage", this.model.get('stage') == 'start');
             this.$el.toggleClass("bp_completed", !!this.model.get("completed"));
             this._setCodePath(this.model.get("path0"), 0);
             this._setCodePath(this.model.get("path1"), 1);
@@ -41,6 +46,10 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
             _.delay(_.bind(function () {
                 this.trigger("codeCompiled")
             }, this), 1500);
+        },
+
+        onClickStartHack : function (e) {
+           this.model.trigger("startGame");
         }
     });
 

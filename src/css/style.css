@@ -12,6 +12,9 @@ BUTTON.bp_button {
     color: #B49969;
     font-weight: bold;
 }
+BUTTON.bp_button:focus {
+    outline: none;
+}
 
 
 .bp_container {
