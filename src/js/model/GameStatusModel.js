@@ -6,8 +6,7 @@ define(['app/config', 'backbone', 'tool', 'model/code'], function (Config, Backb
         defaults : {
             'remain_time' : 100,
             'completed' : false,
-            'accessDenied' : false,
-            'stage' : "start"
+            'accessDenied' : false
         },
         initialize : function () {
             this.currentTargetCode = null;
