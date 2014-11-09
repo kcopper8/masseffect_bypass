@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <style>
+        /* <![CDATA[ */
+    text {
+        letter-spacing : 1px;
+        font-weight : bold;
+        font-size : 3pt;
+        font-family : Verdana;
+    }
+    text.green {
+        fill : #86AB3A;
+        stroke : #86AB3A;
+    }
+    text.white {
+        fill : #B0B0B0;
+        stroke : #B0B0B0;
+    }
+    text.brown {
+        fill : #9D5D39;
+         stroke : #9D5D39;
+    }
+    text.blue {
+        fill : #4786BC;
+        stroke : #4786BC;
+    }
+
+    /* ]]> */
+    </style>
+    <text x="35" y="3" class="green"><![CDATA[
+* @param {Function} fn Passed the created div and
+    ]]></text>
+    <text x="70" y="8" class="green"><![CDATA[
+return !!fn( div );
+	} catch (e) {
+		return false;
+	} finally {
+    ]]></text>
+    <text x="75" y="13" class="green" ><![CDATA[
+/**
+ * Adds the same handler for all of the
+     ]]></text>
+    <text x="105" y="18" class="green"><![CDATA[
+	while ( i-- ) {
+		Expr.attrHandle[ arr[i] ] = handler;
+    ]]></text>
+    <text x="105" y="23" class="white" ><![CDATA[
+if ( diff ) {
+    ]]></text>
+    <text x="140" y="28" class="green"><![CDATA[
+if ( cur ) {
+		while ( (cur = cur.nextSibling) ) {
+    ]]></text>
+    <text x="140" y="33" class="green"><![CDATA[
+function createInputPseudo( type ) {
+return
+    ]]></text>
+    <text x="170" y="38" class="green"><![CDATA[
+    function( elem ) {
+    ]]></text>
+    <text x="150" y="43" class="white"><![CDATA[
+    return
+    ]]></text>
+    <text x="180" y="48" class="white"><![CDATA[
+	// function( elem ) {
+			var name =
+    ]]></text>
+    <text x="180" y="53" class="brown"><![CDATA[
+elem.nodeName.toLowerCase();
+    ]]></text>
+    <text x="180" y="58" fill="#9D5D39" stroke="#9D5D39"><![CDATA[
+		return name === "input" &&
+    ]]></text>
+    <text x="210" y="63" class="blue"><![CDATA[
+elem.type === type;
+	};
+}
+    ]]></text>
+    <text x="210" y="68" class="brown"><![CDATA[
+}
+    ]]></text>
+    <text x="180" y="73" class="brown"><![CDATA[
+}
+    ]]></text>
+    <text x="150" y="78" class="brown"><![CDATA[
+}
+    ]]></text>
+</svg>

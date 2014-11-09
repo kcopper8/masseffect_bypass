@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <text x="35" y="3" font-family="Verdana" font-size="3" fill="#ffffff">
+        getFragment: function(fragment, forcePushState) {
+    </text>
+    <text x="35" y="8" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+         // fragment = decodeURI(this.location.pathname + this.location.search) fragment = this.getHash() this.root.replace
+    </text>
+    <text x="35" y="13" font-family="Verdana" font-size="3" fill="#4786BC" stroke="#4786BC"  letter-spacing="0.5px">
+        return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase ); var root = this.root.replace(trailingSlash, '');
+    </text>
+    <text x="35" y="18" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+        // fragment = decodeURI(this.location.pathname + this.location.search) fragment = this.getHash() this.root.replace
+    </text>
+    <text x="35" y="23" font-family="Verdana" font-size="3" fill="#4786BC" stroke="#4786BC"  letter-spacing="0.5px">
+        runescape = new RegExp( "\\\\([\\da-f]{1,6}" + whitespace + "?|(" + whitespace + ")|.)", "ig" ),
+    </text>
+    <text x="35" y="28" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+        fragment = decodeURI(this.location.pathname + this.location.search);
+    </text>
+    <text x="35" y="33" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+        if (!fragment.indexOf(root)) fragment = fragment.slice(root.length);
+    </text>
+    <text x="35" y="38" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+        var root = this.root.replace(trailingSlash, '');
+    </text>
+    <text x="35" y="48" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px">
+        if ( context.ownerDocument  (elem = context.ownerDocument.getElementById( m ))
+    </text>
+    <text x="35" y="53" font-family="Verdana" font-size="3" fill="#B0B0B0" stroke="#B0B0B0" letter-spacing="0.5px">
+        push.apply( results, context
+    </text>
+    <text x="35" y="58" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px"><![CDATA[
+        var frame = Backbone.$('<iframe src="javascript:0" tabindex="-1">');
+    ]]></text>
+    <text x="35" y="63" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px"><![CDATA[
+        if ( nodeType === 1 && context.nodeName.toLowerCase() !== "object" ) {
+    ]]></text>
+    <text x="35" y="68" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px"><![CDATA[
+        * @returns {Function(string, Object)} Returns the Object data after storing it on itself with
+    ]]></text>
+    <text x="35" y="73" font-family="Verdana" font-size="3" fill="#9D5D39" stroke="#9D5D39" letter-spacing="0.5px"><![CDATA[
+        var docMode           = document.documentMode;
+    ]]></text>
+    <text x="35" y="78" font-family="Verdana" font-size="3" fill="#B0B0B0" stroke="#B0B0B0" letter-spacing="0.5px"><![CDATA[
+        var oldIE             = (isExplorer.exec(navigator.userAgent.toLowerCase()) && (!docMode || docMode <= 7));
+    ]]></text>
+</svg>

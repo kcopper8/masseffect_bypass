@@ -300,6 +300,13 @@ BUTTON.bp_button:active {
     height: 81px;
 }
 
+.bp_card IMG {
+    width: 340px;
+    height: 81px;
+    border: none;
+}
+
+
 .bp_card_cover {
     display: none;
     position: absolute;
