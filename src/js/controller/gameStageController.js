@@ -4,15 +4,11 @@
 define(['underscore', 'backbone', 'app/config', 'model/code', 'controller/gameHelper'], function (_, Backbone, Config, Code, gameHelper) {
     var gameStageController = {
         prepareStage : function (viewContainer, gameStageModel, sliderRow) {
-            var failureOnce = function (cardModel) {
-                cardModel.setUnauthorizedAccess();
-                gameStageModel.removeHackedCode();
-            };
             viewContainer.sliderView.on("cursor:moved", function (card) {
                 var cardModel = card.model;
                 if (cardModel.isDistricted()) {
-                    //this.trigger("failureOnce", cardModel);
-                    failureOnce(cardModel);
+                    cardModel.setUnauthorizedAccess();
+                    gameStageModel.removeHackedCode();
                 }
             });
 
@@ -25,9 +21,8 @@ define(['underscore', 'backbone', 'app/config', 'model/code', 'controller/gameHe
 
                 var code = cardModel.getCode();
                 if (code != gameStageModel.getCurrentTargetCode()) {
-                    // 실패 처리
-                    //this.trigger("failureOnce", cardModel);
-                    failureOnce(cardModel);
+                    // 잘못 선택 처리
+                    gameStageModel.decreaseAttempt();
                     return;
                 }
 

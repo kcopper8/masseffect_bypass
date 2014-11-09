@@ -87,6 +87,16 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
 
         isAccessDenied : function () {
             return this.get('stage') == Stage.ACCESS_DENIED;
+        },
+
+        decreaseAttempt : function () {
+            var attemptCount = this.get('attempt_count');
+            if (attemptCount <= 0) {
+                this.trigger("accessDenied", this);
+                return;
+            }
+
+            this.set('attempt_count', --attemptCount);
         }
     });
 

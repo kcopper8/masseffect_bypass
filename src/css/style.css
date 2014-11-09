@@ -365,13 +365,13 @@ BUTTON.bp_button:active {
 }
 
 .bp_remaining_attempts .bp_number.bp_0 {
-    background: url(../img/messages/3.png) no-repeat;
+    background: url(../img/messages/0.png) no-repeat;
 }
 .bp_remaining_attempts .bp_number.bp_1 {
-    background: url(../img/messages/3.png) no-repeat;
+    background: url(../img/messages/1.png) no-repeat;
 }
 .bp_remaining_attempts .bp_number.bp_2 {
-    background: url(../img/messages/3.png) no-repeat;
+    background: url(../img/messages/2.png) no-repeat;
 }
 .bp_remaining_attempts .bp_number.bp_3 {
     background: url(../img/messages/3.png) no-repeat;
