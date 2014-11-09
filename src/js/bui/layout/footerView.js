@@ -5,7 +5,7 @@ define(['jquery', 'backbone', 'text!bui/layout/footerViewTemplate.html'], functi
     var Footer = Backbone.View.extend({
         template : _.template(footerTemplate),
         events : {
-            'click .bp_exit A' : function (e) {
+            'click .bp_exit BUTTON' : function (e) {
                 e.preventDefault();
                 this.trigger("exit");
             }
@@ -14,12 +14,11 @@ define(['jquery', 'backbone', 'text!bui/layout/footerViewTemplate.html'], functi
 
         initialize : function () {
             this.$el.html(this.template(this.model.toJSON()));
-            this.$remainCodeCounter = this.$(".bp_remain_code_count");
             this.listenTo(this.model, 'change', this.render);
             this.render();
         },
         render : function () {
-            this.$remainCodeCounter.html(this.model.getRemainCodeCount());
+            //this.$remainCodeCounter.html(this.model.getRemainCodeCount());
         }
     });
 

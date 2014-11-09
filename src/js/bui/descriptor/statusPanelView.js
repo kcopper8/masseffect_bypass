@@ -11,8 +11,8 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         initialize : function () {
             this.$el.html(statusPanelViewTemplate);
 
-            this.$foundCodeViews = this.$el.find("DD .img_container");
-            this.$foundCodeViewCovers = this.$el.find("DD .bp_cover");
+            this.$foundCodeViews = this.$el.find(".bp_found_codes .img_container");
+            this.$foundCodeViewCovers = this.$el.find(".bp_found_codes .bp_cover");
             this.listenTo(this.model, "change", this.render);
             this.render();
         },

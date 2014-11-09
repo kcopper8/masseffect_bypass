@@ -3,7 +3,10 @@
  */
 define(['backbone'], function (Backbone) {
     var GameModel = Backbone.Model.extend({
-
+        defaults : {
+            'remain_time' : 100
+        }
     });
+
     return GameModel;
 });
