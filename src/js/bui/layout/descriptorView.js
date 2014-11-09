@@ -2,7 +2,7 @@
  * Created by user on 2014-11-03.
  */
 define(['backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPanelView'], function (Backbone, TargetPanelView, StatusPanelView) {
-    var DescripterView = Backbone.View.extend({
+    var DescriptorView = Backbone.View.extend({
         className : "bp_descriptor",
         initialize : function () {
             this.targetPanelView = TargetPanelView.create(this.model);
@@ -13,10 +13,10 @@ define(['backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPane
         }
     });
 
-    DescripterView.create = function (model) {
-        return new DescripterView({
+    DescriptorView.create = function (model) {
+        return new DescriptorView({
             model : model
         });
     };
-    return DescripterView;
+    return DescriptorView;
 });

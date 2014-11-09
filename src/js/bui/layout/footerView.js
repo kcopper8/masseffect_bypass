@@ -7,18 +7,23 @@ define(['jquery', 'backbone', 'text!bui/layout/footerViewTemplate.html'], functi
         events : {
             'click .bp_exit BUTTON' : function (e) {
                 e.preventDefault();
-                this.trigger("exit");
+                this.model.trigger("exit");
             }
         },
         className : "bp_footer",
 
         initialize : function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template());
+            this.$remainCodeCounter = this.$(".bp_remaining_attempts .bp_number");
             this.listenTo(this.model, 'change', this.render);
             this.render();
         },
         render : function () {
-            //this.$remainCodeCounter.html(this.model.getRemainCodeCount());
+            this.setAttmeptCount(this.model.getAttemptCount());
+        },
+        setAttmeptCount : function (nCount) {
+            this.$remainCodeCounter.html(nCount);
+            this.$remainCodeCounter.attr("class", "bp_number bp_" + nCount);
         }
     });
 

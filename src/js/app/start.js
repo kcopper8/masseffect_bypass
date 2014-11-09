@@ -4,37 +4,35 @@
 define([
     'jquery',
     'bui/layout/viewContainer',
-    'model/GameModel',
-    'model/sliderRow'
+    'model/GameStageModel',
+    'model/sliderRow',
+    'model/code',
+    'constant/Stage'
 ], function (
     $,
     ViewContainer,
-    GameModel,
-    SliderRow
+    GameStageModel,
+    SliderRow,
+    Code,
+    Stage
 ) {
 
     var StartController = function () {
-        this.sliderRow = new SliderRow();
-        this.gameModel = new GameModel();
-        this.viewContainer = new ViewContainer(".bp_container", this.sliderRow, this.gameModel);
+        var sliderRow = new SliderRow();
+        var gameStageModel = new GameStageModel();
+        var viewContainer = new ViewContainer(".bp_container", sliderRow, gameStageModel);
 
         this.startStage = function () {
-            this.gameModel.set('stage', 'start');
+            gameStageModel.setStage(Stage.START);
+            gameStageModel.setCurrentTargetCode(Code.getRandom());
+            gameStageModel.on("startGame", function () {
+                alert('startGame');
+            });
+
+            gameStageModel.on("exit", function () {
+                alert('exit');
+            });
         };
-
-        this.gameStage = function () {
-
-        };
-
-        this.hackCompletedStage = function () {
-
-        };
-
-
-        this.accessDeniedStage = function () {
-
-        };
-
     };
 
     new StartController().startStage();

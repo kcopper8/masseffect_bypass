@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html'], function (Backbone, $, targetPanelViewTemplate) {
+define(['backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html', 'model/GameStageModel'], function (Backbone, $, targetPanelViewTemplate) {
     var TargetPanelView = Backbone.View.extend({
         className : "bp_target_panel",
         initialize : function () {
@@ -14,7 +14,7 @@ define(['backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html'
         render : function () {
             this.$el.toggleClass("bp_completed", !!this.model.get("completed"));
             this.$el.toggleClass('bp_access_denied', !!this.model.get("accessDenied"));
-            this.$codeSegmentImageTag.prop("src", this.model.get("path"));
+            this.$codeSegmentImageTag.prop("src", this.model.getCurrentTargetCodePath());
         }
     });
 
