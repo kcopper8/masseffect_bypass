@@ -5,5 +5,6 @@ define([], {
     'START' : 'start',
     'GAME' : 'game',
     'SUCCESS' : 'success',
+    'FIREWALL_REMOVED' : 'firewall_removed',
     'ACCESS_DENIED' : 'access_denied'
 });

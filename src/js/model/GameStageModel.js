@@ -50,12 +50,12 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
                 code : code
             }));
 
-            if (this.isSuccessed()) {
+            if (this._isSuccessed()) {
                 this.trigger("hackingSuccessed", this);
             }
         },
 
-        isSuccessed : function () {
+        _isSuccessed : function () {
             return this.hackedCodes.length >= 3;
         },
 
@@ -75,6 +75,18 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
                     return code.getPath();
                 }
             }
+        },
+
+        isHackingSuccessed : function () {
+            return this.get('stage') == Stage.SUCCESS;
+        },
+
+        isFirewallRemoved : function () {
+            return this.get('stage') == Stage.FIREWALL_REMOVED;
+        },
+
+        isAccessDenied : function () {
+            return this.get('stage') == Stage.ACCESS_DENIED;
         }
     });
 

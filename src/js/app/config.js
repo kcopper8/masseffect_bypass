@@ -9,5 +9,6 @@ define([], {
     "CardDistrictedRatio" : 15,
     "RowsCountInSlide" : 5,
     "GameTimeSeconds" : 60,
-    "DefaultPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/'
+    "DefaultPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',
+    "WaitSecondAfterCompleted" : 2
 });

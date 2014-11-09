@@ -7,13 +7,27 @@ define(['backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html'
         initialize : function () {
             this.$el.html(targetPanelViewTemplate);
             this.listenTo(this.model, "change", this.render);
+            this.listenTo(this.model, "change:stage", this.onChangeStage);
             this.$codeSegmentImageTag = this.$el.find(".bp_segment IMG");
             this.render();
         },
 
+        onChangeStage : function () {
+            if (this.model.isFirewallRemoved()) {
+                this.showFirewallRemoved();
+            } else if (this.model.isAccessDenied()) {
+                this.showAccessDeniedStage();
+            }
+        },
+        showFirewallRemoved : function () {
+            this.$el.toggleClass("bp_completed", true);
+        },
+
+        showAccessDeniedStage : function () {
+            this.$el.toggleClass('bp_access_denied', true);
+        },
+
         render : function () {
-            this.$el.toggleClass("bp_completed", !!this.model.get("completed"));
-            this.$el.toggleClass('bp_access_denied', !!this.model.get("accessDenied"));
             this.$codeSegmentImageTag.prop("src", this.model.getCurrentTargetCodePath());
         }
     });

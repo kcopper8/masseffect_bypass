@@ -3,6 +3,7 @@
  */
 define([
     'jquery',
+    'underscore',
     'app/config',
     'bui/layout/viewContainer',
     'model/GameStageModel',
@@ -10,9 +11,11 @@ define([
     'model/code',
     'constant/Stage',
     'controller/gameHelper',
-    'controller/gameStageController'
+    'controller/gameStageController',
+    'controller/prizeController'
 ], function (
     $,
+    _,
     Config,
     ViewContainer,
     GameStageModel,
@@ -20,12 +23,13 @@ define([
     Code,
     Stage,
     gameHelper,
-    gameStageController
+    gameStageController,
+    prizeController
 ) {
 
     var StartController = function () {
         var sliderRow = new SliderRow();
-        var gameStageModel = new GameStageModel();
+        var gameStageModel = window.model = new GameStageModel();
         var viewContainer = new ViewContainer(".bp_container", sliderRow, gameStageModel);
 
         this.startStage = function () {
@@ -51,14 +55,25 @@ define([
         };
 
         this.successStage = function () {
-            alert('successed');
             gameStageModel.setStage(Stage.SUCCESS);
+
+            gameStageModel.once("firewallRemoved", function () {
+                this.firewallRemovedStage();
+            }, this);
+        };
+
+        this.firewallRemovedStage = function () {
+            gameStageModel.setStage(Stage.FIREWALL_REMOVED);
+            _.delay(function () {
+                prizeController.moveToSuccessTarget();
+            }, Config.WaitSecondAfterCompleted * 1000);
         };
 
         this.accessDeniedStage = function () {
-            alert('accessDenied');
             gameStageModel.setStage(Stage.ACCESS_DENIED);
-
+            _.delay(function () {
+                prizeController.moveToFailedTarget();
+            }, Config.WaitSecondAfterCompleted * 1000);
         };
     };
 

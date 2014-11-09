@@ -14,6 +14,7 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
             this.$foundCodeViews = this.$el.find(".bp_found_codes .img_container");
             this.$foundCodeViewCovers = this.$el.find(".bp_found_codes .bp_cover");
             this.listenTo(this.model, "change", this.render);
+            this.listenTo(this.model, "change:stage", this.onStageChange);
             this.render();
         },
 
@@ -22,6 +23,12 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
                 this.$foundCodeViews[idx].innerHTML = "<IMG src='" + path + "'>";
             } else {
                 this.$foundCodeViews[idx].innerHTML = '';
+            }
+        },
+
+        onStageChange : function () {
+            if (this.model.isHackingSuccessed()) {
+                this.hackingSuccessed();
             }
         },
 
@@ -38,13 +45,16 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         },
 
         hackingSuccessed : function () {
-            this._setCodeAccepted(0);
+            var codeAccepted = _.bind(function (idx) {
+                $(this.$foundCodeViewCovers[idx]).addClass('bp_accepted');
+            }, this);
+            codeAccepted(0);
 
-            var thisSetCodeAccepted = _.bind(this._setCodeAccepted, this);
-            _.delay(thisSetCodeAccepted, 500, 1);
-            _.delay(thisSetCodeAccepted, 1000, 2);
+            _.delay(codeAccepted, 500, 1);
+            _.delay(codeAccepted, 1000, 2);
             _.delay(_.bind(function () {
-                this.trigger("codeCompiled")
+                this.$el.addClass("bp_completed");
+                this.model.trigger("firewallRemoved");
             }, this), 1500);
         },
 
