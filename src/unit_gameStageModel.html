@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit Example</title>
+    <link rel="stylesheet" href="//code.jquery.com/qunit/qunit-1.15.0.css">
+    <script type="text/javascript" src="js/lib/require.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script>
+    require(["//code.jquery.com/qunit/qunit-1.15.0.js",
+        "model/GameStageModel",
+            "model/code"
+    ], function (q, GameStageModel, Code) {
+        QUnit.test('파라메터 추가 테스트', function (assert) {
+            var model = new GameStageModel();
+
+            var onChangeCalled = false;
+            model.on("change", function () {
+                console.log("change1", arguments);
+                onChangeCalled = true;
+            });
+
+            model.addHackedCode(Code.getRandom());
+
+            assert.ok(onChangeCalled, "addHacked 했을 때 change 이벤트 발생함.");
+        });
+        QUnit.test('파라메터 제거 테스트', function (assert) {
+            var model = new GameStageModel();
+
+            var onChangeCalled = false;
+            model.on("change", function () {
+                console.log("change1", arguments);
+                onChangeCalled = true;
+            });
+
+            model.addHackedCode(Code.getRandom());
+
+            onChangeCalled = false;
+
+            model.removeHackedCode();
+            assert.ok(onChangeCalled, "removeHackedCode 했을 때 change 이벤트 발생함.");
+        });
+
+        QUnit.test('accessDenied  테스트', function (assert) {
+            var model = new GameStageModel();
+
+            var onChangeCalled = false;
+            model.on("accessDenied", function () {
+                console.log("change1", arguments);
+                onChangeCalled = true;
+            });
+
+            model.removeHackedCode();
+
+            assert.ok(onChangeCalled, "removeHackedCode 했을 때 accessDenied 발생함");
+
+        });
+        QUnit.test('hackingSuccessed  테스트', function (assert) {
+            var model = new GameStageModel();
+
+            var onChangeCalled = false;
+            model.on("hackingSuccessed", function () {
+                console.log("change1", arguments);
+                onChangeCalled = true;
+            });
+
+            model.addHackedCode(Code.getRandom());
+            model.addHackedCode(Code.getRandom());
+
+            assert.ok(!onChangeCalled, "코드가 2개만 추가되었을 때는 이벤트 발생하지 않아야 하는 타이밍.");
+
+            model.addHackedCode(Code.getRandom());
+
+            assert.ok(onChangeCalled, "코드 3개 추가되었을 때 hackingSuccessed 이벤트 발생.");
+
+        });
+
+            QUnit.load();
+    });
+</script>
+</body>
+</html>

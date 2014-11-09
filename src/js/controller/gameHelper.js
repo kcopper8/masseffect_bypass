@@ -3,9 +3,10 @@
  */
 define(['app/config', 'model/code', 'model/cardModel', 'tool'], function (Config, Code, CardModel, tool) {
     var gameHelper = function () {
-        this.createRandomCard = function () {
-            var card = CardModel.build(Code.getRandom());
-            if (tool.randomBoolean(Config.CardDistrictedRatio)) {
+        this.createRandomCard = function (noDistrict) {
+            var card = CardModel.build(Code.getRandom()),
+                canDistrict = !noDistrict;
+            if (tool.randomBoolean(Config.CardDistrictedRatio) && canDistrict) {
                 card.setDistricted();
             }
             return card;

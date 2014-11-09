@@ -27,10 +27,10 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
 
         render : function () {
             this.$el.toggleClass("bp_start_stage", this.model.get('stage') == 'start');
-            this.$el.toggleClass("bp_completed", !!this.model.get("completed"));
-            this._setCodePath(this.model.get("path0"), 0);
-            this._setCodePath(this.model.get("path1"), 1);
-            this._setCodePath(this.model.get("path2"), 2);
+
+            this._setCodePath(this.model.getHackedCodePath(0), 0);
+            this._setCodePath(this.model.getHackedCodePath(1), 1);
+            this._setCodePath(this.model.getHackedCodePath(2), 2);
         },
 
         _setCodeAccepted : function (idx) {
@@ -48,7 +48,7 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
             }, this), 1500);
         },
 
-        onClickStartHack : function (e) {
+        onClickStartHack : function () {
            this.model.trigger("startGame");
         }
     });

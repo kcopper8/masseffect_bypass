@@ -35,6 +35,7 @@ define([
         onChangeStage : function () {
             if (this.model.get('stage') == Stage.GAME) {
                 this.setCursorToSomePoint();
+                this.slideUp();
             }
         },
         onAdd : function (model /* , collection, option */) {
@@ -70,7 +71,7 @@ define([
         },
 
 
-        slideUp : function (callback) {
+        slideUp : function () {
             var fnOnSlideComplete = _.bind(function () {
                 this.overflowdCardRow++;
 
@@ -87,9 +88,9 @@ define([
                     this.moveCursor(1, 0);
                 }
 
-                if (!!callback && callback()) {
-                    this.slideUp(callback);
-                }
+                this.trigger("sliding");
+                this.slideUp();
+
             }, this);
 
             var fnOnSlideProgress = _.bind(function (/* Promise */ animation, /* Number */ progress, /* Number */ remainingMs) {
@@ -156,6 +157,7 @@ define([
                 }
                 e.preventDefault();
                 e.stopPropagation();
+
 
                 if (this.model.isGameStopped()) {
                     return;

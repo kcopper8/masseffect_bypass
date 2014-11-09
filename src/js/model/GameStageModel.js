@@ -1,11 +1,22 @@
 /**
  * Created by user on 2014-11-09.
  */
-define(['backbone', 'model/code'], function (Backbone, Code) {
+define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, Stage) {
     var GameStageModel = Backbone.Model.extend({
         defaults : {
             'remain_time' : 100,
             'attempt_count' : 3
+        },
+        initialize : function () {
+            this.hackedCodes = new Backbone.Collection();
+            this.listenTo(this.hackedCodes, "add remove", function () {
+                this.trigger("change:hackedCodes", this);
+                this.trigger("change", this);
+            });
+
+            this.on("exit", function () {
+                this.trigger("accessDenied", this);
+            }, this);
         },
 
         getAttemptCount : function () {
@@ -16,8 +27,12 @@ define(['backbone', 'model/code'], function (Backbone, Code) {
             this.set('current_target_code', currentTargetCode);
         },
 
+        getCurrentTargetCode : function () {
+            return this.get('current_target_code');
+        },
+
         getCurrentTargetCodePath : function () {
-            var code = this.get('current_target_code');
+            var code = this.getCurrentTargetCode();
             if (!!code && code instanceof Code) {
                 return code.getPath();
             }
@@ -25,6 +40,41 @@ define(['backbone', 'model/code'], function (Backbone, Code) {
 
         setStage : function (stage) {
             this.set('stage', stage);
+        },
+        
+        isGameStopped : function () {
+            return this.get('stage') != Stage.GAME;
+        },
+        addHackedCode : function (code) {
+            this.hackedCodes.add(new Backbone.Model({
+                code : code
+            }));
+
+            if (this.isSuccessed()) {
+                this.trigger("hackingSuccessed", this);
+            }
+        },
+
+        isSuccessed : function () {
+            return this.hackedCodes.length >= 3;
+        },
+
+        removeHackedCode : function () {
+            if (this.hackedCodes.length > 0) {
+                this.hackedCodes.pop();
+            } else {
+                this.trigger("accessDenied", this);
+            }
+        },
+
+        getHackedCodePath : function(n) {
+            var model = this.hackedCodes.at(n);
+            if (!!model) {
+                var code = model.get('code');
+                if (!!code) {
+                    return code.getPath();
+                }
+            }
         }
     });
 

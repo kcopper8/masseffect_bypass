@@ -3,5 +3,7 @@
  */
 define([], {
     'START' : 'start',
-    'GAME' : 'game'
+    'GAME' : 'game',
+    'SUCCESS' : 'success',
+    'ACCESS_DENIED' : 'access_denied'
 });

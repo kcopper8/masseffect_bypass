@@ -9,7 +9,8 @@ define([
     'model/sliderRow',
     'model/code',
     'constant/Stage',
-    'controller/gameHelper'
+    'controller/gameHelper',
+    'controller/gameStageController'
 ], function (
     $,
     Config,
@@ -18,7 +19,8 @@ define([
     SliderRow,
     Code,
     Stage,
-    gameHelper
+    gameHelper,
+    gameStageController
 ) {
 
     var StartController = function () {
@@ -33,19 +35,31 @@ define([
                 this.gameStage();
             }, this);
 
-            gameStageModel.once("exit", function () {
-                alert('exit');
+            gameStageModel.on("accessDenied", function () {
+                this.accessDeniedStage();
             }, this);
         };
         
         this.gameStage = function () {
-            _.times(Config.RowsCountInSlide + 1, function () {
-                gameHelper.addRandomCardRow(sliderRow);
-            });
+            gameStageController.prepareStage(viewContainer, gameStageModel, sliderRow);
 
-
+            gameStageModel.once('hackingSuccessed', function () {
+                this.successStage();
+            }, this);
+            
             gameStageModel.setStage(Stage.GAME);
-        }
+        };
+
+        this.successStage = function () {
+            alert('successed');
+            gameStageModel.setStage(Stage.SUCCESS);
+        };
+
+        this.accessDeniedStage = function () {
+            alert('accessDenied');
+            gameStageModel.setStage(Stage.ACCESS_DENIED);
+
+        };
     };
 
     new StartController().startStage();
