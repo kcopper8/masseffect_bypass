@@ -2,14 +2,15 @@
  * Created by user on 2014-11-04.
  */
 define([
-    '../../app/config',
+    'app/config',
     'jquery',
     'underscore',
     'backbone',
+    'constant/Stage',
     'bui/card',
     'bui/cursor',
     'controller/CardContainer',
-    'model/point'], function (Config, $, _, Backbone, Card, Cursor, CardContainer, Point) {
+    'model/point'], function (Config, $, _, Backbone, Stage, Card, Cursor, CardContainer, Point) {
     var SliderView = Backbone.View.extend({
         className : "bp_slider",
 
@@ -17,6 +18,7 @@ define([
             this.$el.html("<ul></ul>");
             this.$container = $("<UL>").appendTo(this.$el);
 
+            this.listenTo(this.model, "change:stage", this.onChangeStage);
             this.listenTo(this.collection, "add", this.onAdd);
             this.listenTo(this.collection, "reset", this.onReset);
 
@@ -29,6 +31,11 @@ define([
         },
         events : {
             "click .bp_cursor" : "onClickCursor"
+        },
+        onChangeStage : function () {
+            if (this.model.get('stage') == Stage.GAME) {
+                this.setCursorToSomePoint();
+            }
         },
         onAdd : function (model /* , collection, option */) {
             var $li = $("<LI>");

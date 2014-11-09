@@ -24,5 +24,11 @@ define(['underscore', 'backbone', 'model/cardModel'], function (_, Backbone, Car
             return this.get(AllCardPropertiesNames[index]);
         }
     });
+    CardSet.newWithCard = function (card1, card2, card3) {
+        return new CardSet(card1, card2, card3);
+    };
+    CardSet.newWithCode = function (code1, code2, code3) {
+        return new CardSet(code1, code2, code3);
+    };
     return CardSet;
 });

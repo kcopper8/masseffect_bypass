@@ -3,18 +3,22 @@
  */
 define([
     'jquery',
+    'app/config',
     'bui/layout/viewContainer',
     'model/GameStageModel',
     'model/sliderRow',
     'model/code',
-    'constant/Stage'
+    'constant/Stage',
+    'controller/gameHelper'
 ], function (
     $,
+    Config,
     ViewContainer,
     GameStageModel,
     SliderRow,
     Code,
-    Stage
+    Stage,
+    gameHelper
 ) {
 
     var StartController = function () {
@@ -25,14 +29,23 @@ define([
         this.startStage = function () {
             gameStageModel.setStage(Stage.START);
             gameStageModel.setCurrentTargetCode(Code.getRandom());
-            gameStageModel.on("startGame", function () {
-                alert('startGame');
+            gameStageModel.once("startGame", function () {
+                this.gameStage();
+            }, this);
+
+            gameStageModel.once("exit", function () {
+                alert('exit');
+            }, this);
+        };
+        
+        this.gameStage = function () {
+            _.times(Config.RowsCountInSlide + 1, function () {
+                gameHelper.addRandomCardRow(sliderRow);
             });
 
-            gameStageModel.on("exit", function () {
-                alert('exit');
-            });
-        };
+
+            gameStageModel.setStage(Stage.GAME);
+        }
     };
 
     new StartController().startStage();
