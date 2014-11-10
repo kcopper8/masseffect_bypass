@@ -77,6 +77,10 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
             }
         },
 
+        isStartStage : function () {
+            return this.get('stage') == Stage.START;
+        },
+
         isHackingSuccessed : function () {
             return this.get('stage') == Stage.SUCCESS;
         },

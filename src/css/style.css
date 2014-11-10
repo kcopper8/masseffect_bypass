@@ -11,7 +11,10 @@ BUTTON.bp_button {
     height: 30px;
     color: #B49969;
     font-weight: bold;
+    position: relative;
+    transition: all 0.3s linear;
 }
+
 BUTTON.bp_button:focus {
     outline: none;
 }
@@ -24,6 +27,11 @@ BUTTON.bp_button:hover {
 BUTTON.bp_button:active {
     background-image: url(../img/buttons/button_m_click.png);
     color: #FCFCFC;
+}
+
+BUTTON.bp_button.bp_glow_on {
+    filter : brightness(1.5);
+    -webkit-filter : brightness(1.5);
 }
 
 .bp_container {
@@ -112,6 +120,7 @@ BUTTON.bp_button:active {
     width: 240px;
     text-indent: -1400px;
     margin: 0;
+    transition: opacity 0.1s linear;
 }
 .bp_target_panel.bp_completed > h2.bp_target_code {
     display: none;

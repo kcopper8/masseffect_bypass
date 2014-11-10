@@ -27,8 +27,29 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         },
 
         onStageChange : function () {
+            if (this.model.isStartStage()) {
+                this._startGlowStartButton();
+            } else {
+                this._stopGlowStartButton();
+            }
+
             if (this.model.isHackingSuccessed()) {
                 this.hackingSuccessed();
+            }
+        },
+
+        _startGlowStartButton : function () {
+            if (!this._glowIntervalKey) {
+                this._glowIntervalKey = setInterval(_.bind(function () {
+                    this.$("BUTTON.bp_button").toggleClass("bp_glow_on");
+                }, this), 400);
+            }
+        },
+
+        _stopGlowStartButton : function () {
+            if (!!this._glowIntervalKey) {
+                clearInterval(this._glowIntervalKey);
+                delete this._glowIntervalKey;
             }
         },
 

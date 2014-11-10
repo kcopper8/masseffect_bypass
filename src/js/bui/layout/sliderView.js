@@ -15,7 +15,7 @@ define([
         className : "bp_slider",
 
         initialize : function () {
-            this.$el.html("<ul></ul>");
+            this.$el.html("");
             this.$container = $("<UL>").appendTo(this.$el);
 
             this.listenTo(this.model, "change:stage", this.onChangeStage);
