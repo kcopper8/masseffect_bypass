@@ -40,7 +40,10 @@ var hasCompare,
 
     ]]></text>
     <text x="175" y="11" class="white" ><![CDATA[
-	// If no document and docume
+	// If no docu
+     ]]></text>
+    <text x="218" y="11" class="brown" ><![CDATA[
+	ment and docume
      ]]></text>
     <text x="105" y="16" class="brown"><![CDATA[
 } else if {
@@ -48,7 +51,7 @@ var hasCompare,
     <text x="210" y="21" class="brown" ><![CDATA[
 shelcokg.fewjvj()
     ]]></text>
-    <text x="105" y="26" class="brown"><![CDATA[
+    <text x="113" y="26" class="brown"><![CDATA[
 ; gts
     ]]></text>
     <text x="210" y="31" class="brown"><![CDATA[
@@ -81,7 +84,7 @@ this.isinf.few
     <text x="35" y="76" class="brown"><![CDATA[
 /* parent.addEventListener( "unload", function() {
     ]]></text>
-    <text x="35" y="81" class="brown"><![CDATA[
+    <text x="37" y="81" class="brown"><![CDATA[
 } else if ( parent.attachEvent ) {parent.attachEvent(
     ]]></text>
 </svg>

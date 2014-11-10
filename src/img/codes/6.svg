@@ -30,25 +30,25 @@
     }
     /* ]]> */
     </style>
-    <text x="35" y="1" class="white"><![CDATA[
+    <text x="33" y="1" class="white"><![CDATA[
 /* Verify that getAttribute really returns attributes and not
     ]]></text>
     <text x="35" y="6" class="white"><![CDATA[
 *
     ]]></text>
-    <text x="35" y="11" class="brown" ><![CDATA[
-/* Check if getElementsByTagName("*") returns only elements
+    <text x="33" y="11" class="brown" ><![CDATA[
+/* _Check if getElementsByTagName("*") returns only elements
      ]]></text>
-    <text x="35" y="16" class="brown"><![CDATA[
+    <text x="37" y="16" class="brown"><![CDATA[
 div.appendChild( doc.createComment("") ); return !div.getElement
     ]]></text>
-    <text x="35" y="21" class="brown" ><![CDATA[
+    <text x="37" y="21" class="brown" ><![CDATA[
 return div.getElementsByClassName("i").length === 2; support
     ]]></text>
-    <text x="35" y="31" class="white"><![CDATA[
+    <text x="33" y="31" class="white"><![CDATA[
 return !doc.getElementsByName // || !doc.get
     ]]></text>
-    <text x="70" y="36" class="green"><![CDATA[
+    <text x="67" y="36" class="green"><![CDATA[
 f ( typeof context.getElementById !== strundefined
     ]]></text>
     <text x="70" y="41" class="green"><![CDATA[
@@ -57,11 +57,11 @@ var m = context.getElementById( id );
     <text x="105" y="46" class="brown"><![CDATA[
 return m && m.parentNode ? [ m ] : [];
     ]]></text>
-    <text x="70" y="51" class="white"><![CDATA[
-Expr.filter
+    <text x="85" y="51" class="white"><![CDATA[
+filter
     ]]></text>
     <text x="140" y="56" class="brown"><![CDATA[
-id.replace( runescape, funescape ); return
+// id.replace( runescape, funescape ); return
     ]]></text>
     <text x="140" y="61" class="brown"><![CDATA[
 		delete Expr.find["ID"]; Expr

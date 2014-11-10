@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <style>
+        /* <![CDATA[ */
+    text {
+        letter-spacing : 1px;
+        font-weight : bold;
+        font-size : 3pt;
+        font-family : Verdana;
+    }
+    text.green {
+        fill : #86AB3A;
+        stroke : #86AB3A;
+    }
+    text.white {
+        fill : #B0B0B0;
+        stroke : #B0B0B0;
+    }
+    text.brown {
+        fill : #9D5D39;
+         stroke : #9D5D39;
+    }
+    text.blue {
+        fill : #4786BC;
+        stroke : #4786BC;
+    }
+    text.purple {
+        fill : #5D349A;
+        stroke : #5D349A;
+    }
+    /* ]]> */
+    </style>
+    <text x="105" y="1" class="white"><![CDATA[
+Load a url into
+    ]]></text>
+    <text x="70" y="6" class="brown"><![CDATA[
+};
+    ]]></text>
+    <text x="35" y="11" class="brown" ><![CDATA[
+}
+     ]]></text>
+    <text x="37" y="31" class="blue"><![CDATA[
+/* if "type" variable is undefined, then "GET" method will
+    ]]></text>
+    <text x="37" y="36" class="blue"><![CDATA[
+Save response for use in complete callback response
+    ]]></text>
+    <text x="33" y="41" class="blue"><![CDATA[
+If a selector was specified, locate the right elements in a */
+    ]]></text>
+    <text x="35" y="51" class="brown"><![CDATA[
+jQuery("<div>").append(jQu ||
+    ]]></text>
+    <text x="137" y="51" class="white"><![CDATA[
+// jsauery.parseHTML( resp
+    ]]></text>
+    <text x="65" y="56" class="brown"><![CDATA[
+complete( callback && function( jqXHR, status ) { handler
+    ]]></text>
+    <text x="70" y="61" class="brown"><![CDATA[
+self.each( callback, response || [ jqXHR |
+    ]]></text>
+    <text x="108" y="66" class="brown"><![CDATA[
+responseText, status, jqXHR ] );
+		});
+	}
+    ]]></text>
+    <text x="105" y="71" class="white"><![CDATA[
+jQuery
+    ]]></text>
+    <text x="140" y="76" class="blue"><![CDATA[
+// jQuery.grep(jQuery.timers, function
+    ]]></text>
+</svg>

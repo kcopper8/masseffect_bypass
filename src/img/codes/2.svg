@@ -62,14 +62,16 @@ return
     return
     ]]></text>
     <text x="180" y="48" class="white"><![CDATA[
-	// function( elem ) {
-			var name =
+	// function(
+    ]]></text>
+    <text x="220" y="48" class="green"><![CDATA[
+	( elem ) { var name =
     ]]></text>
     <text x="180" y="53" class="brown"><![CDATA[
-elem.nodeName.toLowerCase();
+elem.nodeName.toLower
     ]]></text>
     <text x="180" y="58" fill="#9D5D39" stroke="#9D5D39"><![CDATA[
-		return name === "input" &&
+		return name === "input" && Case(); and ||
     ]]></text>
     <text x="210" y="63" class="blue"><![CDATA[
 elem.type === type;

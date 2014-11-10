@@ -31,49 +31,58 @@
 
     /* ]]> */
     </style>
-    <text x="175" y="3" class="white"><![CDATA[
+    <text x="175" y="1" class="white"><![CDATA[
+return
+    ]]></text>
+    <text x="198" y="1" class="brown"><![CDATA[
 return context && typeof context.get
     ]]></text>
-    <text x="210" y="8" class="brown"><![CDATA[
+    <text x="210" y="6" class="brown"><![CDATA[
 // Expose support vars for
     ]]></text>
-    <text x="35" y="13" class="brown" ><![CDATA[
+    <text x="35" y="11" class="brown" ><![CDATA[
 support
      ]]></text>
-    <text x="245" y="18" class="white"><![CDATA[
-Sizzle.support = {};
+    <text x="245" y="16" class="white"><![CDATA[
+Sizzle
     ]]></text>
-    <text x="210" y="23" class="brown" ><![CDATA[
+    <text x="265" y="16" class="brown"><![CDATA[
+support = {};
+    ]]></text>
+    <text x="210" y="21" class="brown" ><![CDATA[
 }
     ]]></text>
-    <text x="175" y="28" class="brown"><![CDATA[
+    <text x="175" y="26" class="brown"><![CDATA[
 }
     ]]></text>
-    <text x="140" y="33" class="brown"><![CDATA[
+    <text x="140" y="31" class="brown"><![CDATA[
 }
     ]]></text>
-    <text x="105" y="38" class="brown"><![CDATA[
+    <text x="105" y="36" class="brown"><![CDATA[
 }
     ]]></text>
-    <text x="105" y="43" class="white"><![CDATA[
+    <text x="105" y="41" class="white"><![CDATA[
 Detects nodes
     ]]></text>
-    <text x="70" y="48" class="brown"><![CDATA[
+    <text x="70" y="46" class="brown"><![CDATA[
 }
     ]]></text>
-    <text x="35" y="53" class="purple"><![CDATA[
-* @param {Element|Object} elem An element or a document
+    <text x="35" y="51" class="purple"><![CDATA[
+// @param {Element|Object} elem An element or a document
     ]]></text>
-    <text x="35" y="58" class="purple"><![CDATA[
+    <text x="37" y="56" class="purple"><![CDATA[
 * @returns {Boolean} True iff elem is a non-HTML XML node
     ]]></text>
-    <text x="35" y="63" class="purple"><![CDATA[
+    <text x="37" y="61" class="purple"><![CDATA[
 * Sets document-related variables once based on the
     ]]></text>
-    <text x="35" y="73" class="brown"><![CDATA[
+    <text x="35" y="71" class="brown"><![CDATA[
 setDocument = Sizzle.setDocument
     ]]></text>
-    <text x="35" y="78" class="brown"><![CDATA[
+    <text x="37" y="76" class="brown"><![CDATA[
  = function( node ) {
+    ]]></text>
+    <text x="37" y="81" class="brown"><![CDATA[
+ fragment = this.fragment = this.getFragment(fragment);
     ]]></text>
 </svg>

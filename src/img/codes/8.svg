@@ -36,46 +36,50 @@
     <text x="175" y="6" class="white"><![CDATA[
 / The type and
     ]]></text>
-    <text x="140" y="11" class="white" ><![CDATA[
+    <text x="135" y="11" class="white" ><![CDATA[
 var input =
      ]]></text>
-    <text x="105" y="16" class="green"><![CDATA[
-
+    <text x="175" y="16" class="green"><![CDATA[
+// if ( !div.querySelectorAll(":enabled")
     ]]></text>
-    <text x="105" y="21" class="white" ><![CDATA[
-
+    <text x="175" y="21" class="green" ><![CDATA[
+rbuggyQSA.push( ":enabled", ":disabled" );
     ]]></text>
-    <text x="140" y="26" class="green"><![CDATA[
-
+    <text x="210" y="26" class="purple"><![CDATA[
+div.querySelectorAll("*,:x");
     ]]></text>
-    <text x="140" y="31" class="green"><![CDATA[
-
+    <text x="175" y="31" class="purple"><![CDATA[
+if ( (support.matchesSelector = rnative.
     ]]></text>
-    <text x="170" y="36" class="green"><![CDATA[
-
+    <text x="35" y="36" class="white"><![CDATA[
+}
     ]]></text>
-    <text x="150" y="41" class="white"><![CDATA[
-
+    <text x="175" y="41" class="white"><![CDATA[
+}
     ]]></text>
-    <text x="180" y="46" class="white"><![CDATA[
-
+    <text x="140" y="46" class="white"><![CDATA[
+}
     ]]></text>
-    <text x="180" y="51" class="brown"><![CDATA[
-
+    <text x="105" y="51" class="white"><![CDATA[
+}
     ]]></text>
-    <text x="180" y="56" class="brown"><![CDATA[
-
+    <text x="105" y="56" class="white"><![CDATA[
+	docElem.webkit
     ]]></text>
-    <text x="210" y="61" class="blue"><![CDATA[
-
+    <text x="70" y="61" class="blue"><![CDATA[
+}
     ]]></text>
-    <text x="210" y="66" class="brown"><![CDATA[
-
+    <text x="33" y="66" class="green"><![CDATA[
+/* support.disconnectedMatch = matches.call( div,
     ]]></text>
-    <text x="180" y="71" class="brown"><![CDATA[
-
+    <text x="195" y="66" class="white"><![CDATA[
+/.any (this.el
     ]]></text>
-    <text x="150" y="76" class="brown"><![CDATA[
-
+    <text x="37" y="71" class="green"><![CDATA[
+matches.call( div, "[s!='']:x" );
+rbuggyMatches.push( "!="
+    ]]></text>
+    <text x="37" y="76" class="green"><![CDATA[
+, pseudos ); rbuggyQSA = rbuggyQSA.length && new
     ]]></text>
 </svg>

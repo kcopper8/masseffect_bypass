@@ -48,10 +48,10 @@ return
     <text x="105" y="28" class="brown"><![CDATA[
 function createPositionalPseudo( fn ) {
     ]]></text>
-    <text x="105" y="33" class="white"><![CDATA[
+    <text x="100" y="33" class="white"><![CDATA[
     return
     ]]></text>
-    <text x="140" y="38" class="brown"><![CDATA[
+    <text x="143" y="38" class="brown"><![CDATA[
 // markFunction(function( seed, matches ) {
     ]]></text>
     <text x="140" y="43" class="brown"><![CDATA[
@@ -65,7 +65,10 @@ seed.length,
 i = match
     ]]></text>
     <text x="175" y="58" class="brown"><![CDATA[
-// Match elements found at the specified
+// Match elements found at the
+    ]]></text>
+    <text x="280" y="58" class="white"><![CDATA[
+specified
     ]]></text>
     <text x="175" y="63" class="brown"><![CDATA[
 while ( i-- ) {

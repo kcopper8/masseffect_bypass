@@ -10,7 +10,7 @@ define(['app/config', 'underscore'], function (Config, _) {
         this.number = number;
 
         this.getPath = function() {
-            return Config.CodePathPrefix + this.number + ".png";
+            return Config.CodePathPrefix + this.number + ".svg";
         };
     };
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/lib/require.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+</head>
+<body>
+<ul></ul>
+
+<script type="text/x-template" id="TEMPLATE">
+    <LI>
+        <div class="bp_card_outline">
+    <div class="bp_card"><img src="img/codes/<%-no%>.png"></div>
+        </div>
+        <div class="bp_card_outline">
+    <div class="bp_card"><img src="img/codes/<%-no%>.svg"></div>
+        </div>
+        <div class="bp_card_outline">
+            <div class="bp_card"><img src="img/codes2/<%-no%>.png"></div>
+        </div>
+    </LI>
+</script>
+<script>
+    require(['jquery', 'underscore'], function ($, _) {
+        var tpl = _.template($("#TEMPLATE").html());
+
+        _.each(_.range(1, 12),  function (n) {
+            $("BODY UL").append(tpl({
+                no : n
+            }));
+        });
+    });
+</script>
+
+</body>
+</html>
