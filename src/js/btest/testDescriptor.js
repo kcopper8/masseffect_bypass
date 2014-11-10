@@ -1,8 +1,8 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['bui/layout/descriptorView', 'model/GameStatusModel', 'test/TestTool', 'model/code'], function (DescripterView, GameStatusModel, TestTool, Code) {
-    var model = new GameStatusModel();
+define(['bui/layout/descriptorView', 'model/GameStageModel', 'test/TestTool', 'model/code'], function (DescripterView, GameStageModel, TestTool, Code) {
+    var model = new GameStageModel();
     var view = DescripterView.create(model);
     $(".bp_container").html("").append(view.el);
 
@@ -56,5 +56,5 @@ define(['bui/layout/descriptorView', 'model/GameStatusModel', 'test/TestTool', '
             model.set("path2", Code.getRandom().getPath());
         });
     return {};
-    return {};
+
 });

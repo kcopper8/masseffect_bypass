@@ -51,7 +51,6 @@ BUTTON.bp_button:active {
 .bp_progress {
     margin: 0;
     padding: 0;
-    background-color: black;
 }
 .bp_progress li {
     display: inline-block;
@@ -64,6 +63,26 @@ BUTTON.bp_button:active {
     background-color: #68744A;
     margin: 0 2px;
 
+}
+
+.bp_progress.bp_full_state li {
+    border-color: #B9EC8A;
+    background-color: #618956;
+}
+
+.bp_progress.bp_stable_state li {
+    border-color: #D8DD82;
+    background-color: #68744A;
+}
+
+.bp_progress.bp_warn_state li {
+    border-color: #F3A967;
+    background-color: #9B6845;
+}
+
+.bp_progress.bp_critical_state li {
+    border-color: #DC3B3A;
+    background-color: #892B26;
 }
 
 

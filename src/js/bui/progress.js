@@ -24,9 +24,25 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
             return this.$el.children().length;
         },
 
+        _setState : function (state) {
+            this.$el
+                .attr('class', this.className)
+                .addClass('bp_' + state + "_state");
+        },
+
         _set : function (stat) {
             var max = this._max(),
                 nOnItemAmount = Math.max(Math.ceil(stat * max / 100), 0);
+
+            if  (stat >= 100) {
+                this._setState('full');
+            } else if (stat > 40) {
+                this._setState('stable');
+            } else if (stat > 15) {
+                this._setState('warn');
+            } else {
+                this._setState('critical');
+            }
 
             $.each(this.$el.children(), function(index) {
                 if (index < nOnItemAmount) {
@@ -38,7 +54,8 @@ define(['jquery', 'underscore', 'backbone'], function ($, _, Backbone) {
         },
 
         render : function () {
-            this._set(this.model.get("remain_time"));
+            var remain_time = this.model.get("remain_time");
+            this._set(remain_time);
         }
     });
 

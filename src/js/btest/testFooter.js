@@ -1,9 +1,9 @@
 /**
  * Created by user on 2014-11-02.
  */
-define(['bui/layout/footerView', 'backbone', 'test/TestTool','model/GameStatusModel', 'model/code'], function (FooterView, Backbone, TestTool, GameStatusModel, Code) {
+define(['bui/layout/footerView', 'backbone', 'test/TestTool','model/GameStageModel', 'model/code'], function (FooterView, Backbone, TestTool, GameStageModel, Code) {
 
-    var model = new GameStatusModel();
+    var model = new GameStageModel();
     var footer = FooterView.create(model);
     $(".bp_container").html("").append(footer.$el);
 
@@ -13,8 +13,8 @@ define(['bui/layout/footerView', 'backbone', 'test/TestTool','model/GameStatusMo
     });
     
     TestTool.test(function () {
-       model.addHacked(Code.getRandom());
-    });
+        model.decreaseAttempt();
+        });
 
     return {};
 });

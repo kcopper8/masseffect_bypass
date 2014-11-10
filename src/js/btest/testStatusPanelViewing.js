@@ -1,8 +1,8 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'bui/layout/descriptorView', 'backbone', 'test/TestTool', 'model/code'], function ($, DescriptorView, Backbone, TestTool, Code) {
-    var model = new Backbone.Model();
+define(['jquery', 'bui/layout/descriptorView', 'backbone', 'test/TestTool', 'model/code', 'model/GameStageModel'], function ($, DescriptorView, Backbone, TestTool, Code, GameStageModel) {
+    var model = new GameStageModel();
 
     var descriptor = DescriptorView.create(model);
     $(".bp_container").append(descriptor.$el);
