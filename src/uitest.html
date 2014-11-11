@@ -13,10 +13,6 @@
 <script type="text/javascript" src="js/lib/require.js"></script>
 <script type="text/javascript" src="js/config.js"></script>
 <script type="text/javascript">
-    if (location.search.indexOf("uitest") >= 0) {
-        require([location.search.substr(location.search.indexOf('=') + 1)]);
-    }
-
     var testFiles = ["testCard",
         "testCursor",
         "testStartStage",
@@ -26,8 +22,14 @@
         "testSlider",
         "testStatusPanel",
         "testStatusPanelViewing",
-        "testTargetPanel"];
-    require(['jquery', 'underscore'], function ($, _) {
+        "testTargetPanel"
+    ];
+    var requireLibs = ['jquery', 'underscore', 'jquery-ui'];
+    if (location.search.indexOf("uitest") >= 0) {
+        requireLibs.push(location.search.substr(location.search.indexOf('=') + 1));
+    }
+
+    require(requireLibs, function ($, _) {
         _.each(testFiles, function (fileName) {
             var $link = $("<A>").attr({
                 "href" : "uitest.html?uitest=btest/" + fileName

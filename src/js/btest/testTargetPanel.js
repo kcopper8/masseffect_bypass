@@ -9,6 +9,7 @@ define(['bui/layout/descriptorView', 'backbone', 'model/code', 'test/TestTool', 
     var panel = window.panel = descriptor.targetPanelView;
 
 
+    window.testToolInterval = 2000;
     TestTool.test(function () {
         model.setCurrentTargetCode(Code.getRandom());
     });

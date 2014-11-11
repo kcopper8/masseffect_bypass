@@ -3,6 +3,7 @@
  */
 define(function () {
     window.stopTest = false;
+    window.testToolInterval = window.testToolInterval || 1000;
     return {
         test : function test() {
             var suiteCount = arguments.length;
@@ -15,7 +16,7 @@ define(function () {
                     return;
                 }
                 suite[(thisCount++) % suiteCount].call();
-            }, 1000);
+            }, window.testToolInterval);
         }
     };
 });

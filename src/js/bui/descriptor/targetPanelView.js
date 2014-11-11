@@ -8,6 +8,8 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
             this.$el.html(targetPanelViewTemplate);
             this.listenTo(this.model, "change", this.render);
             this.listenTo(this.model, "change:stage", this.onChangeStage);
+            this.listenTo(this.model, "change:current_target_code",
+                _.throttle(_.bind(this.glowTitle, this), 1200));
             this.$codeSegmentImageTag = this.$el.find(".bp_segment IMG");
             this.render();
         },
@@ -30,12 +32,12 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
         glowTitle : function () {
             var el = this.$(".bp_target_code");
 
-            for(var i = 0; i < 9; i++) {
-                _.delay(function () {
-                    var sopacity = el.css('opacity');
-                    el.css('opacity', sopacity == '1' ? '0' : '1');
-                }, i * 110);
-            }
+            el
+                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
+                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
+                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
+                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100);
+
         },
         render : function () {
             this.$codeSegmentImageTag.prop("src", this.model.getCurrentTargetCodePath());
