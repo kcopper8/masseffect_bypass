@@ -23,8 +23,25 @@ define([
                 .append(this.sliderView.$el)
                 .append(this.footerView.$el);
 
+            this._loading();
 
             this.listenTo(this.model, "decreaseAttempt", this.onDecreaseAttempt);
+        },
+
+        _loading : function () {
+            this.descriptorView.$el.css("opacity", "0");
+            this.$el.css("margin-top", "190px");
+            this.footerView.$el.css("margin-top", "-468px");
+
+
+            var animateOptions = {
+                duration : 1000,
+                easing : 'easeInOutCubic'
+            };
+
+            this.$el.animate({"margin-top": "20px"}, animateOptions);
+            this.descriptorView.$el.animate({"opacity": "1"}, animateOptions);
+            this.footerView.$el.animate({"margin-top" : "0"}, animateOptions);
         },
 
         onDecreaseAttempt : function () {
