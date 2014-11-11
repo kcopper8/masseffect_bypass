@@ -10,7 +10,8 @@ define([
     'bui/card',
     'bui/cursor',
     'controller/CardContainer',
-    'model/point'], function (Config, $, _, Backbone, Stage, Card, Cursor, CardContainer, Point) {
+    'model/point'
+], function (Config, $, _, Backbone, Stage, Card, Cursor, CardContainer, Point) {
     var SliderView = Backbone.View.extend({
         className : "bp_slider",
 
@@ -56,10 +57,18 @@ define([
         },
 
         onClickCursor : function () {
+            if (this.model.isGameStopped()) {
+                return;
+            }
+
             this.onSelected();
         },
 
         onClickCard : function (card) {
+            if (this.model.isGameStopped()) {
+                return;
+            }
+
             var fixs = this.cardContainer.findCardPositionAroundCursor(card);
             if (!!fixs) {
                 this.moveCursor(fixs[0], fixs[1]);

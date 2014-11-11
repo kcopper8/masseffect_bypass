@@ -94,6 +94,7 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
         },
 
         decreaseAttempt : function () {
+            this.trigger("decreaseAttempt");
             var attemptCount = this.get('attempt_count');
             if (attemptCount <= 0) {
                 this.trigger("accessDenied", this);

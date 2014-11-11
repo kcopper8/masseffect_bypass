@@ -15,18 +15,26 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
         },
 
         onChangeStage : function () {
-            if (this.model.isFirewallRemoved()) {
+            if (!this.model.isGameStopped()) {
+                this.showGameStage();
+            } else if (this.model.isFirewallRemoved()) {
                 this.showFirewallRemoved();
             } else if (this.model.isAccessDenied()) {
                 this.showAccessDeniedStage();
             }
         },
+        showGameStage : function () {
+            this.$el.removeClass("bp_completed");
+            this.$el.removeClass('bp_access_denied');
+        },
         showFirewallRemoved : function () {
             this.$el.toggleClass("bp_completed", true);
+            this.flickFirewallRemoved();
         },
 
         showAccessDeniedStage : function () {
             this.$el.toggleClass('bp_access_denied', true);
+            this.flickAccessDenied();
         },
 
         glowTitle : function () {
@@ -38,6 +46,22 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
                 .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
                 .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100);
 
+        },
+
+        flickFirewallRemoved : function () {
+            var el = this.$(".bp_firewall_removed");
+            el
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500);
+        },
+
+        flickAccessDenied : function () {
+            var el = this.$(".bp_access_denied");
+            el
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
+                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500);
         },
         render : function () {
             this.$codeSegmentImageTag.prop("src", this.model.getCurrentTargetCodePath());

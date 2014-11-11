@@ -10,14 +10,15 @@ define(['bui/layout/descriptorView', 'backbone', 'model/code', 'test/TestTool', 
 
 
 
-    window.testToolInterval = 2000;
+    window.testToolInterval = 3000;
     TestTool.test(function () {
-        model.setStage("game");
-        model.setCurrentTargetCode(Code.getRandom());
-    }, function () {
         model.setStage("firewall_removed");
-    }, function () {
-        model.setStage("access_denied");
+
+        setTimeout(function () {
+            model.setStage("game");
+            model.setCurrentTargetCode(Code.getRandom());
+        }, 2500);
+
     });
 
     return {};

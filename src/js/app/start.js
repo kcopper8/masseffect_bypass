@@ -30,7 +30,7 @@ define([
     var StartController = function () {
         var sliderRow = new SliderRow();
         var gameStageModel = window.model = new GameStageModel();
-        var viewContainer = new ViewContainer(".bp_container", sliderRow, gameStageModel);
+        var viewContainer = ViewContainer.build(".bp_container", sliderRow, gameStageModel);
 
         this.startStage = function () {
             gameStageModel.setStage(Stage.START);
