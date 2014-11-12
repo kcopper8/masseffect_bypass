@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-09.
  */
-define(['app/config', 'model/code', 'model/cardModel', 'tool'], function (Config, Code, CardModel, tool) {
+define(['underscore', 'app/config', 'model/code', 'model/cardModel', 'tool', 'constant/DistrictPatterns', 'model/cardSet'], function (_, Config, Code, CardModel, tool, DistrictPatterns, CardSet) {
     var gameHelper = function () {
         this.createRandomCard = function (noDistrict) {
             var card = CardModel.build(Code.getRandom()),
@@ -13,12 +13,9 @@ define(['app/config', 'model/code', 'model/cardModel', 'tool'], function (Config
         };
 
         this.addRandomCardRow = function (sliderRow) {
-            sliderRow.addCards(
-                this.createRandomCard(),
-                this.createRandomCard(),
-                this.createRandomCard()
-            );
-        }
+            var cardSet = CardSet.buildWithDistrictPattern(DistrictPatterns.pick());
+            sliderRow.add(cardSet);
+        };
     };
 
     return new gameHelper();

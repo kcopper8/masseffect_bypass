@@ -42,7 +42,6 @@ define(['underscore', 'backbone', 'app/config', 'model/code', 'controller/gameHe
                         gameHelper.createRandomCard(true),
                         gameHelper.createRandomCard()
                     );
-                    gameHelper.addRandomCardRow(sliderRow);
                 } else {
                     gameHelper.addRandomCardRow(sliderRow);
                 }
