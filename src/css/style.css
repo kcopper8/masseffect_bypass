@@ -268,7 +268,7 @@ BUTTON.bp_button.bp_glow_on {
     border-color: green;
     border-style: solid;
     border-width: 1px;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 
 .bp_status_panel .bp_found_codes > DIV IMG{
