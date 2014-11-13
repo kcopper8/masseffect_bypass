@@ -54,48 +54,9 @@
 <script>
 
 
-require(['underscore', 'jquery', 'backbone'], function (_, $, Backbone) {
-
-    var checkDirections = [
-        function (row, col) {
-            return [row + 1, col];
-        },
-        function (row, col) {
-            return [row, col+1];
-        },
-        function (row, col) {
-            return [row, col + 1];
-        }
-    ];
-
+require(['underscore', 'jquery', 'backbone', 'logic/PathFinder'], function (_, $, Backbone, PathFinder) {
     var check = function (data) {
-        function doCheck(row, col, direction) {
-            if (!data[row] || data[row][col] !== false) {
-                return false;
-            }
-
-            if (row >= (data.length - 1)) {
-                return true;
-            }
-
-            direction = direction || 0;
-            for(var i = 0; i < checkDirections.length; i++) {
-                if (i > 0 && i === direction) {
-                    continue;
-                }
-
-                var param = checkDirections[i](row, col);
-                if (doCheck(param[0], param[1], i)) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        return _.some(data[0], function (col, index) {
-            return doCheck(0, index, 0);
-        });
+        return PathFinder.noDeadEndStartingPoint(data);
     };
 
 
@@ -154,7 +115,7 @@ require(['underscore', 'jquery', 'backbone'], function (_, $, Backbone) {
         return new CaseView(arguments);
     };
 
-    $("BODY").append(CaseView.build(1,1,6).$el);
+    $("BODY").append(CaseView.build(6,1,4).$el);
 
 
 });

@@ -52,7 +52,7 @@
     </table>
 </script>
 <script>
-    require(['underscore', 'jquery', 'backbone'], function (_, $, Backbone) {
+    require(['underscore', 'jquery', 'backbone', 'logic/PathFinder'], function (_, $, Backbone, PathFinder) {
         var checkDirections = [
             function (row, col) {
                 return [row + 1, col];
@@ -131,9 +131,13 @@
                 this.$el.toggleClass("notgood");
             },
             __check : function (data) {
+                /*
                 return _.some(data[0], function (col, index) {
                     return doCheck(data, 0, index, 0);
                 });
+                */
+                return PathFinder.noDeadEndStartingPoint(data);
+                //return true;
             },
             checkCan : function () {
                 if (!this.__check(toCaseRows.apply(null, this.data))) {

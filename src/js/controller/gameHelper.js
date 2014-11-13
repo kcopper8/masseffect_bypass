@@ -3,17 +3,15 @@
  */
 define(['underscore', 'app/config', 'model/code', 'model/cardModel', 'tool', 'constant/DistrictPatterns', 'model/cardSet'], function (_, Config, Code, CardModel, tool, DistrictPatterns, CardSet) {
     var gameHelper = function () {
-        this.createRandomCard = function (noDistrict) {
-            var card = CardModel.build(Code.getRandom()),
-                canDistrict = !noDistrict;
-            if (tool.randomBoolean(Config.CardDistrictedRatio) && canDistrict) {
-                card.setDistricted();
-            }
-            return card;
+        this.addRandomCardRow = function (sliderRow) {
+            var districtPatterns = sliderRow.lastPatterns();
+
+            var cardSet = CardSet.buildWithDistrictPattern(DistrictPatterns.pick(districtPatterns));
+            sliderRow.add(cardSet);
         };
 
-        this.addRandomCardRow = function (sliderRow) {
-            var cardSet = CardSet.buildWithDistrictPattern(DistrictPatterns.pick());
+        this.addNoDistrictPatternRow = function (sliderRow) {
+            var cardSet = CardSet.buildWithDistrictPattern(DistrictPatterns.pickClearPattern());
             sliderRow.add(cardSet);
         };
     };

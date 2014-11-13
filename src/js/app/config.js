@@ -6,7 +6,6 @@ define([], {
     "CodePathPrefix" : 'img/codes/',
     "CardHeight" : 82,
     "SlideSpeedPerCard" : 1000,
-    "CardDistrictedRatio" : 30,
     "RowsCountInSlide" : 5,
     "GameTimeSeconds" : 60,
     "DefaultPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',

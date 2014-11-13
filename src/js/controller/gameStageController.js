@@ -37,11 +37,7 @@ define(['underscore', 'backbone', 'app/config', 'model/code', 'controller/gameHe
 
             _.times(Config.RowsCountInSlide + 1, function (n) {
                 if (n == 1) {
-                    sliderRow.addCards(
-                        gameHelper.createRandomCard(),
-                        gameHelper.createRandomCard(true),
-                        gameHelper.createRandomCard()
-                    );
+                    gameHelper.addNoDistrictPatternRow(sliderRow);
                 } else {
                     gameHelper.addRandomCardRow(sliderRow);
                 }

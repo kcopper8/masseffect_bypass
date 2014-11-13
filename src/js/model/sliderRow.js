@@ -8,12 +8,21 @@ define(['backbone', 'model/cardSet', 'model/cardModel'], function (Backbone, Car
             var cardSet = CardSet.newWithCode(code1, code2, code3);
             this.add(cardSet);
         },
-        addCards : function (card1, card2, card3) {
-            var cardSet = CardSet.newWithCard(card1, card2, card3);
-            this.add(cardSet);
-        },
         getByIndex : function (row, col) {
             return this.at(row).at(col);
+        },
+        lastPatterns : function() {
+            var retArr = [];
+            for(var i = (this.models.length - 1); i >= 0; i--) {
+                var cardSet = this.models[i];
+                if (cardSet.getDistrictPattern().isClearPattern()) {
+                    break;
+                }
+
+                retArr.push(cardSet.getDistrictPattern());
+            }
+
+            return retArr.reverse();
         }
     });
     SliderRow.build = function () {
