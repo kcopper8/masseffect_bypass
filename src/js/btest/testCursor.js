@@ -1,9 +1,9 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/layout/sliderView', 'model/sliderRow', 'model/code', 'model/GameStatusModel'], function ($, _, Backbone, CardSet, SliderView, SliderRow, Code, GameStatusModel) {
+define(['jquery', 'underscore', 'backbone', 'model/cardSet', 'bui/layout/sliderView', 'model/sliderRow', 'model/code', 'model/GameStageModel'], function ($, _, Backbone, CardSet, SliderView, SliderRow, Code, GameStageModel) {
 
-    var gameStatusModel = new GameStatusModel();
+    var gameStatusModel = new GameStageModel();
     var collection = new SliderRow();
 
     var slider = SliderView.create(collection, gameStatusModel);
