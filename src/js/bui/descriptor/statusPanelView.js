@@ -66,43 +66,38 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         },
 
         hackingSuccessed : function () {
-            /*
-            var codeAccepted = _.bind(function (idx) {
-                $(this.$foundCodeViewCovers[idx]).addClass('bp_accepted');
-            }, this);
-            codeAccepted(0);
-            */
+            function doHighlight(el) {
+                var $el = $(el);
+                var cover = $el.find(".bp_cover");
 
-            var covers = this.$foundCodeViewCovers;
-            var deferred = $.Deferred();
-
-            $(covers[0]).show({
-                effect : "puff",
-                easing : "easeOutQuart",
-                duration : 700,
-                complete : function() {
-                    $(covers[1]).show({
-                        effect : "puff",
-                        easing : "easeOutQuart",
-                        duration : 700,
-                        complete : function() {
-                            $(covers[2]).show({
-                                effect : "puff",
-                                easing : "easeOutQuart",
-                                duration : 700,
-                                complete : function() {
-                                    deferred.resolve();
-                                }
-                            });
+                return $.Deferred(function (deferred) {
+                    cover.show({
+                        effect: "puff",
+                        easing: "easeInBack",
+                        duration: 700,
+                        complete: function () {
+                            deferred.resolve();
                         }
                     });
-                }
-            });
 
-            deferred.promise().done(_.bind(function () {
-                this.$el.addClass("bp_completed");
-                this.model.trigger("firewallRemoved");
-            }, this));
+                }).promise();
+            }
+
+            var divs = this.$el.find(".bp_found_codes > DIV");
+            doHighlight(divs[0])
+                .then(function () {
+                    return doHighlight(divs[1]);
+                })
+                .then(function () {
+                    return doHighlight(divs[2]);
+                })
+                .done(_.bind(function () {
+                    this.$el.addClass("bp_completed");
+
+                    _.delay(function (model) {
+                        model.trigger("firewallRemoved");
+                    }, 500, this.model);
+                }, this));
         },
 
         onClickStartHack : function () {

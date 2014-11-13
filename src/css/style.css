@@ -254,7 +254,7 @@ BUTTON.bp_button.bp_glow_on {
 .bp_status_panel .bp_found_codes > DIV {
     height: 28px;
     width: 112px;
-    overflow: hidden;
+    /* overflow: hidden; */
     border: 1px solid #9D5D39;
     position: relative;
 }
@@ -282,8 +282,9 @@ BUTTON.bp_button.bp_glow_on {
     /* display: block; */
 }
 
-.bp_status_panel .bp_found_codes > DIV .bp_cover.bp_accepted {
+.bp_status_panel .bp_found_codes > DIV.bp_accepted {
     /* display: block; */
+    border-color: #green;
 }
 
 
