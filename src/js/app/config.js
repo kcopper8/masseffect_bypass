@@ -68,7 +68,7 @@ define(['underscore', 'lib/query-string'], function (_, queryString) {
         "SuccessPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',
         "FailurePrizeLocation" : '',
         "WaitSecondAfterCompleted" : 2,
-        "DistrictProbabilities" : [3, 0, 0],
+        "DistrictProbabilities" : [3, 2, 1],
         "NoRedirect" : false
     });
 });

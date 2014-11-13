@@ -5,19 +5,14 @@ require.config({
     baseUrl : 'js',
     paths : {
         'jquery' : 'lib/jquery-1.11.1',
+        'jquery-ui' : 'lib/jquery-ui',
         'underscore' : 'lib/underscore',
         'backbone' : 'lib/backbone',
         'text' : 'lib/text'
     },
-    sim : {
-        'jquery' : {
-            exports : 'jQuery'
-        },
-        'backbone' : {
-            exports : 'Backbone'
-        },
-        'underscore' : {
-            exports : '_'
+    shim : {
+        'jquery-ui' : {
+            deps : ['jquery']
         }
     }
 });

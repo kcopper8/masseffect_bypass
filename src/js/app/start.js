@@ -34,7 +34,7 @@ define([
             this.accessDeniedStage();
         }, this);
 
-        var viewContainer = ViewContainer.build(".bp_container", sliderRow, gameStageModel);
+        var viewContainer = window.view = ViewContainer.build(".bp_container", sliderRow, gameStageModel);
 
         this.startStage = function () {
             gameStageModel.setStage(Stage.START);
@@ -65,14 +65,18 @@ define([
         this.firewallRemovedStage = function () {
             gameStageModel.setStage(Stage.FIREWALL_REMOVED);
             _.delay(function () {
-                prizeController.moveToSuccessTarget();
+                viewContainer.slideClose().done(function () {
+                    prizeController.moveToSuccessTarget();
+                });
             }, Config.WaitSecondAfterCompleted * 1000);
         };
 
         this.accessDeniedStage = function () {
             gameStageModel.setStage(Stage.ACCESS_DENIED);
             _.delay(function () {
-                prizeController.moveToFailedTarget();
+                viewContainer.slideClose().done(function () {
+                    prizeController.moveToFailedTarget();
+                });
             }, Config.WaitSecondAfterCompleted * 1000);
         };
     };

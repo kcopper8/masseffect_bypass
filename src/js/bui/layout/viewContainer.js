@@ -46,6 +46,34 @@ define([
 
         onDecreaseAttempt : function () {
             this.$el.effect("shake");
+        },
+
+        slideClose : function() {
+            var deferred = $.Deferred();
+            this.sliderView.$el.animate({
+                'opacity' : "0"
+            }, {
+                duration : 300,
+                complete: _.bind(function () {
+                    var animateOptions = {
+                        duration: 400,
+                        easing: 'easeInOutQuad'
+                    };
+
+                    this.$el.animate({"margin-top": "190px"}, animateOptions);
+                    this.descriptorView.$el.animate({"opacity": "0"}, animateOptions);
+                    this.footerView.$el.animate({"margin-top": "-468px"}, _.extend(animateOptions, {
+                        complete : _.bind(function () {
+                            deferred.resolve();
+                            this.$el.fadeOut();
+                        }, this)
+                    }));
+
+                }, this)
+            });
+
+
+            return deferred.promise();
         }
     });
 
@@ -56,18 +84,6 @@ define([
             model : gameStatusModel
         });
     };
-    /*
-    var ViewContainer = function (selector, sliderRowCollection, gameStatusModel) {
-        this.headerView = HeaderView.create(gameStatusModel);
-        this.descriptorView = DescriptorView.create(gameStatusModel);
-        this.sliderView = SliderView.create(sliderRowCollection, gameStatusModel);
-        this.footerView = FooterView.create(gameStatusModel)
 
-        $(selector).html("")
-            .append(this.headerView.$el)
-            .append(this.descriptorView.$el)
-            .append(this.sliderView.$el)
-            .append(this.footerView.$el);
-    };*/
     return ViewContainer;
 });

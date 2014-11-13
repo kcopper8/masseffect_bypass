@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <style>
+        /* <![CDATA[ */
+    text {
+        letter-spacing : 1px;
+        font-weight : bold;
+        font-size : 3pt;
+        font-family : Verdana;
+    }
+    text.green {
+        fill : #86AB3A;
+        stroke : #86AB3A;
+    }
+    text.white {
+        fill : #B0B0B0;
+        stroke : #B0B0B0;
+    }
+    text.brown {
+        fill : #9D5D39;
+         stroke : #9D5D39;
+    }
+    text.blue {
+        fill : #4786BC;
+        stroke : #4786BC;
+    }
+    text.purple {
+        fill : #5D349A;
+        stroke : #5D349A;
+    }
+    /* ]]> */
+    </style>
+    <text x="33" y="1" class="white"><![CDATA[
+/* Verify that getAttribute really returns attributes and not
+    ]]></text>
+    <text x="35" y="6" class="white"><![CDATA[
+*
+    ]]></text>
+    <text x="33" y="11" class="brown" ><![CDATA[
+/* _Check if getElementsByTagName("*") returns only elements
+     ]]></text>
+    <text x="37" y="16" class="brown"><![CDATA[
+div.appendChild( doc.createComment("") ); return !div.getElement
+    ]]></text>
+    <text x="37" y="21" class="brown" ><![CDATA[
+return div.getElementsByClassName("i").length === 2; support
+    ]]></text>
+    <text x="33" y="31" class="white"><![CDATA[
+return !doc.getElementsByName // || !doc.get
+    ]]></text>
+    <text x="67" y="36" class="green"><![CDATA[
+f ( typeof context.getElementById !== strundefined
+    ]]></text>
+    <text x="70" y="41" class="green"><![CDATA[
+var m = context.getElementById( id );
+    ]]></text>
+    <text x="105" y="46" class="brown"><![CDATA[
+return m && m.parentNode ? [ m ] : [];
+    ]]></text>
+    <text x="85" y="51" class="white"><![CDATA[
+filter
+    ]]></text>
+    <text x="140" y="56" class="brown"><![CDATA[
+// id.replace( runescape, funescape ); return
+    ]]></text>
+    <text x="140" y="61" class="brown"><![CDATA[
+		delete Expr.find["ID"]; Expr
+    ]]></text>
+    <text x="175" y="66" class="brown"><![CDATA[
+var attrId = id
+    ]]></text>
+    <text x="140" y="71" class="white"><![CDATA[
+ function
+    ]]></text>
+    <text x="175" y="76" class="brown"><![CDATA[
+var node = typeof elem.getEle
+    ]]></text>
+    <text x="210" y="81" class="blue"><![CDATA[
+node.value === attrId;
+    ]]></text>
+</svg>

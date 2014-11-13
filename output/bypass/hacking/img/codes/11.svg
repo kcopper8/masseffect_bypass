@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <style>
+        /* <![CDATA[ */
+    text {
+        letter-spacing : 1px;
+        font-weight : bold;
+        font-size : 3pt;
+        font-family : Verdana;
+    }
+    text.green {
+        fill : #86AB3A;
+        stroke : #86AB3A;
+    }
+    text.white {
+        fill : #B0B0B0;
+        stroke : #B0B0B0;
+    }
+    text.brown {
+        fill : #9D5D39;
+         stroke : #9D5D39;
+    }
+    text.blue {
+        fill : #4786BC;
+        stroke : #4786BC;
+    }
+    text.purple {
+        fill : #5D349A;
+        stroke : #5D349A;
+    }
+    /* ]]> */
+    </style>
+    <text x="85" y="1" class="brown"><![CDATA[
+ // } else if (this._hasPushState && this.isnot
+    ]]></text>
+    <text x="105" y="6" class="brown"><![CDATA[
+this.fragment = this.getHash().t )
+    ]]></text>
+    <text x="155" y="11" class="brown" ><![CDATA[
+.replace(route
+     ]]></text>
+    <text x="140" y="16" class="white"><![CDATA[
+this.history
+    ]]></text>
+    <text x="100" y="21" class="brown" ><![CDATA[
+if (!this.options.silent) return this.loadUrl();
+    ]]></text>
+    <text x="87" y="26" class="brown"><![CDATA[
+stop:
+    ]]></text>
+    <text x="35" y="31" class="brown"><![CDATA[
+Backbone.$(window).off('popstate', this.check
+    ]]></text>
+    <text x="32" y="41" class="blue"><![CDATA[
+/* if (this._checkUrlInterval) clearInterval(this
+    ]]></text>
+    <text x="50" y="46" class="blue"><![CDATA[
+_checkUrlInterval);
+      History.started = false; this.hand
+    ]]></text>
+    <text x="75" y="51" class="blue"><![CDATA[
+route: function(route, callback) {
+    ]]></text>
+    <text x="85" y="56" class="blue"><![CDATA[
+unshift({route: route, callback: callback}); not;
+    ]]></text>
+    <text x="140" y="61" class="white"><![CDATA[
+checkUrl :
+    ]]></text>
+    <text x="105" y="66" class="brown"><![CDATA[
+// var current = this.getFragment();
+    ]]></text>
+    <text x="117" y="71" class="brown"><![CDATA[
+if (current === this.fragment
+    ]]></text>
+    <text x="160" y="76" class="brown"><![CDATA[
+current = this
+    ]]></text>
+    <text x="155" y="81" class="white"><![CDATA[
+ return ;
+    ]]></text>
+</svg>

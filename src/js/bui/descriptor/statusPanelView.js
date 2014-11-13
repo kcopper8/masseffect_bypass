@@ -74,7 +74,7 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
                     cover.show({
                         effect: "puff",
                         easing: "easeInBack",
-                        duration: 700,
+                        duration: 500,
                         complete: function () {
                             deferred.resolve();
                         }

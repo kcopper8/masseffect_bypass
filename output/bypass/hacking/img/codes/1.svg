@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="340px" height="81px">
+    <style>
+        /* <![CDATA[ */
+    text {
+        letter-spacing : 1px;
+        font-weight : bold;
+        font-size : 3pt;
+        font-family : Verdana;
+    }
+    text.green {
+        fill : #86AB3A;
+        stroke : #86AB3A;
+    }
+    text.white {
+        fill : #B0B0B0;
+        stroke : #B0B0B0;
+    }
+    text.brown {
+        fill : #9D5D39;
+         stroke : #9D5D39;
+    }
+    text.blue {
+        fill : #4786BC;
+        stroke : #4786BC;
+    }
+    text.purple {
+        fill : #5D349A;
+        stroke : #5D349A;
+    }
+    /* ]]> */
+    </style>
+    <text x="35" y="2"  class="white"><![CDATA[
+        getFragment: function
+    ]]></text>
+    <text x="35" y="7"  class="brown"><![CDATA[
+         // fragment = decodeURI(this.location.pathname + this.location.sea
+    ]]></text>
+    <text x="35" y="12"  class="blue"><![CDATA[
+        return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase
+    ]]></text>
+    <text x="40" y="17"  class="brown"><![CDATA[
+        search) fragment = this.getHash() this.root.replace runescape = new
+    ]]></text>
+    <text x="35" y="22"  class="blue"><![CDATA[
+          new RegExp("\\\\([\\da-f]{1,6}" + whitespace  + elem
+    ]]></text>
+    <text x="33" y="27"  class="brown"><![CDATA[
+        /* if (!History.started) return false; options = {trigge
+    ]]></text>
+    <text x="31" y="32"  class="brown"><![CDATA[
+        var url = this.root + (fragment = this.getFragment.is
+    ]]></text>
+    <text x="31" y="37"  class="brown"><![CDATA[
+        fragment = fragment.replace(pathStripper, '');
+    ]]></text>
+    <text x="32" y="47"  class="brown"><![CDATA[
+        this.history[options.replace
+    ]]></text>
+    <text x="35" y="52"  class="white"><![CDATA[
+        push.apply( res
+    ]]></text>
+    <text x="36" y="57"  class="brown"><![CDATA[
+        var frame = Backbone.$('<iframe src="javascript:0" tabindex
+    ]]></text>
+    <text x="40" y="62"  class="brown"><![CDATA[
+        else if (this._wantsHashChange) {
+    ]]></text>
+    <text x="36" y="67"  class="brown"><![CDATA[
+        returns {Function(string, Object)} Returns the Object data
+    ]]></text>
+    <text x="40" y="72"  class="brown"><![CDATA[
+        var docMode           = document.do
+    ]]></text>
+    <text x="35" y="77"  class="white"><![CDATA[
+        (isExplorer.exec(navigator.userAgent.toLowerCase()) && (!doc
+    ]]></text>
+</svg>
