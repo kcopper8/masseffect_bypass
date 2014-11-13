@@ -7,7 +7,8 @@ define([], {
     "CardHeight" : 82,
     "SlideSpeedPerCard" : 1000,
     "RowsCountInSlide" : 5,
-    "GameTimeSeconds" : 60,
+    "GameTimeSeconds" : 20,
     "DefaultPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',
-    "WaitSecondAfterCompleted" : 2
+    "WaitSecondAfterCompleted" : 2,
+    "DistrictProbabilities" : [3, 2, 1]
 });

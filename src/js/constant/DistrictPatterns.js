@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-13.
  */
-define(['underscore', 'logic/PathFinder'], function (_, PathFinder) {
+define(['underscore', 'app/config', 'logic/PathFinder'], function (_, Config, PathFinder) {
     var PATTERNS = [
         [false,false,false],
         [true ,false,false],
@@ -10,6 +10,10 @@ define(['underscore', 'logic/PathFinder'], function (_, PathFinder) {
         [true ,true ,false],
         [true ,false,true ],
         [false,true ,true ]
+    ];
+
+    var PATTERN_TYPES = [
+      0,1,1,1,2,2,2
     ];
 
     var DistrictPattern = function (pattern, __index) {
@@ -35,6 +39,25 @@ define(['underscore', 'logic/PathFinder'], function (_, PathFinder) {
     });
 
 
+    function selectNumberUsingProbabilities(greenPatternNumbers) {
+        var patternTypeGroups = _.groupBy(greenPatternNumbers, function(number) {
+            return PATTERN_TYPES[number];
+        });
+
+
+        var mapped = _(patternTypeGroups)
+            .keys()
+            .map(function (patternType) {
+                var arr = [];
+                for (var i = 0; i < Config.DistrictProbabilities[patternType]; i++) {
+                    arr.push(patternType);
+                }
+                return arr;
+            });
+
+        var selectedType = _.sample(_.flatten(mapped));
+        return _.sample(patternTypeGroups[selectedType]);
+    }
 
 
     DistrictPatterns.pick = function (lastPatterns) {
@@ -50,7 +73,7 @@ define(['underscore', 'logic/PathFinder'], function (_, PathFinder) {
         });
 
         greenPatternNumbers.push(0);
-        var num = _.sample(greenPatternNumbers);
+        var num = selectNumberUsingProbabilities(greenPatternNumbers);
         return DistrictPatterns[num];
     };
 
