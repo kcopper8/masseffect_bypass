@@ -16,10 +16,14 @@ define(['jquery', 'backbone', 'text!bui/layout/footerViewTemplate.html'], functi
             this.$el.html(this.template());
             this.$remainCodeCounter = this.$(".bp_remaining_attempts .bp_number");
             this.listenTo(this.model, 'change', this.render);
+            this.listenTo(this.model, 'change:stage', _.bind(this.onChangeStage, this));
             this.render();
         },
         render : function () {
             this.setAttmeptCount(this.model.getAttemptCount());
+        },
+        onChangeStage : function () {
+            this.$(".bp_button").html(this.model.isStartStage() ? "Skip" : "Exit");
         },
         setAttmeptCount : function (nCount) {
             this.$remainCodeCounter.html(nCount);

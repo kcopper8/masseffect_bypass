@@ -30,6 +30,10 @@ define([
     var StartController = function () {
         var sliderRow = new SliderRow();
         var gameStageModel = window.model = new GameStageModel();
+        gameStageModel.once("accessDenied", function () {
+            this.accessDeniedStage();
+        }, this);
+
         var viewContainer = ViewContainer.build(".bp_container", sliderRow, gameStageModel);
 
         this.startStage = function () {
@@ -37,10 +41,6 @@ define([
             gameStageModel.setCurrentTargetCode(Code.getRandom());
             gameStageModel.once("startGame", function () {
                 this.gameStage();
-            }, this);
-
-            gameStageModel.on("accessDenied", function () {
-                this.accessDeniedStage();
             }, this);
         };
         

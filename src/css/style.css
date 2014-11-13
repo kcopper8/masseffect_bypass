@@ -279,11 +279,11 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_status_panel.bp_completed .bp_found_codes > DIV .bp_cover {
-    display: block;
+    /* display: block; */
 }
 
 .bp_status_panel .bp_found_codes > DIV .bp_cover.bp_accepted {
-    display: block;
+    /* display: block; */
 }
 
 
@@ -294,6 +294,7 @@ BUTTON.bp_button.bp_glow_on {
     margin-top: 3px;
     padding: 0 38px;
     overflow-y: hidden;
+    overflow-x: hidden;
     position: relative;
 }
 
@@ -334,6 +335,16 @@ BUTTON.bp_button.bp_glow_on {
     border: none;
 }
 
+.bp_unauth_cover {
+    display: none;
+    position: absolute;
+    width: 340px;
+    height: 81px;
+
+    background-color: red;
+    opacity: 0.4;
+}
+
 
 .bp_card_cover {
     display: none;
@@ -354,6 +365,7 @@ BUTTON.bp_button.bp_glow_on {
     opacity: 0.4;
 }
 
+
 .bp_unauthorized_access::before {
     content: 'Unauthorized Access';
     color: white;
@@ -362,6 +374,7 @@ BUTTON.bp_button.bp_glow_on {
     position: absolute;
 }
 
+
 .bp_cursor {
     position: absolute;
     width: 397px;
@@ -369,6 +382,7 @@ BUTTON.bp_button.bp_glow_on {
 
     margin-left: -40px;
     margin-top: -6px;
+    z-index: 5;
 }
 
 .bp_footer {

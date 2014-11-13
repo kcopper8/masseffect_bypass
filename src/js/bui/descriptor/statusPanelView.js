@@ -66,17 +66,43 @@ define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelView
         },
 
         hackingSuccessed : function () {
+            /*
             var codeAccepted = _.bind(function (idx) {
                 $(this.$foundCodeViewCovers[idx]).addClass('bp_accepted');
             }, this);
             codeAccepted(0);
+            */
 
-            _.delay(codeAccepted, 500, 1);
-            _.delay(codeAccepted, 1000, 2);
-            _.delay(_.bind(function () {
+            var covers = this.$foundCodeViewCovers;
+            var deferred = $.Deferred();
+
+            $(covers[0]).show({
+                effect : "puff",
+                easing : "easeOutQuart",
+                duration : 700,
+                complete : function() {
+                    $(covers[1]).show({
+                        effect : "puff",
+                        easing : "easeOutQuart",
+                        duration : 700,
+                        complete : function() {
+                            $(covers[2]).show({
+                                effect : "puff",
+                                easing : "easeOutQuart",
+                                duration : 700,
+                                complete : function() {
+                                    deferred.resolve();
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+
+            deferred.promise().done(_.bind(function () {
                 this.$el.addClass("bp_completed");
                 this.model.trigger("firewallRemoved");
-            }, this), 1500);
+            }, this));
         },
 
         onClickStartHack : function () {
