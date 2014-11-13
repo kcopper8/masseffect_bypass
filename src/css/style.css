@@ -134,7 +134,7 @@ BUTTON.bp_button.bp_glow_on {
     background-image: url(../img/messages/firewalls_removed.png);
     background-repeat: no-repeat;
     margin-left: 48px;
-    margin-top: 0;
+    margin-top: 11px;
     height: 67px;
     width: 426px;
     text-indent: -1400px;
@@ -152,7 +152,7 @@ BUTTON.bp_button.bp_glow_on {
     background-image: url(../img/messages/firewalls_intact_red.png);
     background-repeat: no-repeat;
     margin-left: 48px;
-    margin-top: 0;
+    margin-top: 11px;
     height: 67px;
     width: 426px;
     text-indent: -1400px;
