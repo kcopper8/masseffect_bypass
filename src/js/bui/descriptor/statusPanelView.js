@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['jquery', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelViewTemplate.html'], function ($, _, Backbone, statusPanelViewTemplate) {
+define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/statusPanelViewTemplate.html'], function ($, $ui, _, Backbone, statusPanelViewTemplate) {
     var StatusPanel = Backbone.View.extend({
         className : "bp_status_panel",
         events : {

@@ -44,11 +44,11 @@
         var param = {};
         var success_url = $("#success_url").val();
         if (!!success_url) {
-            param.success_url = success_url;
+            param.SPL = success_url;
         }
         var failure_url = $("#failure_url").val();
         if (!!failure_url) {
-            param.failure_url = failure_url;
+            param.FPL = failure_url;
         }
         $("#target_url").val(target_url + "?" + $.param(param));
     }

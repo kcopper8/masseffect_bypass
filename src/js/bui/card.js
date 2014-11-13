@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-10-17.
  */
-define(['jquery', 'underscore', 'backbone', 'text!bui/template/cardTemplate.html'], function ($, _, Backbone, cardTemplate) {
+define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/template/cardTemplate.html'], function ($, $ui, _, Backbone, cardTemplate) {
     var Card = Backbone.View.extend({
         initialize : function () {
             this.$el.html(this.template(this.model.toJSON()));

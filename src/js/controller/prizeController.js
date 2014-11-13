@@ -1,11 +1,12 @@
 /**
  * Created by user on 2014-11-02.
  */
-define(['app/config', 'lib/query-string'], function (Config, queryString) {
+define(['app/config'], function (Config) {
 
-    var parsedQueryString = queryString.parse(location.search);
-    parsedQueryString.success_url = parsedQueryString.success_url || Config.DefaultPrizeLocation;
-    parsedQueryString.failure_url = parsedQueryString.failure_url || parsedQueryString.success_url || Config.DefaultPrizeLocation;
+    var parsedQueryString = {};
+    parsedQueryString.success_url = Config.SuccessPrizeLocation;
+    parsedQueryString.failure_url = Config.FailurePrizeLocation || parsedQueryString.success_url;
+    parsedQueryString.noredirect = Config.NoRedirect;
 
     var prizeController = function (parsedQueryString) {
         function noredirect() {
