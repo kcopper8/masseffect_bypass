@@ -1,7 +1,19 @@
 /**
  * Created by user on 2014-11-09.
  */
-define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, Stage) {
+define([
+    'backbone',
+    'app/config',
+    'model/code',
+    'constant/Stage',
+    'tool'
+], function (
+    Backbone,
+    Config,
+    Code,
+    Stage,
+    tool
+) {
     var GameStageModel = Backbone.Model.extend({
         defaults : {
             'remain_time' : 100,
@@ -17,6 +29,8 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
             this.on("exit", function () {
                 this.trigger("accessDenied", this);
             }, this);
+
+            this.on("change:stage", _.bind(this.onChangeStage, this));
         },
 
         getAttemptCount : function () {
@@ -77,6 +91,9 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
             }
         },
 
+        isGameState : function () {
+            return this.get('stage') == Stage.GAME;
+        },
         isStartStage : function () {
             return this.get('stage') == Stage.START;
         },
@@ -102,7 +119,39 @@ define(['backbone', 'model/code', 'constant/Stage'], function (Backbone, Code, S
             }
 
             this.set('attempt_count', --attemptCount);
+        },
+
+        onChangeStage : function () {
+            if (this.isGameState()) {
+                this.__startTimer();
+            } else {
+                this.__clearTimer();
+            }
+        },
+        
+        __startTimer : function () {
+            var toEndTime = tool.nowSec() + Config.GameTimeSeconds;
+
+            this.intervalId = setInterval(_.bind(function () {
+                var remainTimeSeconds = toEndTime - tool.nowSec();
+                remainTimeSeconds = remainTimeSeconds < 0 ? 0 : remainTimeSeconds;
+
+                this.set('remain_time', (remainTimeSeconds / Config.GameTimeSeconds) * 100);
+
+                if (this.get('remain_time') <= 0) {
+                    this.__clearTimer();
+                    this.trigger("accessDenied", this);
+                }
+            }, this), 500);
+        },
+
+        __clearTimer : function() {
+            if (!!this.intervalId) {
+                clearInterval(this.intervalId);
+                delete this.intervalId;
+            }
         }
+
     });
 
     return GameStageModel;

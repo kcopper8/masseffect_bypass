@@ -50,7 +50,7 @@ define([
             gameStageModel.once('hackingSuccessed', function () {
                 this.successStage();
             }, this);
-            
+
             gameStageModel.setStage(Stage.GAME);
         };
 
