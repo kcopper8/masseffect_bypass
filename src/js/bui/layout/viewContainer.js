@@ -12,16 +12,10 @@ define([
 ], function ($, $ui, Backbone, HeaderView, DescriptorView, SliderView, FooterView) {
     var ViewContainer = Backbone.View.extend({
         initialize : function () {
-            this.headerView = HeaderView.create(this.model);
-            this.descriptorView = DescriptorView.create(this.model);
-            this.sliderView = SliderView.create(this.collection, this.model);
-            this.footerView = FooterView.create(this.model);
-
-            this.$el.html("")
-                .append(this.headerView.$el)
-                .append(this.descriptorView.$el)
-                .append(this.sliderView.$el)
-                .append(this.footerView.$el);
+            this.headerView = HeaderView.build(".bp_header", this.model);
+            this.descriptorView = DescriptorView.build(".bp_descriptor", this.model);
+            this.sliderView = SliderView.build(".bp_slider", this.collection, this.model);
+            this.footerView = FooterView.build(".bp_footer", this.model);
 
             this._loading();
 
@@ -29,11 +23,12 @@ define([
         },
 
         _loading : function () {
-            this.descriptorView.$el.css("opacity", "0");
+            this.headerView.$el.after(this.descriptorView.$el);
+            this.footerView.$el.before(this.sliderView.$el);
+/*
             this.$el.css("margin-top", "190px");
             this.footerView.$el.css("margin-top", "-468px");
-
-
+*/
             var animateOptions = {
                 duration : 1000,
                 easing : 'easeInOutCubic'

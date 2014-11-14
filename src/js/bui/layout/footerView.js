@@ -31,6 +31,13 @@ define(['jquery', 'backbone', 'text!bui/layout/footerViewTemplate.html'], functi
         }
     });
 
+    Footer.build = function (selector, model) {
+        return new Footer({
+            el : $(selector),
+            model : model
+        });
+    };
+
     Footer.create = function (model) {
         return new Footer({
             model : model

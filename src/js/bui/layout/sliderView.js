@@ -205,6 +205,14 @@ define([
         }
     });
 
+    SliderView.build = function (selector, collection, gameStatusModel) {
+        return new SliderView({
+            el : $(selector),
+            collection : collection,
+            model : gameStatusModel
+        });
+    };
+
     SliderView.create = function (collection, gameStatusModel) {
         return new SliderView({
             collection : collection,

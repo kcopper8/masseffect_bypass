@@ -17,11 +17,13 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
             this.render();
         },
 
+        __imageTemplate : _.template("<IMG src='img/merged/codes.png' style='top:<%-position%>'>"),
+
         _setCode : function (code, idx) {
             if (!!code) {
-                $("<IMG src='img/merged/codes.png'>")
-                    .css("top", code.getPosition(27))
-                    .appendTo(this.$foundCodeViews[idx]);
+                this.$foundCodeViews[idx].innerHTML = this.__imageTemplate({
+                    position : code.getPosition(27)
+                });
             } else {
                 this.$foundCodeViews[idx].innerHTML = '';
             }

@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPanelView'], function (Backbone, TargetPanelView, StatusPanelView) {
+define(['jquery', 'backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPanelView'], function ($, Backbone, TargetPanelView, StatusPanelView) {
     var DescriptorView = Backbone.View.extend({
         className : "bp_descriptor",
         initialize : function () {
@@ -13,6 +13,12 @@ define(['backbone', 'bui/descriptor/targetPanelView', 'bui/descriptor/statusPane
         }
     });
 
+    DescriptorView.build = function (selector, model) {
+        return new DescriptorView({
+            el : $(selector),
+            model : model
+        });
+    };
     DescriptorView.create = function (model) {
         return new DescriptorView({
             model : model

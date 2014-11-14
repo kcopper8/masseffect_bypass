@@ -3,13 +3,71 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Bypass :: Hack</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/style.css">
+
+    <style type="text/css">
+        body {
+            background: black;
+        }
+
+        .bp_header {
+            background: url(img/merged/headerfooter.png) no-repeat;
+            background-position-y: -56px;
+            width: 1064px;
+            height: 80px;
+            margin: 0 auto -20px;
+            position: relative;
+        }
+
+        .bp_descriptor {
+            margin: 0 auto;
+            width: 1079px;
+            height: 123px;
+        }
+
+        .bp_slider {
+            height: 340px;
+            margin-top: 3px;
+            padding: 0 38px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .bp_footer {
+            background: url(img/merged/headerfooter.png) no-repeat;
+            height: 56px;
+            width: 1065px;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
-<div class="bp_container"></div>
+<div class="bp_container" style="margin-top:190px;">
+    <div class="bp_header"></div>
+    <div class="bp_descriptor" style="opacity: 0;"></div>
+    <div class="bp_slider"></div>
+    <div class="bp_footer" style="margin-top: -468px"></div>
+</div>
+<link rel="stylesheet" href="css/style.css">
 <script type="text/javascript" src="js/lib/require.js"></script>
-<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript">
+    require.config({
+        baseUrl : 'js',
+        paths : {
+            'jquery' : 'lib/jquery-1.11.1',
+            'jquery-ui' : 'lib/jquery-ui',
+            'underscore' : 'lib/underscore',
+            'backbone' : 'lib/backbone',
+            'text' : 'lib/text'
+        },
+        shim : {
+            'jquery-ui' : {
+                deps : ['jquery']
+            }
+        }
+    });
+</script>
 <script type="text/javascript">
     require(["app/start"]);
 </script>
