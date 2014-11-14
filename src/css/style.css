@@ -257,6 +257,9 @@ BUTTON.bp_button.bp_glow_on {
     /* overflow: hidden; */
     border: 1px solid #9D5D39;
     position: relative;
+    -moz-box-shadow:inset 0px 0px 8px #b36f34;
+    -webkit-box-shadow:inset 0px 0px 8px #b36f34;
+    box-shadow:inset 0px 0px 8px #b36f34;
 }
 
 .bp_status_panel .bp_found_codes > DIV .bp_cover {
@@ -328,6 +331,10 @@ BUTTON.bp_button.bp_glow_on {
 
     width: 340px;
     height: 81px;
+
+    -moz-box-shadow:inset 0px 0px 35px #b36f34;
+    -webkit-box-shadow:inset 0px 0px 35px #b36f34;
+    box-shadow:inset 0px 0px 35px #b36f34;
 }
 
 .bp_card IMG {
@@ -352,6 +359,14 @@ BUTTON.bp_button.bp_glow_on {
     position: absolute;
     width: 340px;
     height: 81px;
+}
+
+.bp_card_content {
+    width:340px;
+    height:81px;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 .bp_selected .bp_card_cover {
