@@ -4,9 +4,11 @@
 define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/template/cardTemplate.html'], function ($, $ui, _, Backbone, cardTemplate) {
     var Card = Backbone.View.extend({
         initialize : function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            this.$el.html(this.template({
+                position : this.model.getCode().getPosition(),
+                codeNumber : this.model.getCode().getNumber()
+            }));
             this.$card = this.$(".bp_card");
-
             this.listenTo(this.model, "change:unauthorized_access", _.bind(this.setUnauthorizedAccess, this));
             this.listenTo(this.model, "change:state", _.bind(this.setState, this));
             this.render();

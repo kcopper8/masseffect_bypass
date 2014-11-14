@@ -12,6 +12,13 @@ define(['app/config', 'underscore'], function (Config, _) {
         this.getPath = function() {
             return Config.CodePathPrefix + this.number + ".png";
         };
+
+        this.getPosition = function () {
+            return -(Config.CodeImageHeight * (this.number - 1)) + "px";
+        };
+        this.getNumber = function () {
+            return this.number;
+        };
     };
 
     for (var i = 1; i <= Config.CodeTypeCount; i++) {

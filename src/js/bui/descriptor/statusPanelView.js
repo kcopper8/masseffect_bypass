@@ -10,7 +10,6 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
         },
         initialize : function () {
             this.$el.html(statusPanelViewTemplate);
-
             this.$foundCodeViews = this.$el.find(".bp_found_codes .img_container");
             this.$foundCodeViewCovers = this.$el.find(".bp_found_codes .bp_cover");
             this.listenTo(this.model, "change", this.render);
@@ -18,9 +17,11 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
             this.render();
         },
 
-        _setCodePath : function (path, idx) {
-            if (!!path) {
-                this.$foundCodeViews[idx].innerHTML = "<IMG src='" + path + "'>";
+        _setCode : function (code, idx) {
+            if (!!code) {
+                $("<IMG src='img/merged/codes.png'>")
+                    .css("top", -(code.getNumber() * 27) +"px")
+                    .appendTo(this.$foundCodeViews[idx]);
             } else {
                 this.$foundCodeViews[idx].innerHTML = '';
             }
@@ -56,9 +57,9 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
         render : function () {
             this.$el.toggleClass("bp_start_stage", this.model.get('stage') == 'start');
 
-            this._setCodePath(this.model.getHackedCodePath(0), 0);
-            this._setCodePath(this.model.getHackedCodePath(1), 1);
-            this._setCodePath(this.model.getHackedCodePath(2), 2);
+            this._setCode(this.model.getHackedCode(0), 0);
+            this._setCode(this.model.getHackedCode(1), 1);
+            this._setCode(this.model.getHackedCode(2), 2);
         },
 
         _setCodeAccepted : function (idx) {
@@ -92,11 +93,10 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
                     return doHighlight(divs[2]);
                 })
                 .done(_.bind(function () {
-                    this.$el.addClass("bp_completed");
-
-                    _.delay(function (model) {
+                    _.delay(function (model, $el) {
+                        $el.addClass("bp_completed");
                         model.trigger("firewallRemoved");
-                    }, 500, this.model);
+                    }, 500, this.model, this.$el);
                 }, this));
         },
 

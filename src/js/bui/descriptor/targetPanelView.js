@@ -1,7 +1,7 @@
 /**
  * Created by user on 2014-11-03.
  */
-define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelViewTemplate.html', 'model/GameStageModel'], function (_, Backbone, $, targetPanelViewTemplate) {
+define(['underscore', 'backbone', 'jquery', 'jquery-ui', 'text!bui/descriptor/targetPanelViewTemplate.html', 'model/GameStageModel'], function (_, Backbone, $, $ui, targetPanelViewTemplate) {
     var TargetPanelView = Backbone.View.extend({
         className : "bp_target_panel",
         initialize : function () {
@@ -10,7 +10,7 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
             this.listenTo(this.model, "change:stage", this.onChangeStage);
             this.listenTo(this.model, "change:current_target_code",
                 _.throttle(_.bind(this.glowTitle, this), 1200));
-            this.$codeSegmentImageTag = this.$el.find(".bp_segment IMG");
+            this.$codeSegment = this.$el.find(".bp_segment");
             this.render();
         },
 
@@ -38,33 +38,37 @@ define(['underscore', 'backbone', 'jquery', 'text!bui/descriptor/targetPanelView
         },
 
         glowTitle : function () {
-            var el = this.$(".bp_target_code");
-
-            el
-                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
-                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
-                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100)
-                .animate({"opacity" : "0"}, 200).animate({"opacity" : "1"}, 100);
-
+            this.$(".bp_target_code")
+                .effect({
+                    effect : "pulsate",
+                    duration : 3000,
+                    easing : 'linear',
+                    times : 3
+                });
         },
 
         flickFirewallRemoved : function () {
-            var el = this.$(".bp_firewall_removed");
-            el
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500);
+            this.$(".bp_firewall_removed")
+                .effect({
+                    effect : "pulsate",
+                    duration : 3000,
+                    easing : 'linear',
+                    times : 3
+                });
         },
 
         flickAccessDenied : function () {
-            var el = this.$(".bp_access_denied");
-            el
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500)
-                .animate({"opacity" : "0"}, 500).animate({"opacity" : "1"}, 500);
+            this.$(".bp_access_denied")
+                .effect({
+                    effect : "pulsate",
+                    duration : 3000,
+                    easing : 'linear',
+                    times : 3
+                });
         },
         render : function () {
-            this.$codeSegmentImageTag.prop("src", this.model.getCurrentTargetCodePath());
+            this.$codeSegment
+                .css('background-position-y', this.model.getCurrentTargetCodePosition());
         }
     });
 

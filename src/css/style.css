@@ -107,15 +107,16 @@ BUTTON.bp_button.bp_glow_on {
     height: 93px;
     padding-top: 30px;
     padding-left: 8px;
+
 }
 
 .bp_target_panel > h2.bp_target_code {
     background: url(../img/merged/tomerge.png) no-repeat 0 -244px;
-    height: 86px;
+    height: 52px;
     width: 240px;
     text-indent: -1400px;
-    margin: 0;
     transition: opacity 0.1s linear;
+    margin: 5px 0  0 5px;
 }
 
 .bp_target_panel.bp_completed > h2.bp_target_code {
@@ -146,7 +147,6 @@ BUTTON.bp_button.bp_glow_on {
 
 .bp_target_panel > h2.bp_access_denied {
     display: none;
-
     background: url(../img/merged/tomerge.png) no-repeat -357px -244px;
     margin-left: 41px;
     margin-top: 11px;
@@ -168,10 +168,11 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_target_panel > .bp_segment {
-    width: 280px;
+    width: 340px;
+    height: 81px;
     overflow: hidden;
-    text-indent: -20px;
-    padding-top: 4px;
+    margin: 3px -40px 0 -30px;
+    background: url(../img/merged/codes.png) no-repeat;
 }
 
 .bp_target_panel.bp_completed > .bp_segment {
@@ -258,6 +259,8 @@ BUTTON.bp_button.bp_glow_on {
     -moz-box-shadow: inset 0px 0px 8px #b36f34;
     -webkit-box-shadow: inset 0px 0px 8px #b36f34;
     box-shadow: inset 0px 0px 8px #b36f34;
+    overflow: hidden;
+    margin-top: -1px;
 }
 
 .bp_status_panel .bp_found_codes > DIV .bp_cover {
@@ -271,15 +274,17 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_status_panel .bp_found_codes > DIV IMG {
-    height: 28px;
-}
-
-.bp_status_panel.bp_start_stage .bp_found_codes {
-    display: none;
+    width: 112px;
+    height: 297px;
+    position: relative;
 }
 
 .bp_status_panel .bp_found_codes > DIV.bp_accepted {
     border-color: #green;
+}
+
+.bp_status_panel.bp_start_stage .bp_found_codes {
+    display: none;
 }
 
 .bp_slider {
@@ -351,6 +356,8 @@ BUTTON.bp_button.bp_glow_on {
     margin: 0;
     padding: 0;
     border: none;
+    background: url(../img/merged/codes.png) no-repeat;
+    text-indent: -1400px;
 }
 
 .bp_selected .bp_card_cover {
@@ -410,19 +417,21 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_remaining_attempts .bp_number.bp_0 {
-    background: url(../img/messages/0.png) no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -162px -109px;
 }
 
 .bp_remaining_attempts .bp_number.bp_1 {
-    background: url(../img/messages/1.png) no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -183px -109px;
+    margin: 0 5px;
+    width: 10px;
 }
 
 .bp_remaining_attempts .bp_number.bp_2 {
-    background: url(../img/messages/2.png) no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -194px -109px;
 }
 
 .bp_remaining_attempts .bp_number.bp_3 {
-    background: url(../img/messages/3.png) no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -213px -109px;
 }
 
 .bp_remaining_attempts .bp_msg_attempts_remaining {

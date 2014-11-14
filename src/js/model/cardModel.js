@@ -7,8 +7,7 @@ define(['backbone', 'model/code'], function (Backbone) {
             unauthorized_access : false
         },
         initialize : function (code) {
-            this.set("imgPath", code.getPath());
-            this.__code = code;
+            this.set("code", code);
         },
 
         setDistricted : function () {
@@ -20,7 +19,7 @@ define(['backbone', 'model/code'], function (Backbone) {
         },
 
         getCode : function () {
-            return this.__code;
+            return this.get('code');
         },
         setSelected : function () {
             this.set('state', 'selected');

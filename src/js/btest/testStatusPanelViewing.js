@@ -12,24 +12,16 @@ define(['jquery', 'bui/layout/descriptorView', 'backbone', 'test/TestTool', 'mod
     $(".bp_descriptor").append(panel.$el);
 
     TestTool.test(function() {
-            model.set("completed", true);
-        },
-        function() {
-            model.set("completed", false);
-        },
-        function() {
-            model.set("path0", "");
-            model.set("path1", "");
-            model.set("path2", "");
+            model.addHackedCode(Code.getRandom());
         },
         function () {
-            model.set("path0", Code.getRandom().getPath());
+            model.addHackedCode(Code.getRandom());
         },
         function() {
-            model.set("path1", Code.getRandom().getPath());
+            model.removeHackedCode();
         },
         function () {
-            model.set("path2", Code.getRandom().getPath());
+            model.removeHackedCode();
         });
     return {};
 });

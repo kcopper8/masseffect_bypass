@@ -52,6 +52,13 @@ define([
             }
         },
 
+        getCurrentTargetCodePosition : function () {
+            var code = this.getCurrentTargetCode();
+            if (!!code && code instanceof Code) {
+                return code.getPosition();
+            }
+        },
+
         setStage : function (stage) {
             this.set('stage', stage);
         },
@@ -88,6 +95,12 @@ define([
                 if (!!code) {
                     return code.getPath();
                 }
+            }
+        },
+        getHackedCode : function(n) {
+            var model = this.hackedCodes.at(n);
+            if (!!model) {
+                return model.get('code');
             }
         },
 

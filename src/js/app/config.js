@@ -62,12 +62,13 @@ define(['underscore', 'lib/query-string'], function (_, queryString) {
         "CodeTypeCount" : 11,
         "CodePathPrefix" : 'img/codes/',
         "CardHeight" : 82,
+        "CodeImageHeight" : 81,
         "SlideSpeedPerCard" : 1000,
         "RowsCountInSlide" : 5,
         "GameTimeSeconds" : 40,
         "SuccessPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',
         "FailurePrizeLocation" : '',
-        "WaitSecondAfterCompleted" : 2,
+        "WaitSecondAfterCompleted" : 3,
         "DistrictProbabilities" : [3, 2, 1],
         "NoRedirect" : false
     });
