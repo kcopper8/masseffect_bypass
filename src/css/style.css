@@ -4,8 +4,7 @@ body {
 }
 
 BUTTON.bp_button {
-    background-color: transparent;
-    background-image: url(../img/buttons/button_normal.png);
+    background: transparent url(../img/buttons/button_normal.png);
     border: none;
     width: 206px;
     height: 30px;
@@ -30,8 +29,8 @@ BUTTON.bp_button:active {
 }
 
 BUTTON.bp_button.bp_glow_on {
-    filter : brightness(1.5);
-    -webkit-filter : brightness(1.5);
+    filter: brightness(1.5);
+    -webkit-filter: brightness(1.5);
 }
 
 .bp_container {
@@ -41,8 +40,7 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_header {
-    background-image: url(../img/merged/headerfooter.png);
-    background-repeat: no-repeat;
+    background: url(../img/merged/headerfooter.png) no-repeat;
     background-position-y: -56px;
     width: 1064px;
     height: 80px;
@@ -61,12 +59,11 @@ BUTTON.bp_button.bp_glow_on {
     margin: 0;
     padding: 0;
 }
+
 .bp_progress li {
     display: inline-block;
     list-style-type: none;
-    border-color: #D8DD82;
-    border-style: solid;
-    border-width: 2px;
+    border: 2px solid #D8DD82;
     width: 4px;
     height: 26px;
     background-color: #68744A;
@@ -94,7 +91,6 @@ BUTTON.bp_button.bp_glow_on {
     background-color: #892B26;
 }
 
-
 .bp_descriptor {
     margin: 0 auto;
     width: 1079px;
@@ -106,40 +102,33 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_target_panel {
-    /*background-image: url(../img/target_panel.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -232px -121px;
-    background-repeat: no-repeat;
-    width : 530px;
+    background: url(../img/merged/tomerge.png) no-repeat -232px -121px;
+    width: 530px;
     height: 93px;
     padding-top: 30px;
     padding-left: 8px;
 }
 
 .bp_target_panel > h2.bp_target_code {
-    /*background-image: url(../img/messages/target_code_segment.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: 0 -244px;
-    background-repeat: no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat 0 -244px;
     height: 86px;
     width: 240px;
     text-indent: -1400px;
     margin: 0;
     transition: opacity 0.1s linear;
 }
+
 .bp_target_panel.bp_completed > h2.bp_target_code {
     display: none;
 }
+
 .bp_target_panel.bp_access_denied > h2.bp_target_code {
     display: none;
 }
 
 .bp_target_panel > h2.bp_firewall_removed {
     display: none;
-    /*background-image: url(../img/messages/firewalls_removed.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -357px -296px;
-    background-repeat: no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -357px -296px;
     margin-left: 48px;
     margin-top: 11px;
     height: 67px;
@@ -150,16 +139,15 @@ BUTTON.bp_button.bp_glow_on {
 .bp_target_panel.bp_completed > h2.bp_firewall_removed {
     display: block;
 }
+
 .bp_target_panel.bp_access_denied > h2.bp_firewall_removed {
     display: none;
 }
 
 .bp_target_panel > h2.bp_access_denied {
     display: none;
-    /*background-image: url(../img/messages/firewalls_intact_red.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -357px -244px;
-    background-repeat: no-repeat;
+
+    background: url(../img/merged/tomerge.png) no-repeat -357px -244px;
     margin-left: 41px;
     margin-top: 11px;
     height: 52px;
@@ -176,7 +164,7 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_target_panel > DIV {
-    float:left;
+    float: left;
 }
 
 .bp_target_panel > .bp_segment {
@@ -185,9 +173,11 @@ BUTTON.bp_button.bp_glow_on {
     text-indent: -20px;
     padding-top: 4px;
 }
+
 .bp_target_panel.bp_completed > .bp_segment {
     display: none;
 }
+
 .bp_target_panel.bp_access_denied > .bp_segment {
     display: none;
 }
@@ -198,11 +188,8 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_status_panel {
-    /*background-image: url(../img/status_panel.png);*/
-    background-repeat: no-repeat;
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -233px 1px;
-    width : 538px;
+    background: url(../img/merged/tomerge.png) no-repeat -233px 1px;
+    width: 538px;
     height: 93px;
     margin-left: 3px;
     padding-top: 30px;
@@ -225,28 +212,24 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_status_panel > .bp_remaining_code {
-    /*background-image: url(../img/messages/remaining_code.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -24px -183px;
-    background-repeat: no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -24px -183px;
     text-indent: -1400px;
     width: 190px;
     height: 48px;
     margin-top: 0;
     margin-right: 86px;
 }
+
 .bp_status_panel.bp_start_stage > .bp_remaining_code {
     display: none;
 }
+
 .bp_status_panel.bp_completed > .bp_remaining_code {
     display: none;
 }
 
 .bp_status_panel > .bp_code_hack_completed {
-    /*background-image: url(../img/messages/code_hack_complete.png);*/
-    background-image: url(../img/merged/tomerge.png);
-    background-position: -24px -183px;
-    background-repeat: no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -24px -129px;
     text-indent: -1400px;
     margin-top: 0;
     margin-right: 86px;
@@ -258,6 +241,7 @@ BUTTON.bp_button.bp_glow_on {
 .bp_status_panel.bp_start_stage > .bp_code_hack_completed {
     display: none;
 }
+
 .bp_status_panel.bp_completed > .bp_code_hack_completed {
     display: block;
 }
@@ -269,12 +253,11 @@ BUTTON.bp_button.bp_glow_on {
 .bp_status_panel .bp_found_codes > DIV {
     height: 28px;
     width: 112px;
-    /* overflow: hidden; */
     border: 1px solid #9D5D39;
     position: relative;
-    -moz-box-shadow:inset 0px 0px 8px #b36f34;
-    -webkit-box-shadow:inset 0px 0px 8px #b36f34;
-    box-shadow:inset 0px 0px 8px #b36f34;
+    -moz-box-shadow: inset 0px 0px 8px #b36f34;
+    -webkit-box-shadow: inset 0px 0px 8px #b36f34;
+    box-shadow: inset 0px 0px 8px #b36f34;
 }
 
 .bp_status_panel .bp_found_codes > DIV .bp_cover {
@@ -283,30 +266,21 @@ BUTTON.bp_button.bp_glow_on {
     width: 110px;
     height: 26px;
     background-color: green;
-    border-color: green;
-    border-style: solid;
-    border-width: 1px;
+    border: 1px solid green;
     opacity: 0.4;
 }
 
-.bp_status_panel .bp_found_codes > DIV IMG{
+.bp_status_panel .bp_found_codes > DIV IMG {
     height: 28px;
 }
+
 .bp_status_panel.bp_start_stage .bp_found_codes {
     display: none;
 }
 
-.bp_status_panel.bp_completed .bp_found_codes > DIV .bp_cover {
-    /* display: block; */
-}
-
 .bp_status_panel .bp_found_codes > DIV.bp_accepted {
-    /* display: block; */
     border-color: #green;
 }
-
-
-
 
 .bp_slider {
     height: 340px;
@@ -323,6 +297,7 @@ BUTTON.bp_button.bp_glow_on {
     position: absolute;
     top: 0;
 }
+
 .bp_slider > ul > li {
     margin: 0 0 -3px 0;
     padding: 0;
@@ -340,16 +315,12 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_card {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #DFBA7A;
-
+    border: 1px solid #DFBA7A;
     width: 340px;
     height: 81px;
-
-    -moz-box-shadow:inset 0px 0px 35px #b36f34;
-    -webkit-box-shadow:inset 0px 0px 35px #b36f34;
-    box-shadow:inset 0px 0px 35px #b36f34;
+    -moz-box-shadow: inset 0px 0px 35px #b36f34;
+    -webkit-box-shadow: inset 0px 0px 35px #b36f34;
+    box-shadow: inset 0px 0px 35px #b36f34;
 }
 
 .bp_card IMG {
@@ -363,11 +334,9 @@ BUTTON.bp_button.bp_glow_on {
     position: absolute;
     width: 340px;
     height: 81px;
-
     background-color: red;
     opacity: 0.4;
 }
-
 
 .bp_card_cover {
     display: none;
@@ -377,8 +346,8 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_card_content {
-    width:340px;
-    height:81px;
+    width: 340px;
+    height: 81px;
     margin: 0;
     padding: 0;
     border: none;
@@ -396,7 +365,6 @@ BUTTON.bp_button.bp_glow_on {
     opacity: 0.4;
 }
 
-
 .bp_unauthorized_access::before {
     content: 'Unauthorized Access';
     color: white;
@@ -405,21 +373,18 @@ BUTTON.bp_button.bp_glow_on {
     position: absolute;
 }
 
-
 .bp_cursor {
     position: absolute;
     width: 417px;
     height: 94px;
-
     margin-left: -40px;
     margin-top: -6px;
     z-index: 5;
+    background: url(../img/cursor.png) no-repeat;
 }
 
 .bp_footer {
-    background-image: url(../img/merged/headerfooter.png);
-    background-repeat: no-repeat;
-
+    background: url(../img/merged/headerfooter.png) no-repeat;
     height: 56px;
     width: 1065px;
     margin: 0 auto;
@@ -427,7 +392,7 @@ BUTTON.bp_button.bp_glow_on {
 }
 
 .bp_remaining_attempts {
-    left: 399px;
+    left: 407px;
     top: 9px;
     font-size: 13pt;
     padding-left: 5px;
@@ -447,27 +412,28 @@ BUTTON.bp_button.bp_glow_on {
 .bp_remaining_attempts .bp_number.bp_0 {
     background: url(../img/messages/0.png) no-repeat;
 }
+
 .bp_remaining_attempts .bp_number.bp_1 {
     background: url(../img/messages/1.png) no-repeat;
 }
+
 .bp_remaining_attempts .bp_number.bp_2 {
     background: url(../img/messages/2.png) no-repeat;
 }
+
 .bp_remaining_attempts .bp_number.bp_3 {
     background: url(../img/messages/3.png) no-repeat;
 }
 
 .bp_remaining_attempts .bp_msg_attempts_remaining {
     margin-left: 3px;
-    background: url(../img/messages/attempts_remaining.png) no-repeat;
+    background: url(../img/merged/tomerge.png) no-repeat -11px -91px;
     width: 220px;
     height: 18px;
 }
-
 
 .bp_exit {
     position: absolute;
     left: 820px;
     top: 3px;
 }
-
