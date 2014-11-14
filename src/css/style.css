@@ -387,7 +387,7 @@ BUTTON.bp_button.bp_glow_on {
     margin-left: -40px;
     margin-top: -6px;
     z-index: 5;
-    background: url(../img/cursor.png) no-repeat;
+    background: url(../img/merged/cursor.png) no-repeat;
 }
 
 .bp_footer {

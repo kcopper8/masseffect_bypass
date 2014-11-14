@@ -20,7 +20,7 @@ define(['jquery', 'jquery-ui', 'underscore', 'backbone', 'text!bui/descriptor/st
         _setCode : function (code, idx) {
             if (!!code) {
                 $("<IMG src='img/merged/codes.png'>")
-                    .css("top", -(code.getNumber() * 27) +"px")
+                    .css("top", code.getPosition(27))
                     .appendTo(this.$foundCodeViews[idx]);
             } else {
                 this.$foundCodeViews[idx].innerHTML = '';
