@@ -250,7 +250,6 @@ BUTTON.bp_button.bp_glow_on {
     -moz-box-shadow: inset 0px 0px 8px #b36f34;
     -webkit-box-shadow: inset 0px 0px 8px #b36f34;
     box-shadow: inset 0px 0px 8px #b36f34;
-    overflow: hidden;
     margin-top: -1px;
 }
 
@@ -262,6 +261,11 @@ BUTTON.bp_button.bp_glow_on {
     background-color: green;
     border: 1px solid green;
     opacity: 0.4;
+}
+
+.bp_status_panel .bp_found_codes > DIV .img_container {
+    overflow: hidden;
+    height: 28px;
 }
 
 .bp_status_panel .bp_found_codes > DIV IMG {
