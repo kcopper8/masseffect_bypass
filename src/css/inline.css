@@ -1,0 +1,35 @@
+body {
+    background: black;
+}
+
+.bp_header {
+    background: url(img/merged/headerfooter.png) no-repeat;
+    background-position-y: -56px;
+    width: 1064px;
+    height: 80px;
+    margin: 0 auto -20px;
+    position: relative;
+}
+
+.bp_descriptor {
+    margin: 0 auto;
+    width: 1079px;
+    height: 123px;
+}
+
+.bp_slider {
+    height: 340px;
+    margin-top: 3px;
+    padding: 0 38px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.bp_footer {
+    background: url(img/merged/headerfooter.png) no-repeat;
+    height: 56px;
+    width: 1065px;
+    margin: 0 auto;
+    position: relative;
+}

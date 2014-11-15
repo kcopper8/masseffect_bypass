@@ -12,7 +12,8 @@ define([
     'constant/Stage',
     'controller/gameHelper',
     'controller/gameStageController',
-    'controller/prizeController'
+    'controller/prizeController',
+    'controller/preloadImagesLoad'
 ], function (
     $,
     _,
@@ -24,7 +25,8 @@ define([
     Stage,
     gameHelper,
     gameStageController,
-    prizeController
+    prizeController,
+    preloadImagesLoad
 ) {
 
     var StartController = function () {
@@ -36,7 +38,10 @@ define([
 
         var viewContainer = window.view = ViewContainer.build(".bp_container", sliderRow, gameStageModel);
 
+
         this.startStage = function () {
+            viewContainer.doLoading();
+
             gameStageModel.setStage(Stage.START);
             gameStageModel.setCurrentTargetCode(Code.getRandom());
             gameStageModel.once("startGame", function () {
@@ -81,6 +86,13 @@ define([
         };
     };
 
-    new StartController().startStage();
+    preloadImagesLoad().then(function () {
+        new StartController().startStage();
+    }, function () {
+        if (confirm("Image Load failed. needs refresh, are you sure?")) {
+            location.reload(true);
+        }
+    });
+
     return {};
 });

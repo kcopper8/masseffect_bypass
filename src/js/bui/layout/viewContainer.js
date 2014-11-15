@@ -17,18 +17,13 @@ define([
             this.sliderView = SliderView.build(".bp_slider", this.collection, this.model);
             this.footerView = FooterView.build(".bp_footer", this.model);
 
-            this._loading();
-
             this.listenTo(this.model, "decreaseAttempt", this.onDecreaseAttempt);
         },
 
-        _loading : function () {
+        doLoading : function () {
             this.headerView.$el.after(this.descriptorView.$el);
             this.footerView.$el.before(this.sliderView.$el);
-/*
-            this.$el.css("margin-top", "190px");
-            this.footerView.$el.css("margin-top", "-468px");
-*/
+
             var animateOptions = {
                 duration : 1000,
                 easing : 'easeInOutCubic'

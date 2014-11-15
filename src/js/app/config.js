@@ -70,6 +70,7 @@ define(['underscore', 'lib/query-string'], function (_, queryString) {
         "FailurePrizeLocation" : '',
         "WaitSecondAfterCompleted" : 3,
         "DistrictProbabilities" : [3, 2, 1],
+        "PreLoadImages" : ["img/merged/codes.png","img/merged/headerfooter.png","img/merged/backgrounds.png"],
         "NoRedirect" : false
     });
 });

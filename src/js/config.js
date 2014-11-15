@@ -8,7 +8,8 @@ require.config({
         'jquery-ui' : 'lib/jquery-ui',
         'underscore' : 'lib/underscore',
         'backbone' : 'lib/backbone',
-        'text' : 'lib/text'
+        'text' : 'lib/text',
+        'imagesLoaded' : "lib/imagesloaded.pkgd.min"
     },
     shim : {
         'jquery-ui' : {
