@@ -35,7 +35,11 @@ define([
         },
 
         onDecreaseAttempt : function () {
-            this.$el.effect("shake");
+            this.$el.effect({
+                effect : "shake",
+                distance : 5,
+                duration : 200
+            });
         },
 
         slideClose : function() {
