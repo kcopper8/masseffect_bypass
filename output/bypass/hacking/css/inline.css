@@ -3,7 +3,7 @@ body {
 }
 
 .bp_header {
-    background: url(../img/merged/headerfooter.png) no-repeat;
+    background: url(img/merged/headerfooter.png) no-repeat;
     background-position-y: -56px;
     width: 1064px;
     height: 80px;
@@ -27,7 +27,7 @@ body {
 }
 
 .bp_footer {
-    background: url(../img/merged/headerfooter.png) no-repeat;
+    background: url(img/merged/headerfooter.png) no-repeat;
     height: 56px;
     width: 1065px;
     margin: 0 auto;
