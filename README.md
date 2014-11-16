@@ -11,7 +11,7 @@ masseffect_bypass
 
 
 ## 피드백
-기능 오류 신고나 문의사항 등은 kcopper@gmail.com 으로 메일주세요. 
+기능 오류 신고나 문의사항 등은 kcopper@gmail.com 으로 메일주시거나, 트위터 계정 @kcopper8 로 멘션주세요.
 
 오류 신고시에는 다음 내용을 포함시켜 주시면 큰 도움이 됩니다.
 
