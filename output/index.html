@@ -21,42 +21,203 @@
 <h2>Bypass : Hacking URL Builder</h2>
 <form role="form">
     <div class="form-group">
-        <label>URL When Hacking Successed</label>
-        <input type="text" class="form-control" id="success_url" placeholder="URL When Hacking Successed">
+        <label>URL when the hack was successful</label>
+        <span class="help-block">(default: https://github.com/kcopper8/masseffect_bypass/) </span>
+        <input type="text" class="form-control" id="SPL" name="SPL" placeholder="URL when the hack was successful">
     </div>
     <div class="form-group">
-        <label>URL When Hacking Failed</label>
-        <input type="text" class="form-control" id="failure_url" placeholder="URL When Hacking Failed">
+        <label>URL when the hack was failed</label>
+        <span class="help-block"> (default: same as when 'successful')</span>
+        <input type="text" class="form-control" id="FPL" name="FPL" placeholder="URL when the hack was failed">
     </div>
     <div class="form-group">
-        <label>Your URL Is</label>
-        <input type="text" class="form-control" id="target_url" placeholder="Your URL Is">
+        <label>Slide Speed Per Card</label>
+        <span class="help-block"> (100ms ~ 10000ms, default : 1000) (1칸당 코드 이동 속도. 100ms ~ 10000ms)</span>
+        <input type="number" class="form-control" id="SSPC" name="SSPC" placeholder="Slide Speed Per Card (100ms ~ 10000ms, default : 1000) ">
+    </div>
+    <div class="form-group">
+        <label>Game Time (seconds)</label>
+        <span class="help-block"> (20~) (게임 시간제한 (초))</span>
+        <input type="number" class="form-control" id="GTS" name="GTS" placeholder="Game Time (seconds) ">
+    </div>
+    <div class="form-group">
+        <label>Code Type Count</label>
+        <span class="help-block"> (1~11, default: 11) (게임에 등장하는 코드 갯수, 기본값: 11)</span>
+        <input type="number" class="form-control" id="CTC" name="CTC" placeholder="numbers of code types. (1 ~ 11)">
+    </div>
+    <div class="form-group">
+        <label>Probabilities by District Pattern</label>
+        <span class="help-block">(접근제한영역 발생확률)</span>
+        <div class="row">
+            <div class="col-xs-4 form-group">
+                <label>no district patterns</label>
+                <span class="help-block">(1~, default: 3) (접근제한영역이 없는 경우, 기본값: 3)</span>
+                <input type="text" class="form-control" id="DP1" name="DP1" placeholder="DistrictProbabilities">
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>One District Patterns</label>
+                <span class="help-block">(0~, default: 1) (접근제한영역이 1개 있는 경우, 기본값: 1)</span>
+                <input type="text" class="form-control" id="DP2" name="DP2" placeholder="DistrictProbabilities">
+            </div>
+            <div class="col-xs-4 form-group">
+                <label>Two District Patterns</label>
+                <span class="help-block">(0~, default: 1) (접근제한영역이 2개 있는 경우, 기본값: 1)</span>
+                <input type="text" class="form-control" id="DP3" name="DP3" placeholder="DistrictProbabilities">
+            </div>
+        </div>
     </div>
 </form>
+    <div class="form-group">
+        <label>Your URL Is</label>
+        <input type="text" class="form-control" id="target_url" name="target_URL" placeholder="Your URL Is">
+    </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="common/js/underscore.js"></script>
+<script src="common/js/backbone.js"></script>
 <script>
-    function setTargetUrl() {
-        var target_url = "http://masseffect.herokuapp.com/bypass/hacking/";
-        var param = {};
-        var success_url = $("#success_url").val();
-        if (!!success_url) {
-            param.SPL = success_url;
-        }
-        var failure_url = $("#failure_url").val();
-        if (!!failure_url) {
-            param.FPL = failure_url;
-        }
-        $("#target_url").val(target_url + "?" + $.param(param));
-    }
-    $("#success_url,#failure_url").on({
-        keyup : setTargetUrl
-    });
-    setTargetUrl();
+    var ConfigurationView = Backbone.View.extend({
+        initialize : function () {
+            this.ui = {};
+            _.each(this.$("INPUT"), function (el) {
+                if (!!el.name) {
+                    this.ui[el.name] = $(el);
+                }
+            }, this);
 
+            this.listenTo(this.model, "invalid", this.setInvalid);
+            this.listenTo(this.model, "valid", this.setValid);
+
+            this.listenTo(this.model, "changeTargetUrl", function (url) {
+                $("#target_url").val(url);
+            });
+        },
+        events : {
+            "keyup INPUT" : "onChange",
+            "change INPUT" : "onChange"
+        },
+        setValid : function (target) {
+            this.ui[target].parent(".form-group")
+                    .removeClass("has-error")
+                    .addClass("has-success");
+        },
+        setInvalid : function (target) {
+            this.ui[target].parent(".form-group")
+                    .removeClass("has-success")
+                    .addClass("has-error");
+        },
+        onChange : function (event) {
+            this.model.set(event.currentTarget.name, $(event.currentTarget).val());
+        }
+    });
+
+    function isInvalidate(key, val) {
+        var func = isInvalidate[key];
+        if (!!func && _.isFunction(func) && (!!val || val === 0)) {
+            return func(val);
+        }
+    }
+    isInvalidate['SSPC'] = function (val) {
+        return _.isFinite(val) && (val < 100 || val > 10000);
+    };
+
+    isInvalidate['GTS'] = function (val) {
+        return _.isFinite(val) && val < 20;
+    };
+
+    isInvalidate['CTC'] = function (val) {
+        return _.isFinite(val) && (val < 1 || val > 11);
+    };
+
+    isInvalidate['DP1'] = function (val) {
+        return _.isFinite(val) && val < 1;
+    };
+
+    isInvalidate['DP2'] = function (val) {
+        return _.isFinite(val) && val < 0;
+    };
+
+    isInvalidate['DP3'] = function (val) {
+        return _.isFinite(val) && val < 0;
+    };
+
+    var Configuration = Backbone.Model.extend({
+        initialize : function () {
+            _.each(["SSPC", "GTS", "CTC", "DP1", "DP2", "DP3"], function (propertyName) {
+                this.on("change:" + propertyName, function (model, val) {
+                    if (isInvalidate(propertyName, val)) {
+                        model.trigger("invalid", propertyName);
+                        model.unset(propertyName, {
+                            slient : true
+                        });
+                    } else {
+                        model.trigger("valid", propertyName);
+                        this.processor(propertyName);
+                    }
+                });
+            }, this);
+
+            this.on("change", this.setTargetUrl);
+        },
+        setTargetUrl : function () {
+            var params = this.toJSON();
+            _.each(["DP1", "DP2", "DP3"], function (key) {
+                delete params[key];
+            });
+
+            _.each(params, function (val, key) {
+                if (!val) {
+                    delete params[key];
+                }
+            });
+
+            var target_url = "http://masseffect.herokuapp.com/bypass/hacking/?" + $.param(params);
+            this.trigger("changeTargetUrl", target_url);
+        },
+        processor : function (propertyName) {
+            if (_.contains(["DP1", "DP2", "DP3"], propertyName)) {
+                if (!_.every(["DP1","DP2","DP3"], function (propertyName) {
+                            return !isInvalidate(propertyName, this.get(propertyName));
+                        }, this)) {
+                    return;
+                }
+
+                var dpVal = _.map(["DP1","DP2","DP3"], function (key) {
+                    return this.get(key);
+                }, this).join("|");
+
+                this.set({
+                    "DP" : dpVal
+                }, {
+                    slient : true
+                });
+            }
+        }
+    });
+
+    var model = new Configuration();
+
+    window.view = new ConfigurationView({
+        el : $("FORM"),
+        model : model
+    });
+
+
+    $.fn.setSuccess = function () {
+        this.parent(".form-group")
+            .removeClass("has-success")
+            .addClass("has-error");
+    };
+
+    $.fn.setFailure = function () {
+        this.parent(".form-group")
+                .removeClass("has-error")
+                .addClass("has-success");
+
+    };
 </script>
 </body>
 </html>
