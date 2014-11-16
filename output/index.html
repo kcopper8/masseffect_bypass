@@ -37,7 +37,7 @@
     </div>
     <div class="form-group">
         <label>Game Time (seconds)</label>
-        <span class="help-block"> (20~) (게임 시간제한 (초))</span>
+        <span class="help-block"> (10~) (게임 시간제한 (초))</span>
         <input type="number" class="form-control" id="GTS" name="GTS" placeholder="Game Time (seconds) ">
     </div>
     <div class="form-group">
@@ -125,7 +125,7 @@
     };
 
     isInvalidate['GTS'] = function (val) {
-        return _.isFinite(val) && val < 20;
+        return _.isFinite(val) && val < 10;
     };
 
     isInvalidate['CTC'] = function (val) {
@@ -150,9 +150,6 @@
                 this.on("change:" + propertyName, function (model, val) {
                     if (isInvalidate(propertyName, val)) {
                         model.trigger("invalid", propertyName);
-                        model.unset(propertyName, {
-                            slient : true
-                        });
                     } else {
                         model.trigger("valid", propertyName);
                         this.processor(propertyName);
@@ -171,6 +168,10 @@
             _.each(params, function (val, key) {
                 if (!val) {
                     delete params[key];
+                } else {
+                    if (isInvalidate(key, val)) {
+                        delete params[key];
+                    }
                 }
             });
 
@@ -180,8 +181,13 @@
         processor : function (propertyName) {
             if (_.contains(["DP1", "DP2", "DP3"], propertyName)) {
                 if (!_.every(["DP1","DP2","DP3"], function (propertyName) {
-                            return !isInvalidate(propertyName, this.get(propertyName));
+                            var val = this.get(propertyName);
+                            return (!!val || val === 0) && !isInvalidate(propertyName, val);
                         }, this)) {
+
+                    this.unset("DP", {
+                        slient : true
+                    });
                     return;
                 }
 
