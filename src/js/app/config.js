@@ -66,7 +66,7 @@ define(['underscore', 'lib/query-string'], function (_, queryString) {
         "SlideSpeedPerCard" : 1000,
         "RowsCountInSlide" : 5,
         "GameTimeSeconds" : 40,
-        "SuccessPrizeLocation" : 'https://github.com/kcopper8/masseffect_bypass/',
+        "SuccessPrizeLocation" : 'http://www.masseffect.com/',
         "FailurePrizeLocation" : '',
         "WaitSecondAfterCompleted" : 3,
         "DistrictProbabilities" : [3, 2, 1],
