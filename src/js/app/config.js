@@ -63,7 +63,7 @@ define(['underscore', 'lib/query-string'], function (_, queryString) {
         "CodePathPrefix" : 'img/codes/',
         "CardHeight" : 82,
         "CodeImageHeight" : 81,
-        "SlideSpeedPerCard" : 1000,
+        "SlideSpeedPerCard" : 800,
         "RowsCountInSlide" : 5,
         "GameTimeSeconds" : 40,
         "SuccessPrizeLocation" : 'http://www.masseffect.com/',
