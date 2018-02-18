@@ -20,7 +20,7 @@
 <div class="container">
 <h1>나만의 해킹 페이지를 만들자!<small>Mass Effect Bypass : Hacking</small></h1>
 <p class="lead">
-    이 페이지에서 여러분은 자신만의 <a href="https://masseffect.herokuapp.com/bypass/hacking/" target="_blank">웹버전 Bypass : Hacking</a> 페이지를 만드실 수 있습니다.
+    이 페이지에서 여러분은 자신만의 <a href="https://kcopper8.github.io/masseffect_bypass/" target="_blank">웹버전 Bypass : Hacking</a> 페이지를 만드실 수 있습니다.
 </p>
 
 <p class="info">
@@ -77,7 +77,7 @@
 </form>
     <div class="form-group">
         <label>설정한 해킹 URL 을 아래에서 복사하세요.</label>
-        <input type="text" class="form-control" id="target_url" name="target_URL" value="https://masseffect.herokuapp.com/bypass/hacking/">
+        <input type="text" class="form-control" id="target_url" name="target_URL" value="https://kcopper8.github.io/masseffect_bypass/">
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -183,7 +183,7 @@
                 }
             });
 
-            var target_url = "http://masseffect.herokuapp.com/bypass/hacking/?" + $.param(params);
+            var target_url = "https://kcopper8.github.io/masseffect_bypass/?" + $.param(params);
             this.trigger("changeTargetUrl", target_url);
         },
         processor : function (propertyName) {
