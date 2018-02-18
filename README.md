@@ -4,7 +4,7 @@ masseffect_bypass
 이 프로젝트는 게임 [매스 이펙트](http://masseffect.bioware.com/) 의 팬 작업으로, 게임 내의 미니게임인 Bypass : Hacking 을 모사한 웹어플리케이션을 만드는 작업입니다.
 
 > 기본 게임 URL : 
-> [https://kcopper8.github.io/masseffect_bypass/] (https://kcopper8.github.io/masseffect_bypass/)
+> https://kcopper8.github.io/masseffect_bypass/
 
 기본 게임은 해킹 성공/실패와 관계없이 이 페이지로 이동하게 되어 있습니다. 하지만 해킹 후 원하는 곳으로 이동하는 게임의 URL을 누구나 만들 수 있습니다.
  아래의 **URL 생성방법** 항목을 참고해주세요.
